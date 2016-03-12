@@ -2,7 +2,7 @@
 layout: post
 title:  "My git experience!"
 date:   2016-03-12
-categories: git tools
+categories: tools git
 ---
 
 * 目录
