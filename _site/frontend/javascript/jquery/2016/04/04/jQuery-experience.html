@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Wendelhuang blog</title>
+    <title>My jQuery experience!</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://yourdomain.com/">
+    <link rel="canonical" href="http://yourdomain.com/frontend/javascript/jquery/2016/04/04/jQuery-experience.html">
 </head>
 
 
@@ -54,39 +54,77 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">My jQuery experience!</h1>
+    <p class="post-meta">Apr 4, 2016</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Apr 4, 2016</span>
-
-        <h2>
-          <a class="post-link" href="/frontend/javascript/jquery/2016/04/04/jQuery-experience.html">My jQuery experience!</a>
-        </h2>
+  <article class="post-content">
+    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">选择器</a>    <ul>
+      <li><a href="#id" id="markdown-toc-id">通过id选择</a>        <ul>
+          <li><a href="#id-1" id="markdown-toc-id-1">通过id选择</a></li>
+          <li><a href="#class" id="markdown-toc-class">通过class选择</a></li>
+          <li><a href="#name" id="markdown-toc-name">通过name选择</a></li>
+        </ul>
       </li>
-    
-      <li>
-        <span class="post-meta">Mar 12, 2016</span>
-
-        <h2>
-          <a class="post-link" href="/tools/git/2016/03/12/git-experience.html">My git experience!</a>
-        </h2>
+    </ul>
+  </li>
+  <li><a href="#section-1" id="markdown-toc-section-1">设置元素的值</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">设置元素的值</a>        <ul>
+          <li><a href="#val" id="markdown-toc-val">通过val()设置元素的值</a></li>
+        </ul>
       </li>
-    
-      <li>
-        <span class="post-meta">Jan 10, 2016</span>
+    </ul>
+  </li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/01/10/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<hr />
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<h1 id="section">选择器</h1>
+
+<h2 id="id">通过id选择</h2>
+
+<h3 id="id-1">通过id选择</h3>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span><span class="p">(</span><span class="s2">&quot;#id&quot;</span><span class="p">)</span>
+<span class="c1">#通过id选择页面元素</span></code></pre></div>
+
+<h3 id="class">通过class选择</h3>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span><span class="p">(</span><span class="s2">&quot;.id&quot;</span><span class="p">)</span>
+<span class="c1">#通过class选择页面元素</span></code></pre></div>
+
+<h3 id="name">通过name选择</h3>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span><span class="p">(</span><span class="s2">&quot;input[name=&#39;xxx&#39;]&quot;</span><span class="p">)</span>
+<span class="c1">#选择所有的name属性等于&#39;xxx&#39;的input元素 </span>
+
+<span class="err">$</span><span class="p">(</span><span class="s2">&quot;input[name!=&#39;xxx&#39;]&quot;</span><span class="p">)</span> 
+<span class="c1">#选择所有的name属性不等于&#39;xxx&#39;的input元素 </span>
+
+<span class="err">$</span><span class="p">(</span><span class="s2">&quot;input[name^=&#39;xxx&#39;]&quot;</span><span class="p">)</span>
+<span class="c1">#选择所有的name属性以&#39;xxx&#39;开头的input元素 </span>
+
+<span class="err">$</span><span class="p">(</span><span class="s2">&quot;input[name$=&#39;xxx&#39;]&quot;</span><span class="p">)</span>
+<span class="c1">#选择所有的name属性以&#39;xxx&#39;结尾的input元素 </span>
+
+<span class="err">$</span><span class="p">(</span><span class="s2">&quot;input[name*=&#39;xxx&#39;]&quot;</span><span class="p">)</span>
+<span class="c1">#选择所有的name属性包含&#39;xxx&#39;的input元素</span></code></pre></div>
+
+<h1 id="section-1">设置元素的值</h1>
+
+<h2 id="section-2">设置元素的值</h2>
+
+<h3 id="val">通过val()设置元素的值</h3>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span><span class="p">(</span><span class="s2">&quot;.sex&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">val</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">#设置class为sex的元素的value=1</span></code></pre></div>
+
+
+  </article>
 
 </div>
 
