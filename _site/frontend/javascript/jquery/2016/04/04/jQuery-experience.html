@@ -72,9 +72,13 @@
       </li>
     </ul>
   </li>
-  <li><a href="#section-1" id="markdown-toc-section-1">设置元素的值</a>    <ul>
+  <li><a href="#section-1" id="markdown-toc-section-1">页面元素操作</a>    <ul>
       <li><a href="#section-2" id="markdown-toc-section-2">设置元素的值</a>        <ul>
           <li><a href="#val" id="markdown-toc-val">通过val()设置元素的值</a></li>
+        </ul>
+      </li>
+      <li><a href="#class-1" id="markdown-toc-class-1">设置元素的class</a>        <ul>
+          <li><a href="#removeclassaddclassclass" id="markdown-toc-removeclassaddclassclass">通过removeClass()和addClass()设置元素的class</a></li>
         </ul>
       </li>
     </ul>
@@ -95,7 +99,15 @@
 <h3 id="class">通过class选择</h3>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span><span class="p">(</span><span class="s2">&quot;.id&quot;</span><span class="p">)</span>
-<span class="c1">#通过class选择页面元素</span></code></pre></div>
+<span class="c1">#通过class选择页面元素</span>
+
+<span class="c1">#选择具有多个class的元素,比如&lt;div class=&quot;modal fade in&quot;&gt;&lt;/div&gt;</span>
+<span class="err">$</span><span class="p">(</span><span class="s2">&quot;.modal.fade&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&quot;in&quot;</span><span class="p">)</span>
+
+<span class="err">$</span><span class="p">(</span><span class="s2">&quot;[class=&#39;modal fade in&#39;]&quot;</span><span class="p">)</span>
+<span class="c1">#此处顺序必须一致才行</span>
+
+<span class="err">$</span><span class="p">(</span><span class="s2">&quot;.modal.fade.in&quot;</span><span class="p">)</span></code></pre></div>
 
 <h3 id="name">通过name选择</h3>
 
@@ -114,7 +126,7 @@
 <span class="err">$</span><span class="p">(</span><span class="s2">&quot;input[name*=&#39;xxx&#39;]&quot;</span><span class="p">)</span>
 <span class="c1">#选择所有的name属性包含&#39;xxx&#39;的input元素</span></code></pre></div>
 
-<h1 id="section-1">设置元素的值</h1>
+<h1 id="section-1">页面元素操作</h1>
 
 <h2 id="section-2">设置元素的值</h2>
 
@@ -123,9 +135,21 @@
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span><span class="p">(</span><span class="s2">&quot;.sex&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">val</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="c1">#设置class为sex的元素的value=1</span></code></pre></div>
 
+<h2 id="class-1">设置元素的class</h2>
+
+<h3 id="removeclassaddclassclass">通过removeClass()和addClass()设置元素的class</h3>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span><span class="p">(</span><span class="s2">&quot;.btn.active&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">removeClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+<span class="c1">#删除class为btn active的元素其中的active</span>
+<span class="c1">#如果删除多个class,中间以空格分开</span>
+<span class="c1">#如果不加参数,移除所有class</span>
+<span class="err">$</span><span class="p">(</span><span class="s2">&quot;.btn&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">addClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+<span class="c1">#为class为btn的元素添加class active</span></code></pre></div>
+
 
   </article>
 
+部分内容来自网络 如有侵权请联系删除
 </div>
 
       </div>
