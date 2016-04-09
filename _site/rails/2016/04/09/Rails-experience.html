@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Wendelhuang blog</title>
+    <title>My Rails experience!</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://yourdomain.com/">
+    <link rel="canonical" href="http://yourdomain.com/rails/2016/04/09/Rails-experience.html">
 </head>
 
 
@@ -54,48 +54,54 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">My Rails experience!</h1>
+    <p class="post-meta">Apr 9, 2016</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Apr 9, 2016</span>
-
-        <h2>
-          <a class="post-link" href="/rails/2016/04/09/Rails-experience.html">My Rails experience!</a>
-        </h2>
+  <article class="post-content">
+    <ul id="markdown-toc">
+  <li><a href="#assets" id="markdown-toc-assets">Assets</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">配置</a>        <ul>
+          <li><a href="#assets-1" id="markdown-toc-assets-1">assets查找路径</a></li>
+          <li><a href="#assets-2" id="markdown-toc-assets-2">修改assets查找路径</a></li>
+          <li><a href="#vendor" id="markdown-toc-vendor">vendor目录</a></li>
+        </ul>
       </li>
-    
-      <li>
-        <span class="post-meta">Apr 4, 2016</span>
+    </ul>
+  </li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/frontend/javascript/jquery/2016/04/04/jQuery-experience.html">My jQuery experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 12, 2016</span>
+<hr />
 
-        <h2>
-          <a class="post-link" href="/tools/git/2016/03/12/git-experience.html">My git experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 10, 2016</span>
+<h1 id="assets">Assets</h1>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/01/10/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<h2 id="section">配置</h2>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<h3 id="assets-1">assets查找路径</h3>
 
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#assets的路径在</span>
+<span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span></code></pre></div>
+
+<h3 id="assets-2">修改assets查找路径</h3>
+<p>在config/application.rb中添加</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span> <span class="o">+=</span> <span class="sx">%w{js css img}</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">dir</span><span class="o">|</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;parent_dir&quot;</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span> <span class="p">}</span></code></pre></div>
+
+<p>Rails4中可以在config/initializers/assets.rb中添加</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span> <span class="o">&lt;&lt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;parent_dir&quot;</span><span class="p">,</span> <span class="s2">&quot;dir&quot;</span><span class="p">)</span></code></pre></div>
+
+<h3 id="vendor">vendor目录</h3>
+<ol>
+  <li>vendor目录下的子目录，默认自动被加入assets查找路径</li>
+</ol>
+
+  </article>
+
+部分内容来自网络 如有侵权请联系删除
 </div>
 
       </div>
