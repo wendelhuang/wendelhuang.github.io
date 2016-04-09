@@ -10,6 +10,44 @@ categories: tools git
 
 ***
 
+# 配置
+git的配置项有3个层级，分别是仓库级(git config --local)，全局级(git config --global)以及系统级(git config --system)。
+优先级仓库级>全局级>系统级
+仓库级的配置文件是repository下的.git/config文件，只对当前repository有效
+全局级的配置文件是用户home目录下的.gitconfig文件，对系统中本用户有效
+系统级的配置文件是/etc/gitconfig文件，对当前系统所有用户有效
+
+文件内容示例如下
+{% highlight bash %}
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+[remote "origin"]
+  url = git@github.com:xxxxxx/xxxxxx.github.io.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
+[user]
+  name = xxxxxxxx
+  email = xxxxxxxx@example.com
+{% endhighlight %}
+
+## 配置查看
+{% highlight bash %}
+git config --global -l
+{% endhighlight %}
+
+## 配置项示例
+
+### 配置用户名邮箱
+{% highlight bash %}
+git config --global user.name "username"
+git config --global user.email "username@example.com"
+{% endhighlight %}
+
 # 分支
 
 ## 查看分支

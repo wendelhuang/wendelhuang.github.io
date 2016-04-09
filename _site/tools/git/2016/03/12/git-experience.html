@@ -63,24 +63,32 @@
 
   <article class="post-content">
     <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">分支</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">查看分支</a>        <ul>
-          <li><a href="#section-2" id="markdown-toc-section-2">列出本地分支</a></li>
-          <li><a href="#section-3" id="markdown-toc-section-3">列出本地及远程分支</a></li>
+  <li><a href="#section" id="markdown-toc-section">配置</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">配置查看</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">配置项示例</a>        <ul>
+          <li><a href="#section-3" id="markdown-toc-section-3">配置用户名邮箱</a></li>
         </ul>
       </li>
-      <li><a href="#section-4" id="markdown-toc-section-4">创建分支</a>        <ul>
-          <li><a href="#section-5" id="markdown-toc-section-5">创建分支</a></li>
-          <li><a href="#section-6" id="markdown-toc-section-6">切换分支</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-4" id="markdown-toc-section-4">分支</a>    <ul>
+      <li><a href="#section-5" id="markdown-toc-section-5">查看分支</a>        <ul>
+          <li><a href="#section-6" id="markdown-toc-section-6">列出本地分支</a></li>
+          <li><a href="#section-7" id="markdown-toc-section-7">列出本地及远程分支</a></li>
         </ul>
       </li>
-      <li><a href="#section-7" id="markdown-toc-section-7">删除分支</a>        <ul>
-          <li><a href="#section-8" id="markdown-toc-section-8">删除本地分支</a></li>
-          <li><a href="#section-9" id="markdown-toc-section-9">删除远程分支</a></li>
+      <li><a href="#section-8" id="markdown-toc-section-8">创建分支</a>        <ul>
+          <li><a href="#section-9" id="markdown-toc-section-9">创建分支</a></li>
+          <li><a href="#section-10" id="markdown-toc-section-10">切换分支</a></li>
         </ul>
       </li>
-      <li><a href="#section-10" id="markdown-toc-section-10">合并分支</a>        <ul>
-          <li><a href="#section-11" id="markdown-toc-section-11">合并分支</a></li>
+      <li><a href="#section-11" id="markdown-toc-section-11">删除分支</a>        <ul>
+          <li><a href="#section-12" id="markdown-toc-section-12">删除本地分支</a></li>
+          <li><a href="#section-13" id="markdown-toc-section-13">删除远程分支</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-14" id="markdown-toc-section-14">合并分支</a>        <ul>
+          <li><a href="#section-15" id="markdown-toc-section-15">合并分支</a></li>
         </ul>
       </li>
     </ul>
@@ -89,45 +97,80 @@
 
 <hr />
 
-<h1 id="section">分支</h1>
+<h1 id="section">配置</h1>
+<p>git的配置项有3个层级，分别是仓库级(git config –local)，全局级(git config –global)以及系统级(git config –system)。
+优先级仓库级&gt;全局级&gt;系统级
+仓库级的配置文件是repository下的.git/config文件，只对当前repository有效
+全局级的配置文件是用户home目录下的.gitconfig文件，对系统中本用户有效
+系统级的配置文件是/etc/gitconfig文件，对当前系统所有用户有效</p>
 
-<h2 id="section-1">查看分支</h2>
+<p>文件内容示例如下</p>
 
-<h3 id="section-2">列出本地分支</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>core<span class="o">]</span>
+  <span class="nv">repositoryformatversion</span> <span class="o">=</span> 0
+  <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nb">  </span><span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="nb">  </span><span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="o">[</span>remote <span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+  <span class="nv">url</span> <span class="o">=</span> git@github.com:xxxxxx/xxxxxx.github.io.git
+  <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
+<span class="o">[</span>branch <span class="s2">&quot;master&quot;</span><span class="o">]</span>
+  <span class="nv">remote</span> <span class="o">=</span> origin
+  <span class="nv">merge</span> <span class="o">=</span> refs/heads/master
+<span class="o">[</span>user<span class="o">]</span>
+  <span class="nv">name</span> <span class="o">=</span> xxxxxxxx
+  <span class="nv">email</span> <span class="o">=</span> xxxxxxxx@example.com</code></pre></div>
+
+<h2 id="section-1">配置查看</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git config --global -l</code></pre></div>
+
+<h2 id="section-2">配置项示例</h2>
+
+<h3 id="section-3">配置用户名邮箱</h3>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git config --global user.name <span class="s2">&quot;username&quot;</span>
+git config --global user.email <span class="s2">&quot;example@gmail.com&quot;</span></code></pre></div>
+
+<h1 id="section-4">分支</h1>
+
+<h2 id="section-5">查看分支</h2>
+
+<h3 id="section-6">列出本地分支</h3>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">branch</span></code></pre></div>
 
-<h3 id="section-3">列出本地及远程分支</h3>
+<h3 id="section-7">列出本地及远程分支</h3>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">a</span></code></pre></div>
 
-<h2 id="section-4">创建分支</h2>
+<h2 id="section-8">创建分支</h2>
 
-<h3 id="section-5">创建分支</h3>
+<h3 id="section-9">创建分支</h3>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">branch</span> <span class="no">BRANCHNAME</span></code></pre></div>
 
-<h3 id="section-6">切换分支</h3>
+<h3 id="section-10">切换分支</h3>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">checkout</span> <span class="no">BRANCHNAME</span>
 <span class="c1"># 切换到已经创建好的分支</span>
 <span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="no">BRANCHNAME</span>
 <span class="c1"># 创建分支并切换到该新建分支</span></code></pre></div>
 
-<h2 id="section-7">删除分支</h2>
+<h2 id="section-11">删除分支</h2>
 
-<h3 id="section-8">删除本地分支</h3>
+<h3 id="section-12">删除本地分支</h3>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">D</span> <span class="no">BRANCHNAME</span></code></pre></div>
 
-<h3 id="section-9">删除远程分支</h3>
+<h3 id="section-13">删除远程分支</h3>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="ss">:BRANCHNAME</span>
 <span class="c1"># 注意冒号:</span></code></pre></div>
 
-<h2 id="section-10">合并分支</h2>
+<h2 id="section-14">合并分支</h2>
 
-<h3 id="section-11">合并分支</h3>
+<h3 id="section-15">合并分支</h3>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
 <span class="c1"># 切换到master分支</span>
