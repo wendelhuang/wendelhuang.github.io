@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 09 Apr 2016 10:50:46 +0800</pubDate>
-    <lastBuildDate>Sat, 09 Apr 2016 10:50:46 +0800</lastBuildDate>
+    <pubDate>Sat, 09 Apr 2016 11:00:33 +0800</pubDate>
+    <lastBuildDate>Sat, 09 Apr 2016 11:00:33 +0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -158,10 +158,11 @@
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;section&quot;&gt;配置&lt;/h1&gt;
-&lt;p&gt;git的配置项有3个层级，分别是仓库级(git config –local)，全局级(git config –global)以及系统级(git config –system)。
-优先级仓库级&amp;gt;全局级&amp;gt;系统级
-仓库级的配置文件是repository下的.git/config文件，只对当前repository有效
-全局级的配置文件是用户home目录下的.gitconfig文件，对系统中本用户有效
+
+&lt;p&gt;git的配置项有3个层级，分别是仓库级(git config –local)，全局级(git config –global)以及系统级(git config –system)。&lt;br /&gt;
+优先级仓库级&amp;gt;全局级&amp;gt;系统级&lt;br /&gt;
+仓库级的配置文件是repository下的.git/config文件，只对当前repository有效&lt;br /&gt;
+全局级的配置文件是用户home目录下的.gitconfig文件，对系统中本用户有效&lt;br /&gt;
 系统级的配置文件是/etc/gitconfig文件，对当前系统所有用户有效&lt;/p&gt;
 
 &lt;p&gt;文件内容示例如下&lt;/p&gt;
@@ -190,7 +191,7 @@
 &lt;h3 id=&quot;section-3&quot;&gt;配置用户名邮箱&lt;/h3&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git config --global user.name &lt;span class=&quot;s2&quot;&gt;&amp;quot;username&amp;quot;&lt;/span&gt;
-git config --global user.email &lt;span class=&quot;s2&quot;&gt;&amp;quot;example@gmail.com&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+git config --global user.email &lt;span class=&quot;s2&quot;&gt;&amp;quot;username@example.com&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h1 id=&quot;section-4&quot;&gt;分支&lt;/h1&gt;
 

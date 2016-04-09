@@ -11,11 +11,12 @@ categories: tools git
 ***
 
 # 配置
-git的配置项有3个层级，分别是仓库级(git config --local)，全局级(git config --global)以及系统级(git config --system)。
-优先级仓库级>全局级>系统级
-仓库级的配置文件是repository下的.git/config文件，只对当前repository有效
-全局级的配置文件是用户home目录下的.gitconfig文件，对系统中本用户有效
-系统级的配置文件是/etc/gitconfig文件，对当前系统所有用户有效
+
+git的配置项有3个层级，分别是仓库级(git config --local)，全局级(git config --global)以及系统级(git config --system)。  
+优先级仓库级>全局级>系统级  
+仓库级的配置文件是repository下的.git/config文件，只对当前repository有效  
+全局级的配置文件是用户home目录下的.gitconfig文件，对系统中本用户有效  
+系统级的配置文件是/etc/gitconfig文件，对当前系统所有用户有效  
 
 文件内容示例如下
 {% highlight bash %}
