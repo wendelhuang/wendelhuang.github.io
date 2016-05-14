@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Wendelhuang blog</title>
+    <title>小技巧: 使用命令行打开gnome的图片查看软件Image Viewer</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://yourdomain.com/">
+    <link rel="canonical" href="http://yourdomain.com/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html">
 </head>
 
 
@@ -54,64 +54,47 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">小技巧: 使用命令行打开gnome的图片查看软件Image Viewer</h1>
+    <p class="post-meta">May 14, 2016</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">May 14, 2016</span>
+  <article class="post-content">
+    <p>ubuntu下默认打开图片的软件是gnome的Image Viewer，它的另外一个名字叫”eye of gnome(gnome之眼)”<br />
+使用命令行打开该软件的命令就是eye of gnome的首字母连在一起eog<br />
+一下内容摘自<a href="https://help.gnome.org/users/eog/stable/commandline.html">gnome官网</a></p>
 
-        <h2>
-          <a class="post-link" href="/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html">小技巧: 使用命令行打开gnome的图片查看软件Image Viewer</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 5, 2016</span>
+<p>You can open a specific file by typing the filename after the eog command:</p>
 
-        <h2>
-          <a class="post-link" href="/ruby/2016/05/05/ruby-code-snippets.html">My Ruby Code Snippets!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 9, 2016</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">eog image.jpeg</code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/rails/2016/04/09/Rails-experience.html">My Rails experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 4, 2016</span>
+<p>You can open a specific folder by typing the folder name after the eog command:</p>
 
-        <h2>
-          <a class="post-link" href="/frontend/javascript/jquery/2016/04/04/jQuery-experience.html">My jQuery experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 12, 2016</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">eog folder</code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/tools/git/2016/03/12/git-experience.html">My git experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 10, 2016</span>
+<p>To see all the images in a folder at once, you may wish to browse the image gallery.
+Open an image in fullscreen mode</p>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/01/10/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">eog --fullscreen image.jpeg</code></pre></div>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>Open image with gallery disabled</p>
 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">eog --disable-gallery image.jpeg</code></pre></div>
+
+<p>Open image in a new instance</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">eog --new-instance image.jpeg</code></pre></div>
+
+<p>Open a folder in slideshow mode</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">eog --slide-show Pictures/</code></pre></div>
+
+
+  </article>
+
+部分内容来自网络 如有侵权请联系删除
 </div>
 
       </div>

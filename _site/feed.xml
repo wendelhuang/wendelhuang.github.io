@@ -6,9 +6,54 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 07 May 2016 16:18:15 +0800</pubDate>
-    <lastBuildDate>Sat, 07 May 2016 16:18:15 +0800</lastBuildDate>
+    <pubDate>Sat, 14 May 2016 11:49:09 +0800</pubDate>
+    <lastBuildDate>Sat, 14 May 2016 11:49:09 +0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>小技巧: 使用命令行打开gnome的图片查看软件Image Viewer</title>
+        <description>&lt;p&gt;ubuntu下默认打开图片的软件是gnome的Image Viewer，它的另外一个名字叫”eye of gnome(gnome之眼)”&lt;br /&gt;
+使用命令行打开该软件的命令就是eye of gnome的首字母连在一起eog&lt;br /&gt;
+一下内容摘自&lt;a href=&quot;https://help.gnome.org/users/eog/stable/commandline.html&quot;&gt;gnome官网&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can open a specific file by typing the filename after the eog command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eog image.jpeg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can open a specific folder by typing the folder name after the eog command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eog folder&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To see all the images in a folder at once, you may wish to browse the image gallery.
+Open an image in fullscreen mode&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eog --fullscreen image.jpeg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Open image with gallery disabled&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eog --disable-gallery image.jpeg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Open image in a new instance&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eog --new-instance image.jpeg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Open a folder in slideshow mode&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;eog --slide-show Pictures/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Sat, 14 May 2016 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</guid>
+        
+        
+        <category>tools</category>
+        
+        <category>linux</category>
+        
+        <category>image</category>
+        
+      </item>
     
       <item>
         <title>My Ruby Code Snippets!</title>
