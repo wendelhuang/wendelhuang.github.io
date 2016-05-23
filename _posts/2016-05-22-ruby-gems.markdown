@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "ruby gems"
+date:   2016-05-22
+categories: tools ruby gems
+---
+
+* 目录
+{:toc}
+
+***
+
+# ruby gems的安装卸载
+
+## 安装ruby gems到本地目录
+当用非root用户安装gem的时候，会报没有目录权限的错误，大致如下
+{% highlight ruby %}
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+      You don't have write permissions into the /usr/local/ruby/gems/ruby-1.9.3-p327 directory.
+{% endhighlight %}
+这个时候我们在想可否将gem安装在本用户的指定目录，能解决这个问题，答案是可以的，方法如下  
+创建文件$HOME/.gemrc文件，该文件也可能已经存在，追加以下内容
+{% highlight ruby %}
+gemhome: /home/martin/.gems
+gempath:
+  - /home/martin/.gems
+  - /usr/local/ruby/gems/ruby-1.9.2-p327
+{% endhighlight %}
+
+接下来，将这个本地目录加入环境变量PATH中，以防止运行bundle这样的可执行程序时找不到目录
+{% highlight bash %}
+/usr/local/lib/ruby/2.1.0/rubygems/dependency.rb:298:in `to_specs': Could not find 'bundler' (>= 0) among 8 total gem(s) (Gem::LoadError)
+  from /usr/local/lib/ruby/2.1.0/rubygems/dependency.rb:309:in `to_spec'
+  from /usr/local/lib/ruby/2.1.0/rubygems/core_ext/kernel_gem.rb:53:in `gem'
+  from /home/develop/.gems/bin/bundle:22:in `<main>'
+{% endhighlight %}
+
+执行下面的命令
+{% highlight ruby %}
+export GEM_HOME=$HOME/.gems
+export PATH=$HOME/.gems/bin:$PATH
+{% endhighlight %}
+这个时候再运行bundle install，就将gem安装到指定的本地目录了。
+
+## 从本地离线安装ruby gems
+下载gems后，在gem目录中运行
+{% highlight ruby %}
+gem install ./(gem-name).gem --local
+{% endhighlight %}
+
+## 卸载ruby gems
+{% highlight ruby %}
+gem uninstall gem-name
+{% endhighlight %}

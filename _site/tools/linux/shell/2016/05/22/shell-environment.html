@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Wendelhuang blog</title>
+    <title>小技巧: 因为shell环境造成的ssh客户端tab键，方向键，backspace，delete都不正常输入</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://yourdomain.com/">
+    <link rel="canonical" href="http://yourdomain.com/tools/linux/shell/2016/05/22/shell-environment.html">
 </head>
 
 
@@ -54,88 +54,31 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">小技巧: 因为shell环境造成的ssh客户端tab键，方向键，backspace，delete都不正常输入</h1>
+    <p class="post-meta">May 22, 2016</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">May 22, 2016</span>
+  <article class="post-content">
+    <p>使用aliyun的ECS的时候我遇到了一个”棘手”的问题，在windows下使用ssh客户端连上去后tab键，方向键，backspace，delete键都不能正常使用<br />
+查了许久发现是使用的shell环境的问题<br />
+默认登录服务器后使用</p>
 
-        <h2>
-          <a class="post-link" href="/tools/vim/2016/05/22/vim-experience.html">My Vim experience</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 22, 2016</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="nv">$0</span>
+<span class="c">#=&gt; -sh</span></code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/tools/linux/shell/2016/05/22/shell-environment.html">小技巧: 因为shell环境造成的ssh客户端tab键，方向键，backspace，delete都不正常输入</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 22, 2016</span>
+<p>发现默认的shell环境是bsh<br />
+执行</p>
 
-        <h2>
-          <a class="post-link" href="/tools/ruby/gems/2016/05/22/ruby-gems.html">ruby gems</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 14, 2016</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/bin/bash</code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html">小技巧: 使用命令行打开gnome的图片查看软件Image Viewer</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 5, 2016</span>
+<p>切换到bash一切就正常了</p>
 
-        <h2>
-          <a class="post-link" href="/ruby/2016/05/05/ruby-code-snippets.html">My Ruby Code Snippets!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 9, 2016</span>
+  </article>
 
-        <h2>
-          <a class="post-link" href="/rails/2016/04/09/Rails-experience.html">My Rails experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 4, 2016</span>
-
-        <h2>
-          <a class="post-link" href="/frontend/javascript/jquery/2016/04/04/jQuery-experience.html">My jQuery experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 12, 2016</span>
-
-        <h2>
-          <a class="post-link" href="/tools/git/2016/03/12/git-experience.html">My git experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 10, 2016</span>
-
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/01/10/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
+部分内容来自网络 如有侵权请联系删除
 </div>
 
       </div>

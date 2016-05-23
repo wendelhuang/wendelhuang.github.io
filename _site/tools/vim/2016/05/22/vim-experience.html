@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Wendelhuang blog</title>
+    <title>My Vim experience</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://yourdomain.com/">
+    <link rel="canonical" href="http://yourdomain.com/tools/vim/2016/05/22/vim-experience.html">
 </head>
 
 
@@ -54,88 +54,61 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">My Vim experience</h1>
+    <p class="post-meta">May 22, 2016</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">May 22, 2016</span>
+  <article class="post-content">
+    <ul id="markdown-toc">
+  <li><a href="#vim" id="markdown-toc-vim">vim配置</a>    <ul>
+      <li><a href="#vimrc" id="markdown-toc-vimrc">.vimrc</a></li>
+    </ul>
+  </li>
+  <li><a href="#vim-1" id="markdown-toc-vim-1">vim使用大法</a></li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/tools/vim/2016/05/22/vim-experience.html">My Vim experience</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 22, 2016</span>
+<hr />
 
-        <h2>
-          <a class="post-link" href="/tools/linux/shell/2016/05/22/shell-environment.html">小技巧: 因为shell环境造成的ssh客户端tab键，方向键，backspace，delete都不正常输入</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 22, 2016</span>
+<h1 id="vim">vim配置</h1>
 
-        <h2>
-          <a class="post-link" href="/tools/ruby/gems/2016/05/22/ruby-gems.html">ruby gems</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 14, 2016</span>
+<h2 id="vimrc">.vimrc</h2>
 
-        <h2>
-          <a class="post-link" href="/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html">小技巧: 使用命令行打开gnome的图片查看软件Image Viewer</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 5, 2016</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set </span>cindent
+<span class="nb">set </span>smartindent
 
-        <h2>
-          <a class="post-link" href="/ruby/2016/05/05/ruby-code-snippets.html">My Ruby Code Snippets!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 9, 2016</span>
+<span class="nb">set </span><span class="nv">tabstop</span><span class="o">=</span>2
+<span class="nb">set </span><span class="nv">softtabstop</span><span class="o">=</span>2
+<span class="nb">set </span><span class="nv">shiftwidth</span><span class="o">=</span>2
+<span class="nb">set </span>expandtab
 
-        <h2>
-          <a class="post-link" href="/rails/2016/04/09/Rails-experience.html">My Rails experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 4, 2016</span>
+syntax on
+<span class="nb">set </span>number
+<span class="nb">set </span>hlsearch
+<span class="nb">set </span>showmatch
 
-        <h2>
-          <a class="post-link" href="/frontend/javascript/jquery/2016/04/04/jQuery-experience.html">My jQuery experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 12, 2016</span>
+filetype on
+filetype indent on
 
-        <h2>
-          <a class="post-link" href="/tools/git/2016/03/12/git-experience.html">My git experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 10, 2016</span>
+autocmd FileType python <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>pythoncomplete#Complete
+autocmd FileType javascript <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>javascriptcomplete#CompleteJS
+autocmd FileType html <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>htmlcomplete#CompleteTags
+autocmd FileType css <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>csscomplete#CompleteCSS
+autocmd FileType xml <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>xmlcomplete#CompleteTags
+autocmd FileType php <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>phpcomplete#CompletePHP
+autocmd FileType c <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>ccomplete#Complete
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/01/10/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<span class="k">if</span> has<span class="o">(</span><span class="s1">&#39;mouse&#39;</span><span class="o">)</span>
+  <span class="nb">set </span><span class="nv">mouse</span><span class="o">=</span>a
+endif</code></pre></div>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<h1 id="vim-1">vim使用大法</h1>
 
+  </article>
+
+部分内容来自网络 如有侵权请联系删除
 </div>
 
       </div>
