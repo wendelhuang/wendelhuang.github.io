@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Wendelhuang blog</title>
+    <title>My Shell experience</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://yourdomain.com/">
+    <link rel="canonical" href="http://yourdomain.com/shell/2016/06/13/shell-experience.html">
 </head>
 
 
@@ -54,96 +54,72 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">My Shell experience</h1>
+    <p class="post-meta">Jun 13, 2016</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jun 13, 2016</span>
+  <article class="post-content">
+    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">文本处理</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">替换文件夹下所有文本</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">分割字符串</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">从字符串中删除指定字符</a></li>
+    </ul>
+  </li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/shell/2016/06/13/shell-experience.html">My Shell experience</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 22, 2016</span>
+<hr />
 
-        <h2>
-          <a class="post-link" href="/tools/vim/2016/05/22/vim-experience.html">My Vim experience</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 22, 2016</span>
+<h1 id="section">文本处理</h1>
 
-        <h2>
-          <a class="post-link" href="/tools/linux/shell/2016/05/22/shell-environment.html">小技巧: 因为shell环境造成的ssh客户端tab键，方向键，backspace，delete都不正常输入</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 22, 2016</span>
+<h2 id="section-1">替换文件夹下所有文本</h2>
 
-        <h2>
-          <a class="post-link" href="/tools/ruby/gems/2016/05/22/ruby-gems.html">ruby gems</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 14, 2016</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l * <span class="p">|</span> awk <span class="s1">&#39;{print &quot;sed &#39;</span>s/被替换的内容/要替换的内容/g<span class="s1">&#39; &quot;$1&quot; &gt;temp/&quot;$1}&#39;</span> &gt; sed.sh</code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html">小技巧: 使用命令行打开gnome的图片查看软件Image Viewer</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 5, 2016</span>
+<p>生成的脚本内容如下所示</p>
 
-        <h2>
-          <a class="post-link" href="/ruby/2016/05/05/ruby-code-snippets.html">My Ruby Code Snippets!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 9, 2016</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sed s/aaaaaa/bbb/g a.txt &gt; temp/a.txt
+sed s/aaaaaa/bbb/g b.txt &gt; temp/b.txt
+sed s/aaaaaa/bbb/g c.txt &gt; temp/c.txt
+sed s/aaaaaa/bbb/g d.txt &gt; temp/d.txt</code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/rails/2016/04/09/Rails-experience.html">My Rails experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 4, 2016</span>
+<p>执行脚本即可</p>
 
-        <h2>
-          <a class="post-link" href="/frontend/javascript/jquery/2016/04/04/jQuery-experience.html">My jQuery experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 12, 2016</span>
+<h2 id="section-2">分割字符串</h2>
+<p>使用cut分割，简洁方便，但是只支持单个字符分割，比如文本a.txt内容为</p>
 
-        <h2>
-          <a class="post-link" href="/tools/git/2016/03/12/git-experience.html">My git experience!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 10, 2016</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">10.221.1.1 1
+10.221.1.1 2
+10.221.1.3 15</code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/01/10/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p>执行</p>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat a.txt <span class="p">|</span> cut -d <span class="s1">&#39; &#39;</span> -f1</code></pre></div>
 
+<p>结果为</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">10.221.1.1
+10.221.1.1
+10.221.1.3</code></pre></div>
+
+<p>使用awk处理如下</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat a.txt <span class="p">|</span> awk -F <span class="s1">&#39; &#39;</span> <span class="s1">&#39;{print $1}&#39;</span></code></pre></div>
+
+<p>效果一样，而且awk可以支持多个字符作分割符</p>
+
+<h2 id="section-3">从字符串中删除指定字符</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;aaabbccb&#39;</span> <span class="p">|</span> tr -d <span class="s1">&#39;bb&#39;</span>
+<span class="c"># aaaccb</span></code></pre></div>
+
+
+  </article>
+
+部分内容来自网络 如有侵权请联系删除
 </div>
 
       </div>

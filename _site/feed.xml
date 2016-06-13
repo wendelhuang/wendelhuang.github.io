@@ -6,9 +6,75 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 24 May 2016 07:28:58 +0800</pubDate>
-    <lastBuildDate>Tue, 24 May 2016 07:28:58 +0800</lastBuildDate>
+    <pubDate>Mon, 13 Jun 2016 22:02:59 +0800</pubDate>
+    <lastBuildDate>Mon, 13 Jun 2016 22:02:59 +0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>My Shell experience</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;文本处理&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;替换文件夹下所有文本&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;分割字符串&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;从字符串中删除指定字符&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;文本处理&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;替换文件夹下所有文本&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ls -l * &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; awk &lt;span class=&quot;s1&quot;&gt;&amp;#39;{print &amp;quot;sed &amp;#39;&lt;/span&gt;s/被替换的内容/要替换的内容/g&lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;quot;$1&amp;quot; &amp;gt;temp/&amp;quot;$1}&amp;#39;&lt;/span&gt; &amp;gt; sed.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;生成的脚本内容如下所示&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sed s/aaaaaa/bbb/g a.txt &amp;gt; temp/a.txt
+sed s/aaaaaa/bbb/g b.txt &amp;gt; temp/b.txt
+sed s/aaaaaa/bbb/g c.txt &amp;gt; temp/c.txt
+sed s/aaaaaa/bbb/g d.txt &amp;gt; temp/d.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;执行脚本即可&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;分割字符串&lt;/h2&gt;
+&lt;p&gt;使用cut分割，简洁方便，但是只支持单个字符分割，比如文本a.txt内容为&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;10.221.1.1 1
+10.221.1.1 2
+10.221.1.3 15&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;执行&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cat a.txt &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cut -d &lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt; -f1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;结果为&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;10.221.1.1
+10.221.1.1
+10.221.1.3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;使用awk处理如下&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cat a.txt &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; awk -F &lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;效果一样，而且awk可以支持多个字符作分割符&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;从字符串中删除指定字符&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;aaabbccb&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; tr -d &lt;span class=&quot;s1&quot;&gt;&amp;#39;bb&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# aaaccb&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 13 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/shell/2016/06/13/shell-experience.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/shell/2016/06/13/shell-experience.html</guid>
+        
+        
+        <category>shell</category>
+        
+      </item>
     
       <item>
         <title>My Vim experience</title>
