@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>My Shell Code Snippets!</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://yourdomain.com/shell/2016/06/13/shell-code-snippets.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Wendelhuang blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">My Shell Code Snippets!</h1>
+    <p class="post-meta">Jun 13, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">文本处理</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">替换文件夹下所有文本</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">分割字符串</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">从字符串中删除指定字符</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-4" id="markdown-toc-section-4">目录</a>    <ul>
+      <li><a href="#section-5" id="markdown-toc-section-5">递归遍历目录</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="section">文本处理</h1>
+
+<h2 id="section-1">替换文件夹下所有文本</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l * <span class="p">|</span> awk <span class="s1">&#39;{print &quot;sed &#39;</span>s/被替换的内容/要替换的内容/g<span class="s1">&#39; &quot;$1&quot; &gt;temp/&quot;$1}&#39;</span> &gt; sed.sh</code></pre></div>
+
+<p>生成的脚本内容如下所示</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sed s/aaaaaa/bbb/g a.txt &gt; temp/a.txt
+sed s/aaaaaa/bbb/g b.txt &gt; temp/b.txt
+sed s/aaaaaa/bbb/g c.txt &gt; temp/c.txt
+sed s/aaaaaa/bbb/g d.txt &gt; temp/d.txt</code></pre></div>
+
+<p>执行脚本即可</p>
+
+<h2 id="section-2">分割字符串</h2>
+<p>使用cut分割，简洁方便，但是只支持单个字符分割，比如文本a.txt内容为</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">10.221.1.1 1
+10.221.1.1 2
+10.221.1.3 15</code></pre></div>
+
+<p>执行</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat a.txt <span class="p">|</span> cut -d <span class="s1">&#39; &#39;</span> -f1</code></pre></div>
+
+<p>结果为</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">10.221.1.1
+10.221.1.1
+10.221.1.3</code></pre></div>
+
+<p>使用awk处理如下</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat a.txt <span class="p">|</span> awk -F <span class="s1">&#39; &#39;</span> <span class="s1">&#39;{print $1}&#39;</span></code></pre></div>
+
+<p>效果一样，而且awk可以支持多个字符作分割符</p>
+
+<h2 id="section-3">从字符串中删除指定字符</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;aaabbccb&#39;</span> <span class="p">|</span> tr -d <span class="s1">&#39;bb&#39;</span>
+<span class="c"># aaaccb</span></code></pre></div>
+
+<h1 id="section-4">目录</h1>
+
+<h2 id="section-5">递归遍历目录</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">function</span> loop_dir<span class="o">()</span> <span class="o">{</span>
+  <span class="k">for</span> entry in <span class="sb">`</span>ls <span class="nv">$1</span><span class="sb">`</span>
+  <span class="k">do</span>
+    <span class="k">if</span> <span class="o">[</span> -d <span class="nv">$1</span><span class="s2">&quot;/&quot;</span><span class="nv">$entry</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+      loop_dir <span class="nv">$1</span><span class="s2">&quot;/&quot;</span><span class="nv">$entry</span>
+    <span class="k">else</span>
+      <span class="nb">echo</span> <span class="nv">$1</span><span class="s2">&quot;/&quot;</span><span class="nv">$entry</span>
+    <span class="k">fi</span>
+  <span class="k">done</span>
+<span class="o">}</span>
+
+<span class="c"># For example</span>
+<span class="c"># loop_dir `pwd`</span></code></pre></div>
+
+
+  </article>
+
+部分内容来自网络 如有侵权请联系删除
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Wendelhuang blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Wendelhuang blog</li>
+          <li><a href="mailto:weiwei5987(at)126.com">weiwei5987(at)126.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/wendelhuang">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">wendelhuang</span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

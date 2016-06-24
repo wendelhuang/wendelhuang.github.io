@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "My Shell experience"
+title:  "My Shell Code Snippets!"
 date:   2016-06-13
 categories: shell
 ---
@@ -55,3 +55,21 @@ echo 'aaabbccb' | tr -d 'bb'
 # aaaccb
 {% endhighlight %}
 
+# 目录
+
+## 递归遍历目录
+{% highlight bash %}
+function loop_dir() {
+  for entry in `ls $1`
+  do
+    if [ -d $1"/"$entry ];then
+      loop_dir $1"/"$entry
+    else
+      echo $1"/"$entry
+    fi
+  done
+}
+
+# For example
+# loop_dir `pwd`
+{% endhighlight %}
