@@ -109,6 +109,80 @@ a, b = "aa|bb|cc".split("|")
 # b: 'bb'
 {% endhighlight %}
 
+## 数组
+
+### inject求和
+{% highlight ruby %}
+arr = (1..10).to_a
+all = arr.inject(0) do |i, sum|
+  sum += i
+end
+puts all
+{% endhighlight %}
+### 排序
+{% highlight ruby %}
+class Node
+  attr_accessor :lvl_one, :lvl_two
+  def initialize(one, two)
+    @lvl_one, @lvl_two = one, two
+  end
+
+  def <=>(node)
+    if @lvl_one < node.lvl_one
+      -1
+    elsif @lvl_one == node.lvl_one
+      if @lvl_two < node.lvl_two
+        -1
+      elsif @lvl_two == node.lvl_two
+        0
+      else
+        1
+      end
+    else
+      1
+    end
+  end
+end
+
+arr = []
+arr << Node.new(3, 9)
+arr << Node.new(9, 3)
+arr << Node.new(1, 2)
+arr << Node.new(2, 2)
+arr << Node.new(2, 2)
+arr << Node.new(3, 1)
+
+arr.sort.each do |e|
+  puts "#{e.lvl_one}, #{e.lvl_two}"
+end
+=begin
+1, 2
+2, 2
+2, 2
+3, 1
+3, 9
+9, 3
+=end
+{% endhighlight %}
+
+### each_with_index
+{% highlight ruby %}
+(11..20).each_with_index do |number, index|
+  puts "index: #{index}, number: #{number}"
+end
+{% endhighlight %}
+
+### for循环
+{% highlight ruby %}
+arr = (11..20).to_a
+for i in 0...arr.length
+  puts arr[i]
+end
+for i in 1..arr.length
+  puts arr[i-1]
+end
+{% endhighlight %}
+
 # 输入输出
 
 ## 格式化输出
