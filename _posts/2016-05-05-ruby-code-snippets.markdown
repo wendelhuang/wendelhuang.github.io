@@ -102,6 +102,13 @@ a, b = 1, 2
 # c=3
 {% endhighlight %}
 
+### split
+{% highlight ruby %}
+a, b = "aa|bb|cc".split("|")
+# a: 'aa'
+# b: 'bb'
+{% endhighlight %}
+
 # 输入输出
 
 ## 格式化输出

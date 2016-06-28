@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 28 Jun 2016 21:01:41 +0800</pubDate>
-    <lastBuildDate>Tue, 28 Jun 2016 21:01:41 +0800</lastBuildDate>
+    <pubDate>Tue, 28 Jun 2016 21:22:07 +0800</pubDate>
+    <lastBuildDate>Tue, 28 Jun 2016 21:22:07 +0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -309,6 +309,7 @@ Open an image in fullscreen mode&lt;/p&gt;
       &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;表达式&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#and-equal-and-&quot; id=&quot;markdown-toc-and-equal-and-&quot;&gt;== and equal? and ===&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;多个变量同时赋值&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#split&quot; id=&quot;markdown-toc-split&quot;&gt;split&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -425,6 +426,12 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;c1&quot;&gt;# a=1&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# b=2&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# c=3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;split&quot;&gt;split&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;aa|bb|cc&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# a: &amp;#39;aa&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# b: &amp;#39;bb&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h1 id=&quot;section-3&quot;&gt;输入输出&lt;/h1&gt;
 
