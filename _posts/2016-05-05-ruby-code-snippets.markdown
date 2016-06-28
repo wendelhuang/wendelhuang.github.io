@@ -20,6 +20,88 @@ $:.unshift File.expand_path('..', __FILE__)
 # 把当前路径加入到Ruby的LOAD_PATH中
 # unshift是数组的一个方法，把指定的值加到数组的最前面
 {% endhighlight %}
+
+# 表达式
+
+## 表达式
+
+### == and equal? and ===
+equal?用来比较两个对象是否是同一个引用,比如：
+{% highlight ruby %}
+a = "Ruby"       # 一个字符串对象。
+b = c = "Ruby"   # 两个字符串对象指向动一个引用。
+a.equal?(b)      # false: a和b是不同的对象。
+b.equal?(c)      # true: b和c指向同一个引用。
+#这种比较方式实际上是比较两个对象的ID是否相同，显然a是一个对象，而b和c指向另一个对象，他们的对象ID是不同的：
+a.object_id == b.object_id   # 等同于 a.equal?(b)
+{% endhighlight %}
+  
+==用来比较两个对象的值是不是一样
+数组和哈希也定义了==操作符，如果两个数组或两个哈希对象中元素个数相同，且每个元素都相同，那么==返回true.
+需要注意的是,Numerics对象在比较的时候会做一个简单的最新转换，所以Fixnum类型的1和Float类型的1.0的比较结果是相等。
+{% highlight ruby %}
+1 == 1.0 # true
+{% endhighlight %}
+  
+eql?也是比较两个对象的值，如果重新定义了子类的 == 方法，一般需要 alias 到 eql? 方法。和==不同的是
+{% highlight ruby %}
+1.eql?(1.0) # false
+{% endhighlight %}
+eql?用来哈希中key值的比较
+{% highlight ruby %}
+pry(main)> hash = Hash.new
+#=> {}
+pry(main)> hash[2] = "a"
+#=> "a"
+pry(main)> hash[2.0] = "b"
+#=> "b"
+pry(main)> hash[2]
+#=> "a"
+pry(main)> hash[2.0]
+#=> "b"
+pry(main)> hash[2.00] = "c"
+#=> "c"
+pry(main)> hash[2.0]
+#=> "c"
+{% endhighlight %}
+  
+===通常用在 case 比较调用该方法，比如
+{% highlight ruby %}
+case some_object
+when /a regex/
+ # The regex matches
+when String
+ # some_object is kind of String
+when 2..4
+ # some_object is in the range 2..4
+when lambda {|x| some_crazy_custom_predicate }
+ # the lambda returned true
+end
+{% endhighlight %}
+等同于
+{% highlight ruby %}
+if /a regex/ === some_object
+ # The regex matches
+elsif String === some_object
+ # some_object is kind of object
+elsif (2..4) === some_object
+ # some_object is in the range 2..4
+elsif lambda {|x| some_crazy_custom_predicate } === some_object
+ # the lambda returned true
+end
+{% endhighlight %}
+
+### 多个变量同时赋值
+{% highlight ruby %}
+a, b = 1, 2
+# a=1
+# b=2
+(a, b, c) = [1, 2, 3]
+# a=1
+# b=2
+# c=3
+{% endhighlight %}
+
 # 输入输出
 
 ## 格式化输出
