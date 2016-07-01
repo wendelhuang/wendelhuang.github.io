@@ -109,16 +109,203 @@ a, b = "aa|bb|cc".split("|")
 # b: 'bb'
 {% endhighlight %}
 
+## 数组元素基本操作
+
+### 追加元素到数组末尾
+{% highlight ruby %}
+# method 1
+a = [1,2,3,4,5]＃=> [1,2,3,4,5] 
+a << 99＃=> [1,2,3,4,5,99] 
+
+# method 2
+a = [1,2,3,4,5] 
+a.push（10）＃=> [1，2，3，4，5，10]
+{% endhighlight %}
+  
+### 追加元素到数组开头
+{% highlight ruby %}
+a = [1,2,3,4,5]＃=> [1,2,3,4,5] 
+a.unshift(99) ＃=> [99,1,2,3,4,5]
+{% endhighlight %}
+  
+### 从数组末尾弹出元素
+{% highlight ruby %}
+a = [1,2,3,4,5]＃=> [1,2,3,4,5] 
+a.pop ＃=> [1,2,3,4]
+{% endhighlight %}
+  
+### 从数组开头弹出元素
+{% highlight ruby %}
+a = [1,2,3,4,5]＃=> [1,2,3,4,5] 
+a.shift ＃=> [2,3,4,5]
+{% endhighlight %}
+
+### 截取子数组
+{% highlight ruby %}
+a = [1,2,3,4,5]
+
+p a[0,2] #=> [1, 2]
+p a[1..3] #=> [2, 3, 4]
+p a.slice(0,2) #=> [1, 2]
+p a.slice(1..3) #=> [2, 3, 4]
+{% endhighlight %}
+
+### 数组填充
+{% highlight ruby %}
+a = [1,2,3,4,5]
+
+a.fill(255, 2,2) #=> [1, 2, 255, 255, 5]
+a.fill(0, 1..2) #=> [1, 0, 0, 255, 5]
+{% endhighlight %}
+
+### 清空数组
+{% highlight ruby %}
+a = [1,2,3,4,5]
+a.clear #=> []
+
+p a #=> []
+{% endhighlight %}
+
+### 数组连接
+可以使用array#+或者array#concat方法将多个数组连接
+{% highlight ruby %}
+a = [1,2,3,4,5]
+
+p a + [10, 20] #=> [1, 2, 3, 4, 5, 10, 20]
+p a #=> [1, 2, 3, 4, 5]
+a.concat([10, 20]) #=> [1, 2, 3, 4, 5, 10, 20]
+p a #=> [1, 2, 3, 4, 5, 10, 20]
+{% endhighlight %}
+
+### 数组的交集与并集
+{% highlight ruby %}
+p [1,3,5,7] | [2,4,6,8] #=> [1, 3, 5, 7, 2, 4, 6, 8]
+p [1,2,3,4] | [3,4,5,6] #=> [1, 2, 3, 4, 5, 6]
+
+p [1,3,5,7] & [2,4,6,8] #=> []
+p [1,2,3,4] & [3,4,5,6] #=> [3, 4]
+{% endhighlight %}
+
+### 修改数组中多个元素
+{% highlight ruby %}
+a = [1,2,3,4,5]
+
+a[0...2] = [111, 222, 333]
+p a #=> [111, 222, 333, 3, 4, 5]
+
+a[3,2] = [444,555] #=> [444, 555]
+p a #=> [111, 222, 333, 444, 555, 5]
+{% endhighlight %}
+
+### 将多维数组转换为一维数组
+{% highlight ruby %}
+a = [1,[2,[3,4],5],[6,7]]
+
+p a.flatten #=> [1, 2, 3, 4, 5, 6, 7]
+a.flatten! #=> [1, 2, 3, 4, 5, 6, 7]
+{% endhighlight %}
+
+### 反转数组
+reverse
+
+### 过滤重复元素
+uniq
+
+### 删除指定位置的数组元素
+{% highlight ruby %}
+a = [5,1,4,2,3]
+
+a.delete_at(0) #=> 5
+p a #=> [1, 4, 2, 3]
+
+a.delete_at(1) #=> 4
+p a #=> [1, 2, 3]
+{% endhighlight %}
+### 删除匹配元素
+{% highlight ruby %}
+a = ["apple", "orange", "lemon", "apple", "vine"]
+
+a.delete("apple") #=> ["apple"]
+p a #=> ["orange", "lemon", "vine"]
+a.delete("apple") { |x| puts "#{x} not found" } #=> "apple not found"
+{% endhighlight %}
+
+### 查找数组元素
+{% highlight ruby %}
+a = ["apple",10,"orange",["lemon","vine"]]
+
+p a.index("apple") #=> 0
+p a.index(10) #=> 1
+p a.index(["lemon","vine"]) #=> 3
+p a.index("fruit") #=> nil
+{% endhighlight %}
+
+### 搜索多维数组
+{% highlight ruby %}
+a = [["apple",100],["vine",500],["orange",300]]
+
+p a.assoc("apple")  #=> ["apple", 100]
+p a.assoc("orange") #=> ["orange", 300]
+p a.assoc("pear")   #=> nil
+{% endhighlight %}
+
 ## 数组
 
-### inject求和
+### reverse_each
+对数组进行反向迭代遍历
+
+### map collect
+{% highlight ruby %}
+array = %w(one two three)
+brray = array.map do |item|
+  item.upcase
+end
+# brray = ["ONE", "TWO", "THREE"]
+# 等价于
+brray = array.map(&:upcase)
+{% endhighlight %}
+collect的用法和map的用法类似
+
+### inject reduce
+inject求数组元素的和  
+方法一
 {% highlight ruby %}
 arr = (1..10).to_a
-all = arr.inject(0) do |i, sum|
+all = arr.inject(0) do |sum, i|
   sum += i
+  #sum + i
 end
 puts all
 {% endhighlight %}
+
+方法二
+{% highlight ruby %}
+all = (1..10).inject(:+)
+{% endhighlight %}
+reduce用法和inject用法类似
+
+### select reject
+select从数组中筛选元素
+{% highlight ruby %}
+array = (1..10).select do |item|
+  item < 5
+end
+# array = [1, 2, 3, 4, 5]
+{% endhighlight %}
+reject从数组中剔除元素,delete_if相当于object#reject!
+{% highlight ruby %}
+array = (1..10).reject do |item|
+  item < 5
+end
+# array = [6, 7, 8, 9, 10]
+{% endhighlight %}
+
+### group_by
+{% highlight ruby %}
+(1..10).group_by { |item| item%3 }
+# {1=>[1, 4, 7, 10], 2=>[2, 5, 8], 0=>[3, 6, 9]}
+{% endhighlight %}
+
 ### 排序
 {% highlight ruby %}
 class Node
