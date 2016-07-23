@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 02 Jul 2016 00:46:33 +0800</pubDate>
-    <lastBuildDate>Sat, 02 Jul 2016 00:46:33 +0800</lastBuildDate>
+    <pubDate>Sat, 23 Jul 2016 20:20:23 +0800</pubDate>
+    <lastBuildDate>Sat, 23 Jul 2016 20:20:23 +0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -191,6 +191,13 @@ endif&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;li&gt;&lt;a href=&quot;#ruby-gems-1&quot; id=&quot;markdown-toc-ruby-gems-1&quot;&gt;安装ruby gems到本地目录&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#ruby-gems-2&quot; id=&quot;markdown-toc-ruby-gems-2&quot;&gt;从本地离线安装ruby gems&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#ruby-gems-3&quot; id=&quot;markdown-toc-ruby-gems-3&quot;&gt;卸载ruby gems&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;查看安装路径&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ruby-gemcreatebuild&quot; id=&quot;markdown-toc-ruby-gemcreatebuild&quot;&gt;ruby gem的create和build&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#gem&quot; id=&quot;markdown-toc-gem&quot;&gt;新建一个gem&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#gembuild&quot; id=&quot;markdown-toc-gembuild&quot;&gt;gem的build打包&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#create-asset-gemhttpblogxditenetposts20120104how-to-pack-a-asset-gem&quot; id=&quot;markdown-toc-create-asset-gemhttpblogxditenetposts20120104how-to-pack-a-asset-gem&quot;&gt;&lt;a href=&quot;http://blog.xdite.net/posts/2012/01/04/how-to-pack-a-asset-gem/&quot;&gt;create asset gem&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -235,6 +242,67 @@ endif&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&quot;ruby-gems-3&quot;&gt;卸载ruby gems&lt;/h2&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uninstall&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;查看安装路径&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;which&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#gem which rails&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;ruby-gemcreatebuild&quot;&gt;ruby gem的create和build&lt;/h1&gt;
+
+&lt;h2 id=&quot;gem&quot;&gt;新建一个gem&lt;/h2&gt;
+&lt;p&gt;bundle内建支持gem的创建,使用bundle命令可以新建一个gem&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;bundle gem my_mongoid
+      create  my_mongoid/Gemfile
+      create  my_mongoid/Rakefile
+      create  my_mongoid/LICENSE.txt
+      create  my_mongoid/README.md
+      create  my_mongoid/.gitignore
+      create  my_mongoid/my_mongoid.gemspec
+      create  my_mongoid/lib/my_mongoid.rb
+      create  my_mongoid/lib/my_mongoid/version.rb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;新建gem所依赖的gem文件放在my_mongoid.gemspec文件里.&lt;br /&gt;
+这个gem版本号以字符串常量的形式放在lib/my_mongoid/version.rb里.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;MyMonoid&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;VERSION&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.2.1&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;gembuild&quot;&gt;gem的build打包&lt;/h2&gt;
+&lt;p&gt;使用rake管理Gem:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rake -T
+rake build    &lt;span class=&quot;c&quot;&gt;# Build my_monoid-0.2.1.gem into the pkg directory&lt;/span&gt;
+rake install  &lt;span class=&quot;c&quot;&gt;# Build and install my_monoid-0.2.1.gem into system gems&lt;/span&gt;
+rake release  &lt;span class=&quot;c&quot;&gt;# Create tag v0.2.1 and build and push my_monoid-0.2.1.gem to...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;使用rake build构建gem,注意需要把my_monoid\my_monoid.gemspec里的&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%q{TODO: Write a gem description}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;summary&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%q{TODO: Write a gem summary}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;改为&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%q{Write a gem description}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;summary&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%q{Write a gem summary}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;否则会出现下面的错误&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rake build
+rake aborted!
+ERROR:  While executing gem ... &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Gem::InvalidSpecificationException&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;FIXME&amp;quot;&lt;/span&gt; or &lt;span class=&quot;s2&quot;&gt;&amp;quot;TODO&amp;quot;&lt;/span&gt; is not a description
+
+Tasks: &lt;span class=&quot;nv&quot;&gt;TOP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; build
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;See full trace by running task with --trace&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;修改后可以build成功:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rake build
+my_monoid 0.2.1 built to pkg/my_monoid-0.2.1.gem.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;create-asset-gemhttpblogxditenetposts20120104how-to-pack-a-asset-gem&quot;&gt;&lt;a href=&quot;http://blog.xdite.net/posts/2012/01/04/how-to-pack-a-asset-gem/&quot;&gt;create asset gem&lt;/a&gt;&lt;/h2&gt;
 
 </description>
         <pubDate>Sun, 22 May 2016 00:00:00 +0800</pubDate>

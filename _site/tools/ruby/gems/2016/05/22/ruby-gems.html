@@ -67,6 +67,13 @@
       <li><a href="#ruby-gems-1" id="markdown-toc-ruby-gems-1">安装ruby gems到本地目录</a></li>
       <li><a href="#ruby-gems-2" id="markdown-toc-ruby-gems-2">从本地离线安装ruby gems</a></li>
       <li><a href="#ruby-gems-3" id="markdown-toc-ruby-gems-3">卸载ruby gems</a></li>
+      <li><a href="#section" id="markdown-toc-section">查看安装路径</a></li>
+    </ul>
+  </li>
+  <li><a href="#ruby-gemcreatebuild" id="markdown-toc-ruby-gemcreatebuild">ruby gem的create和build</a>    <ul>
+      <li><a href="#gem" id="markdown-toc-gem">新建一个gem</a></li>
+      <li><a href="#gembuild" id="markdown-toc-gembuild">gem的build打包</a></li>
+      <li><a href="#create-asset-gemhttpblogxditenetposts20120104how-to-pack-a-asset-gem" id="markdown-toc-create-asset-gemhttpblogxditenetposts20120104how-to-pack-a-asset-gem"><a href="http://blog.xdite.net/posts/2012/01/04/how-to-pack-a-asset-gem/">create asset gem</a></a></li>
     </ul>
   </li>
 </ul>
@@ -111,6 +118,67 @@
 <h2 id="ruby-gems-3">卸载ruby gems</h2>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">uninstall</span> <span class="n">gem</span><span class="o">-</span><span class="nb">name</span></code></pre></div>
+
+<h2 id="section">查看安装路径</h2>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">which</span> <span class="n">gem</span><span class="o">-</span><span class="nb">name</span> <span class="c1">#gem which rails</span></code></pre></div>
+
+<h1 id="ruby-gemcreatebuild">ruby gem的create和build</h1>
+
+<h2 id="gem">新建一个gem</h2>
+<p>bundle内建支持gem的创建,使用bundle命令可以新建一个gem</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bundle gem my_mongoid
+      create  my_mongoid/Gemfile
+      create  my_mongoid/Rakefile
+      create  my_mongoid/LICENSE.txt
+      create  my_mongoid/README.md
+      create  my_mongoid/.gitignore
+      create  my_mongoid/my_mongoid.gemspec
+      create  my_mongoid/lib/my_mongoid.rb
+      create  my_mongoid/lib/my_mongoid/version.rb</code></pre></div>
+
+<p>新建gem所依赖的gem文件放在my_mongoid.gemspec文件里.<br />
+这个gem版本号以字符串常量的形式放在lib/my_mongoid/version.rb里.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">MyMonoid</span>
+  <span class="no">VERSION</span> <span class="o">=</span> <span class="s2">&quot;0.2.1&quot;</span>
+<span class="k">end</span></code></pre></div>
+
+<h2 id="gembuild">gem的build打包</h2>
+<p>使用rake管理Gem:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake -T
+rake build    <span class="c"># Build my_monoid-0.2.1.gem into the pkg directory</span>
+rake install  <span class="c"># Build and install my_monoid-0.2.1.gem into system gems</span>
+rake release  <span class="c"># Create tag v0.2.1 and build and push my_monoid-0.2.1.gem to...</span></code></pre></div>
+
+<p>使用rake build构建gem,注意需要把my_monoid\my_monoid.gemspec里的</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">spec</span><span class="o">.</span><span class="n">description</span>   <span class="o">=</span> <span class="sx">%q{TODO: Write a gem description}</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">summary</span>       <span class="o">=</span> <span class="sx">%q{TODO: Write a gem summary}</span></code></pre></div>
+
+<p>改为</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">spec</span><span class="o">.</span><span class="n">description</span>   <span class="o">=</span> <span class="sx">%q{Write a gem description}</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">summary</span>       <span class="o">=</span> <span class="sx">%q{Write a gem summary}</span></code></pre></div>
+
+<p>否则会出现下面的错误</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake build
+rake aborted!
+ERROR:  While executing gem ... <span class="o">(</span>Gem::InvalidSpecificationException<span class="o">)</span>
+    <span class="s2">&quot;FIXME&quot;</span> or <span class="s2">&quot;TODO&quot;</span> is not a description
+
+Tasks: <span class="nv">TOP</span> <span class="o">=</span>&gt; build
+<span class="o">(</span>See full trace by running task with --trace<span class="o">)</span></code></pre></div>
+
+<p>修改后可以build成功:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake build
+my_monoid 0.2.1 built to pkg/my_monoid-0.2.1.gem.</code></pre></div>
+
+<h2 id="create-asset-gemhttpblogxditenetposts20120104how-to-pack-a-asset-gem"><a href="http://blog.xdite.net/posts/2012/01/04/how-to-pack-a-asset-gem/">create asset gem</a></h2>
 
 
   </article>
