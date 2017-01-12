@@ -4,10 +4,10 @@
     <title>Wendelhuang blog</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 12 Jan 2017 11:12:35 +0800</pubDate>
-    <lastBuildDate>Thu, 12 Jan 2017 11:12:35 +0800</lastBuildDate>
+    <link>http://0.0.0.0:4000/</link>
+    <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 12 Jan 2017 11:18:20 +0800</pubDate>
+    <lastBuildDate>Thu, 12 Jan 2017 11:18:20 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -58,8 +58,8 @@
 &lt;h2 id=&quot;hashmaphashtable&quot;&gt;HashMap和Hashtable的区别&lt;/h2&gt;
 </description>
         <pubDate>Thu, 12 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/interview/2017/01/12/interview-summary.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/interview/2017/01/12/interview-summary.html</guid>
+        <link>http://0.0.0.0:4000/interview/2017/01/12/interview-summary.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/interview/2017/01/12/interview-summary.html</guid>
         
         
         <category>interview</category>
@@ -146,8 +146,8 @@ sed s/aaaaaa/bbb/g d.txt &amp;gt; temp/d.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure
 
 </description>
         <pubDate>Mon, 13 Jun 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/shell/2016/06/13/shell-code-snippets.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/shell/2016/06/13/shell-code-snippets.html</guid>
+        <link>http://0.0.0.0:4000/shell/2016/06/13/shell-code-snippets.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/shell/2016/06/13/shell-code-snippets.html</guid>
         
         
         <category>shell</category>
@@ -201,8 +201,8 @@ endif&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;h1 id=&quot;vim-1&quot;&gt;vim使用大法&lt;/h1&gt;
 </description>
         <pubDate>Sun, 22 May 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/tools/vim/2016/05/22/vim-experience.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/tools/vim/2016/05/22/vim-experience.html</guid>
+        <link>http://0.0.0.0:4000/tools/vim/2016/05/22/vim-experience.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/tools/vim/2016/05/22/vim-experience.html</guid>
         
         
         <category>tools</category>
@@ -228,8 +228,8 @@ endif&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;切换到bash一切就正常了&lt;/p&gt;
 </description>
         <pubDate>Sun, 22 May 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/tools/linux/shell/2016/05/22/shell-environment.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/tools/linux/shell/2016/05/22/shell-environment.html</guid>
+        <link>http://0.0.0.0:4000/tools/linux/shell/2016/05/22/shell-environment.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/tools/linux/shell/2016/05/22/shell-environment.html</guid>
         
         
         <category>tools</category>
@@ -363,8 +363,8 @@ my_monoid 0.2.1 built to pkg/my_monoid-0.2.1.gem.&lt;/code&gt;&lt;/pre&gt;&lt;/f
 
 </description>
         <pubDate>Sun, 22 May 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/tools/ruby/gems/2016/05/22/ruby-gems.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/tools/ruby/gems/2016/05/22/ruby-gems.html</guid>
+        <link>http://0.0.0.0:4000/tools/ruby/gems/2016/05/22/ruby-gems.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/tools/ruby/gems/2016/05/22/ruby-gems.html</guid>
         
         
         <category>tools</category>
@@ -408,8 +408,8 @@ Open an image in fullscreen mode&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 14 May 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</guid>
+        <link>http://0.0.0.0:4000/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</guid>
         
         
         <category>tools</category>
@@ -934,8 +934,8 @@ Open an image in fullscreen mode&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 05 May 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/ruby/2016/05/05/ruby-code-snippets.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/ruby/2016/05/05/ruby-code-snippets.html</guid>
+        <link>http://0.0.0.0:4000/ruby/2016/05/05/ruby-code-snippets.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/ruby/2016/05/05/ruby-code-snippets.html</guid>
         
         
         <category>ruby</category>
@@ -982,8 +982,8 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sat, 09 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/rails/2016/04/09/Rails-experience.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/rails/2016/04/09/Rails-experience.html</guid>
+        <link>http://0.0.0.0:4000/rails/2016/04/09/Rails-experience.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/rails/2016/04/09/Rails-experience.html</guid>
         
         
         <category>rails</category>
@@ -1088,8 +1088,8 @@ Open an image in fullscreen mode&lt;/p&gt;
 
 </description>
         <pubDate>Mon, 04 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/frontend/javascript/jquery/2016/04/04/jQuery-experience.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/frontend/javascript/jquery/2016/04/04/jQuery-experience.html</guid>
+        <link>http://0.0.0.0:4000/frontend/javascript/jquery/2016/04/04/jQuery-experience.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/frontend/javascript/jquery/2016/04/04/jQuery-experience.html</guid>
         
         
         <category>frontend</category>
@@ -1240,8 +1240,8 @@ ssh-add id_rsa&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;3.将公钥添加到github&lt;/p&gt;
 </description>
         <pubDate>Sat, 12 Mar 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/tools/git/2016/03/12/git-experience.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/tools/git/2016/03/12/git-experience.html</guid>
+        <link>http://0.0.0.0:4000/tools/git/2016/03/12/git-experience.html</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/tools/git/2016/03/12/git-experience.html</guid>
         
         
         <category>tools</category>
