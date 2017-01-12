@@ -82,17 +82,17 @@
 
 <h3 id="assets-1">assets查找路径</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#assets的路径在</span>
-<span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#assets的路径在</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">assets</span><span class="p">.</span><span class="nf">paths</span></code></pre></figure>
 
 <h3 id="assets-2">修改assets查找路径</h3>
 <p>在config/application.rb中添加</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span> <span class="o">+=</span> <span class="sx">%w{js css img}</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">dir</span><span class="o">|</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;parent_dir&quot;</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="p">.</span><span class="nf">assets</span><span class="p">.</span><span class="nf">paths</span> <span class="o">+=</span> <span class="sx">%w{js css img}</span><span class="p">.</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">dir</span><span class="o">|</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"parent_dir"</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span> <span class="p">}</span></code></pre></figure>
 
 <p>Rails4中可以在config/initializers/assets.rb中添加</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span> <span class="o">&lt;&lt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;parent_dir&quot;</span><span class="p">,</span> <span class="s2">&quot;dir&quot;</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">assets</span><span class="p">.</span><span class="nf">paths</span> <span class="o">&lt;&lt;</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"parent_dir"</span><span class="p">,</span> <span class="s2">"dir"</span><span class="p">)</span></code></pre></figure>
 
 <h3 id="vendor">vendor目录</h3>
 <ol>

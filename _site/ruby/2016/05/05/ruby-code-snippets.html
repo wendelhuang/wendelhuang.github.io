@@ -143,9 +143,9 @@
 
 <h3 id="ruby-2">修改Ruby的加载路径</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vg">$:</span><span class="o">.</span><span class="n">unshift</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vg">$:</span><span class="p">.</span><span class="nf">unshift</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s1">'..'</span><span class="p">,</span> <span class="kp">__FILE__</span><span class="p">)</span>
 <span class="c1"># 把当前路径加入到Ruby的LOAD_PATH中</span>
-<span class="c1"># unshift是数组的一个方法，把指定的值加到数组的最前面</span></code></pre></div>
+<span class="c1"># unshift是数组的一个方法，把指定的值加到数组的最前面</span></code></pre></figure>
 
 <h1 id="section">表达式</h1>
 
@@ -154,165 +154,165 @@
 <h3 id="and-equal-and-">== and equal? and ===</h3>
 <p>equal?用来比较两个对象是否是同一个引用,比如：</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Ruby&quot;</span>       <span class="c1"># 一个字符串对象。</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;Ruby&quot;</span>   <span class="c1"># 两个字符串对象指向动一个引用。</span>
-<span class="n">a</span><span class="o">.</span><span class="n">equal?</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># false: a和b是不同的对象。</span>
-<span class="n">b</span><span class="o">.</span><span class="n">equal?</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>      <span class="c1"># true: b和c指向同一个引用。</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="s2">"Ruby"</span>       <span class="c1"># 一个字符串对象。</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">"Ruby"</span>   <span class="c1"># 两个字符串对象指向动一个引用。</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">equal?</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># false: a和b是不同的对象。</span>
+<span class="n">b</span><span class="p">.</span><span class="nf">equal?</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>      <span class="c1"># true: b和c指向同一个引用。</span>
 <span class="c1">#这种比较方式实际上是比较两个对象的ID是否相同，显然a是一个对象，而b和c指向另一个对象，他们的对象ID是不同的：</span>
-<span class="n">a</span><span class="o">.</span><span class="n">object_id</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">object_id</span>   <span class="c1"># 等同于 a.equal?(b)</span></code></pre></div>
+<span class="n">a</span><span class="p">.</span><span class="nf">object_id</span> <span class="o">==</span> <span class="n">b</span><span class="p">.</span><span class="nf">object_id</span>   <span class="c1"># 等同于 a.equal?(b)</span></code></pre></figure>
 
 <p>==用来比较两个对象的值是不是一样
 数组和哈希也定义了==操作符，如果两个数组或两个哈希对象中元素个数相同，且每个元素都相同，那么==返回true.
 需要注意的是,Numerics对象在比较的时候会做一个简单的最新转换，所以Fixnum类型的1和Float类型的1.0的比较结果是相等。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span> <span class="c1"># true</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span> <span class="c1"># true</span></code></pre></figure>
 
 <p>eql?也是比较两个对象的值，如果重新定义了子类的 == 方法，一般需要 alias 到 eql? 方法。和==不同的是</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1</span><span class="o">.</span><span class="n">eql?</span><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># false</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">1</span><span class="p">.</span><span class="nf">eql?</span><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># false</span></code></pre></figure>
 
 <p>eql?用来哈希中key值的比较</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span>
 <span class="c1">#=&gt; {}</span>
-<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
-<span class="c1">#=&gt; &quot;a&quot;</span>
-<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="o">[</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span>
-<span class="c1">#=&gt; &quot;b&quot;</span>
-<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span>
-<span class="c1">#=&gt; &quot;a&quot;</span>
-<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="o">[</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>
-<span class="c1">#=&gt; &quot;b&quot;</span>
-<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="o">[</span><span class="mi">2</span><span class="o">.</span><span class="mo">00</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;c&quot;</span>
-<span class="c1">#=&gt; &quot;c&quot;</span>
-<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="o">[</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>
-<span class="c1">#=&gt; &quot;c&quot;</span></code></pre></div>
+<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"a"</span>
+<span class="c1">#=&gt; "a"</span>
+<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="p">[</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"b"</span>
+<span class="c1">#=&gt; "b"</span>
+<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1">#=&gt; "a"</span>
+<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="p">[</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">#=&gt; "b"</span>
+<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="p">[</span><span class="mi">2</span><span class="o">.</span><span class="mo">00</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"c"</span>
+<span class="c1">#=&gt; "c"</span>
+<span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="nb">hash</span><span class="p">[</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">#=&gt; "c"</span></code></pre></figure>
 
 <p>===通常用在 case 比较调用该方法，比如</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">case</span> <span class="n">some_object</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">case</span> <span class="n">some_object</span>
 <span class="k">when</span> <span class="sr">/a regex/</span>
  <span class="c1"># The regex matches</span>
-<span class="k">when</span> <span class="nb">String</span>
+<span class="k">when</span> <span class="no">String</span>
  <span class="c1"># some_object is kind of String</span>
-<span class="k">when</span> <span class="mi">2</span><span class="o">.</span><span class="n">.</span><span class="mi">4</span>
+<span class="k">when</span> <span class="mi">2</span><span class="p">.</span><span class="nf">.</span><span class="mi">4</span>
  <span class="c1"># some_object is in the range 2..4</span>
 <span class="k">when</span> <span class="nb">lambda</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">some_crazy_custom_predicate</span> <span class="p">}</span>
  <span class="c1"># the lambda returned true</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
 
 <p>等同于</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="sr">/a regex/</span> <span class="o">===</span> <span class="n">some_object</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="sr">/a regex/</span> <span class="o">===</span> <span class="n">some_object</span>
  <span class="c1"># The regex matches</span>
-<span class="k">elsif</span> <span class="nb">String</span> <span class="o">===</span> <span class="n">some_object</span>
+<span class="k">elsif</span> <span class="no">String</span> <span class="o">===</span> <span class="n">some_object</span>
  <span class="c1"># some_object is kind of object</span>
-<span class="k">elsif</span> <span class="p">(</span><span class="mi">2</span><span class="o">.</span><span class="n">.</span><span class="mi">4</span><span class="p">)</span> <span class="o">===</span> <span class="n">some_object</span>
+<span class="k">elsif</span> <span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="nf">.</span><span class="mi">4</span><span class="p">)</span> <span class="o">===</span> <span class="n">some_object</span>
  <span class="c1"># some_object is in the range 2..4</span>
 <span class="k">elsif</span> <span class="nb">lambda</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">some_crazy_custom_predicate</span> <span class="p">}</span> <span class="o">===</span> <span class="n">some_object</span>
  <span class="c1"># the lambda returned true</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
 
 <h3 id="section-2">多个变量同时赋值</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
 <span class="c1"># a=1</span>
 <span class="c1"># b=2</span>
-<span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="c1"># a=1</span>
 <span class="c1"># b=2</span>
-<span class="c1"># c=3</span></code></pre></div>
+<span class="c1"># c=3</span></code></pre></figure>
 
 <h3 id="split">split</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;aa|bb|cc&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">)</span>
-<span class="c1"># a: &#39;aa&#39;</span>
-<span class="c1"># b: &#39;bb&#39;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s2">"aa|bb|cc"</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">"|"</span><span class="p">)</span>
+<span class="c1"># a: 'aa'</span>
+<span class="c1"># b: 'bb'</span></code></pre></figure>
 
 <h2 id="section-3">数组元素基本操作</h2>
 
 <h3 id="section-4">追加元素到数组末尾</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># method 1</span>
-<span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span> 
-<span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="mi">99</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">99</span><span class="o">]</span> 
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># method 1</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="mi">99</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">99</span><span class="p">]</span> 
 
 <span class="c1"># method 2</span>
-<span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span> 
-<span class="n">a</span><span class="o">.</span><span class="n">push</span><span class="err">（</span><span class="mi">10</span><span class="err">）＃</span><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="err">，</span><span class="mi">2</span><span class="err">，</span><span class="mi">3</span><span class="err">，</span><span class="mi">4</span><span class="err">，</span><span class="mi">5</span><span class="err">，</span><span class="mi">10</span><span class="o">]</span></code></pre></div>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">a</span><span class="p">.</span><span class="nf">push</span><span class="err">（</span><span class="mi">10</span><span class="err">）＃</span><span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="err">，</span><span class="mi">2</span><span class="err">，</span><span class="mi">3</span><span class="err">，</span><span class="mi">4</span><span class="err">，</span><span class="mi">5</span><span class="err">，</span><span class="mi">10</span><span class="p">]</span></code></pre></figure>
 
 <h3 id="section-5">追加元素到数组开头</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span> 
-<span class="n">a</span><span class="o">.</span><span class="n">unshift</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span> <span class="err">＃</span><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">99</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">a</span><span class="p">.</span><span class="nf">unshift</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span> <span class="err">＃</span><span class="o">=&gt;</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span></code></pre></figure>
 
 <h3 id="section-6">从数组末尾弹出元素</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span> 
-<span class="n">a</span><span class="o">.</span><span class="n">pop</span> <span class="err">＃</span><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="o">]</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">a</span><span class="p">.</span><span class="nf">pop</span> <span class="err">＃</span><span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span></code></pre></figure>
 
 <h3 id="section-7">从数组开头弹出元素</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span> 
-<span class="n">a</span><span class="o">.</span><span class="n">shift</span> <span class="err">＃</span><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span><span class="err">＃</span><span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">a</span><span class="p">.</span><span class="nf">shift</span> <span class="err">＃</span><span class="o">=&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span></code></pre></figure>
 
 <h3 id="section-8">截取子数组</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 
-<span class="nb">p</span> <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span> <span class="c1">#=&gt; [1, 2]</span>
-<span class="nb">p</span> <span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">3</span><span class="o">]</span> <span class="c1">#=&gt; [2, 3, 4]</span>
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#=&gt; [1, 2]</span>
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#=&gt; [2, 3, 4]</span></code></pre></div>
+<span class="nb">p</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="c1">#=&gt; [1, 2]</span>
+<span class="nb">p</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">3</span><span class="p">]</span> <span class="c1">#=&gt; [2, 3, 4]</span>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#=&gt; [1, 2]</span>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#=&gt; [2, 3, 4]</span></code></pre></figure>
 
 <h3 id="section-9">数组填充</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 
-<span class="n">a</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#=&gt; [1, 2, 255, 255, 5]</span>
-<span class="n">a</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#=&gt; [1, 0, 0, 255, 5]</span></code></pre></div>
+<span class="n">a</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#=&gt; [1, 2, 255, 255, 5]</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#=&gt; [1, 0, 0, 255, 5]</span></code></pre></figure>
 
 <h3 id="section-10">清空数组</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span>
-<span class="n">a</span><span class="o">.</span><span class="n">clear</span> <span class="c1">#=&gt; []</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">clear</span> <span class="c1">#=&gt; []</span>
 
-<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; []</span></code></pre></div>
+<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; []</span></code></pre></figure>
 
 <h3 id="section-11">数组连接</h3>
 <p>可以使用array#+或者array#concat方法将多个数组连接</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 
-<span class="nb">p</span> <span class="n">a</span> <span class="o">+</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 10, 20]</span>
+<span class="nb">p</span> <span class="n">a</span> <span class="o">+</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 10, 20]</span>
 <span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5]</span>
-<span class="n">a</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span><span class="p">)</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 10, 20]</span>
-<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 10, 20]</span></code></pre></div>
+<span class="n">a</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 10, 20]</span>
+<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 10, 20]</span></code></pre></figure>
 
 <h3 id="section-12">数组的交集与并集</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="o">]</span> <span class="o">|</span> <span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span> <span class="c1">#=&gt; [1, 3, 5, 7, 2, 4, 6, 8]</span>
-<span class="nb">p</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="o">]</span> <span class="o">|</span> <span class="o">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="o">]</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span> <span class="o">|</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span> <span class="c1">#=&gt; [1, 3, 5, 7, 2, 4, 6, 8]</span>
+<span class="nb">p</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="o">|</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6]</span>
 
-<span class="nb">p</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="o">]</span> <span class="o">&amp;</span> <span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span> <span class="c1">#=&gt; []</span>
-<span class="nb">p</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="o">]</span> <span class="o">&amp;</span> <span class="o">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="o">]</span> <span class="c1">#=&gt; [3, 4]</span></code></pre></div>
+<span class="nb">p</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span> <span class="c1">#=&gt; []</span>
+<span class="nb">p</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span> <span class="c1">#=&gt; [3, 4]</span></code></pre></figure>
 
 <h3 id="section-13">修改数组中多个元素</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 
-<span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">111</span><span class="p">,</span> <span class="mi">222</span><span class="p">,</span> <span class="mi">333</span><span class="o">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">111</span><span class="p">,</span> <span class="mi">222</span><span class="p">,</span> <span class="mi">333</span><span class="p">]</span>
 <span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [111, 222, 333, 3, 4, 5]</span>
 
-<span class="n">a</span><span class="o">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">444</span><span class="p">,</span><span class="mi">555</span><span class="o">]</span> <span class="c1">#=&gt; [444, 555]</span>
-<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [111, 222, 333, 444, 555, 5]</span></code></pre></div>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">444</span><span class="p">,</span><span class="mi">555</span><span class="p">]</span> <span class="c1">#=&gt; [444, 555]</span>
+<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [111, 222, 333, 444, 555, 5]</span></code></pre></figure>
 
 <h3 id="section-14">将多维数组转换为一维数组</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="o">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="o">]</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="o">]]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,[</span><span class="mi">2</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]]</span>
 
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">flatten</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6, 7]</span>
-<span class="n">a</span><span class="o">.</span><span class="n">flatten!</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6, 7]</span></code></pre></div>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">flatten</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6, 7]</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">flatten!</span> <span class="c1">#=&gt; [1, 2, 3, 4, 5, 6, 7]</span></code></pre></figure>
 
 <h3 id="section-15">反转数组</h3>
 <p>reverse</p>
@@ -322,38 +322,38 @@
 
 <h3 id="section-17">删除指定位置的数组元素</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 
-<span class="n">a</span><span class="o">.</span><span class="n">delete_at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#=&gt; 5</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">delete_at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#=&gt; 5</span>
 <span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [1, 4, 2, 3]</span>
 
-<span class="n">a</span><span class="o">.</span><span class="n">delete_at</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#=&gt; 4</span>
-<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [1, 2, 3]</span></code></pre></div>
+<span class="n">a</span><span class="p">.</span><span class="nf">delete_at</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#=&gt; 4</span>
+<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [1, 2, 3]</span></code></pre></figure>
 
 <h3 id="section-18">删除匹配元素</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;lemon&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;vine&quot;</span><span class="o">]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"apple"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="s2">"lemon"</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">,</span> <span class="s2">"vine"</span><span class="p">]</span>
 
-<span class="n">a</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">)</span> <span class="c1">#=&gt; [&quot;apple&quot;]</span>
-<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; [&quot;orange&quot;, &quot;lemon&quot;, &quot;vine&quot;]</span>
-<span class="n">a</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> not found&quot;</span> <span class="p">}</span> <span class="c1">#=&gt; &quot;apple not found&quot;</span></code></pre></div>
+<span class="n">a</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="s2">"apple"</span><span class="p">)</span> <span class="c1">#=&gt; ["apple"]</span>
+<span class="nb">p</span> <span class="n">a</span> <span class="c1">#=&gt; ["orange", "lemon", "vine"]</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="s2">"apple"</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> not found"</span> <span class="p">}</span> <span class="c1">#=&gt; "apple not found"</span></code></pre></figure>
 
 <h3 id="section-19">查找数组元素</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;lemon&quot;</span><span class="p">,</span><span class="s2">&quot;vine&quot;</span><span class="o">]]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"apple"</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s2">"orange"</span><span class="p">,[</span><span class="s2">"lemon"</span><span class="p">,</span><span class="s2">"vine"</span><span class="p">]]</span>
 
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">)</span> <span class="c1">#=&gt; 0</span>
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#=&gt; 1</span>
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="o">[</span><span class="s2">&quot;lemon&quot;</span><span class="p">,</span><span class="s2">&quot;vine&quot;</span><span class="o">]</span><span class="p">)</span> <span class="c1">#=&gt; 3</span>
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;fruit&quot;</span><span class="p">)</span> <span class="c1">#=&gt; nil</span></code></pre></div>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="s2">"apple"</span><span class="p">)</span> <span class="c1">#=&gt; 0</span>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#=&gt; 1</span>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">index</span><span class="p">([</span><span class="s2">"lemon"</span><span class="p">,</span><span class="s2">"vine"</span><span class="p">])</span> <span class="c1">#=&gt; 3</span>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="s2">"fruit"</span><span class="p">)</span> <span class="c1">#=&gt; nil</span></code></pre></figure>
 
 <h3 id="section-20">搜索多维数组</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="o">[[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span><span class="mi">100</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;vine&quot;</span><span class="p">,</span><span class="mi">500</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span><span class="mi">300</span><span class="o">]]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">"apple"</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="s2">"vine"</span><span class="p">,</span><span class="mi">500</span><span class="p">],[</span><span class="s2">"orange"</span><span class="p">,</span><span class="mi">300</span><span class="p">]]</span>
 
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">assoc</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">)</span>  <span class="c1">#=&gt; [&quot;apple&quot;, 100]</span>
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">assoc</span><span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span> <span class="c1">#=&gt; [&quot;orange&quot;, 300]</span>
-<span class="nb">p</span> <span class="n">a</span><span class="o">.</span><span class="n">assoc</span><span class="p">(</span><span class="s2">&quot;pear&quot;</span><span class="p">)</span>   <span class="c1">#=&gt; nil</span></code></pre></div>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">assoc</span><span class="p">(</span><span class="s2">"apple"</span><span class="p">)</span>  <span class="c1">#=&gt; ["apple", 100]</span>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">assoc</span><span class="p">(</span><span class="s2">"orange"</span><span class="p">)</span> <span class="c1">#=&gt; ["orange", 300]</span>
+<span class="nb">p</span> <span class="n">a</span><span class="p">.</span><span class="nf">assoc</span><span class="p">(</span><span class="s2">"pear"</span><span class="p">)</span>   <span class="c1">#=&gt; nil</span></code></pre></figure>
 
 <h2 id="section-21">数组</h2>
 
@@ -362,13 +362,13 @@
 
 <h3 id="map-collect">map collect</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="sx">%w(one two three)</span>
-<span class="n">brray</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
-  <span class="n">item</span><span class="o">.</span><span class="n">upcase</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="sx">%w(one two three)</span>
+<span class="n">brray</span> <span class="o">=</span> <span class="n">array</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+  <span class="n">item</span><span class="p">.</span><span class="nf">upcase</span>
 <span class="k">end</span>
-<span class="c1"># brray = [&quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;]</span>
+<span class="c1"># brray = ["ONE", "TWO", "THREE"]</span>
 <span class="c1"># 等价于</span>
-<span class="n">brray</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:upcase</span><span class="p">)</span></code></pre></div>
+<span class="n">brray</span> <span class="o">=</span> <span class="n">array</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:upcase</span><span class="p">)</span></code></pre></figure>
 
 <p>collect的用法和map的用法类似</p>
 
@@ -376,54 +376,54 @@
 <p>inject求数组元素的和<br />
 方法一</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">arr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
-<span class="n">all</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">sum</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">arr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">).</span><span class="nf">to_a</span>
+<span class="n">all</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="nf">inject</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">sum</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
   <span class="n">sum</span> <span class="o">+=</span> <span class="n">i</span>
   <span class="c1">#sum + i</span>
 <span class="k">end</span>
-<span class="nb">puts</span> <span class="n">all</span></code></pre></div>
+<span class="nb">puts</span> <span class="n">all</span></code></pre></figure>
 
 <p>方法二</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">all</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">all</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">).</span><span class="nf">inject</span><span class="p">(:</span><span class="o">+</span><span class="p">)</span></code></pre></figure>
 
 <p>reduce用法和inject用法类似</p>
 
 <h3 id="select-reject">select reject</h3>
 <p>select从数组中筛选元素</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">select</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">).</span><span class="nf">select</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
   <span class="n">item</span> <span class="o">&lt;</span> <span class="mi">5</span>
 <span class="k">end</span>
-<span class="c1"># array = [1, 2, 3, 4, 5]</span></code></pre></div>
+<span class="c1"># array = [1, 2, 3, 4, 5]</span></code></pre></figure>
 
 <p>reject从数组中剔除元素,delete_if相当于object#reject!</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reject</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">).</span><span class="nf">reject</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
   <span class="n">item</span> <span class="o">&lt;</span> <span class="mi">5</span>
 <span class="k">end</span>
-<span class="c1"># array = [6, 7, 8, 9, 10]</span></code></pre></div>
+<span class="c1"># array = [6, 7, 8, 9, 10]</span></code></pre></figure>
 
 <h3 id="groupby">group_by</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span> <span class="n">item</span><span class="o">%</span><span class="mi">3</span> <span class="p">}</span>
-<span class="c1"># {1=&gt;[1, 4, 7, 10], 2=&gt;[2, 5, 8], 0=&gt;[3, 6, 9]}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">).</span><span class="nf">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span> <span class="n">item</span><span class="o">%</span><span class="mi">3</span> <span class="p">}</span>
+<span class="c1"># {1=&gt;[1, 4, 7, 10], 2=&gt;[2, 5, 8], 0=&gt;[3, 6, 9]}</span></code></pre></figure>
 
 <h3 id="section-22">排序</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Node</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Node</span>
   <span class="kp">attr_accessor</span> <span class="ss">:lvl_one</span><span class="p">,</span> <span class="ss">:lvl_two</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
     <span class="vi">@lvl_one</span><span class="p">,</span> <span class="vi">@lvl_two</span> <span class="o">=</span> <span class="n">one</span><span class="p">,</span> <span class="n">two</span>
   <span class="k">end</span>
 
-  <span class="k">def</span> <span class="nf">&lt;=&gt;</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-    <span class="k">if</span> <span class="vi">@lvl_one</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">lvl_one</span>
+  <span class="k">def</span> <span class="nf">&lt;</span><span class="o">=&gt;</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">if</span> <span class="vi">@lvl_one</span> <span class="o">&lt;</span> <span class="n">node</span><span class="p">.</span><span class="nf">lvl_one</span>
       <span class="o">-</span><span class="mi">1</span>
-    <span class="k">elsif</span> <span class="vi">@lvl_one</span> <span class="o">==</span> <span class="n">node</span><span class="o">.</span><span class="n">lvl_one</span>
-      <span class="k">if</span> <span class="vi">@lvl_two</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">lvl_two</span>
+    <span class="k">elsif</span> <span class="vi">@lvl_one</span> <span class="o">==</span> <span class="n">node</span><span class="p">.</span><span class="nf">lvl_one</span>
+      <span class="k">if</span> <span class="vi">@lvl_two</span> <span class="o">&lt;</span> <span class="n">node</span><span class="p">.</span><span class="nf">lvl_two</span>
         <span class="o">-</span><span class="mi">1</span>
-      <span class="k">elsif</span> <span class="vi">@lvl_two</span> <span class="o">==</span> <span class="n">node</span><span class="o">.</span><span class="n">lvl_two</span>
+      <span class="k">elsif</span> <span class="vi">@lvl_two</span> <span class="o">==</span> <span class="n">node</span><span class="p">.</span><span class="nf">lvl_two</span>
         <span class="mi">0</span>
       <span class="k">else</span>
         <span class="mi">1</span>
@@ -434,41 +434,41 @@
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">arr</span> <span class="o">=</span> <span class="o">[]</span>
-<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">&lt;&lt;</span> <span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">arr</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span>
-  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">e</span><span class="o">.</span><span class="n">lvl_one</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">e</span><span class="o">.</span><span class="n">lvl_two</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">lvl_one</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">lvl_two</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span>
-<span class="cm">=begin</span>
-<span class="cm">1, 2</span>
-<span class="cm">2, 2</span>
-<span class="cm">2, 2</span>
-<span class="cm">3, 1</span>
-<span class="cm">3, 9</span>
-<span class="cm">9, 3</span>
-<span class="cm">=end</span></code></pre></div>
+<span class="cm">=begin
+1, 2
+2, 2
+2, 2
+3, 1
+3, 9
+9, 3
+=end</span></code></pre></figure>
 
 <h3 id="eachwithindex">each_with_index</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">(</span><span class="mi">11</span><span class="o">.</span><span class="n">.</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="p">,</span> <span class="n">index</span><span class="o">|</span>
-  <span class="nb">puts</span> <span class="s2">&quot;index: </span><span class="si">#{</span><span class="n">index</span><span class="si">}</span><span class="s2">, number: </span><span class="si">#{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">end</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">(</span><span class="mi">11</span><span class="p">.</span><span class="nf">.</span><span class="mi">20</span><span class="p">).</span><span class="nf">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="p">,</span> <span class="n">index</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"index: </span><span class="si">#{</span><span class="n">index</span><span class="si">}</span><span class="s2">, number: </span><span class="si">#{</span><span class="n">number</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span></code></pre></figure>
 
 <h3 id="for">for循环</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">arr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">11</span><span class="o">.</span><span class="n">.</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
-<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">arr</span><span class="o">.</span><span class="n">length</span>
-  <span class="nb">puts</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">arr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">11</span><span class="p">.</span><span class="nf">.</span><span class="mi">20</span><span class="p">).</span><span class="nf">to_a</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span><span class="nf">arr</span><span class="p">.</span><span class="nf">length</span>
+  <span class="nb">puts</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="k">end</span>
-<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">.</span><span class="n">.arr</span><span class="o">.</span><span class="n">length</span>
-  <span class="nb">puts</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="n">arr</span><span class="p">.</span><span class="nf">length</span>
+  <span class="nb">puts</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">end</span></code></pre></figure>
 
 <h1 id="section-23">输入输出</h1>
 
@@ -476,39 +476,39 @@
 
 <h3 id="section-25">格式化输出</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#格式化输出的方法</span>
-<span class="nb">puts</span> <span class="s2">&quot;%d&quot;</span> <span class="o">%</span> <span class="mi">100</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#格式化输出的方法</span>
+<span class="nb">puts</span> <span class="s2">"%d"</span> <span class="o">%</span> <span class="mi">100</span>
 <span class="c1">#或者</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%d</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="c1">#或者</span>
-<span class="nb">puts</span> <span class="nb">format</span><span class="p">(</span><span class="s2">&quot;%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code></pre></div>
+<span class="nb">puts</span> <span class="nb">format</span><span class="p">(</span><span class="s2">"%d</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code></pre></figure>
 
 <h3 id="section-26">整形格式化输出</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">## 1.输出长度为10，不够10个字符前面补空格</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%10d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">## 1.输出长度为10，不够10个字符前面补空格</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%10d</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="c1">## 2.输出长度为10，不够10个字符前面补0</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%010d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%010d</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="c1">## 2.输出长度为10，不够10个字符前面补0，并且数字带正负号(此时正负号也占一位)</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%+010d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code></pre></div>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%+010d</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code></pre></figure>
 
 <h3 id="section-27">浮点型格式化输出</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">## 1.小数点保留2位小数</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%.2f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">11111</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">## 1.小数点保留2位小数</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%.2f</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">11111</span><span class="p">)</span>
 <span class="c1">## 2.输出长度为10，小数点保留2位小数，不够10个字符前面补空格</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%10.2f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">11111</span><span class="p">)</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%10.2f</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">11111</span><span class="p">)</span>
 <span class="c1">## 3.输出长度为10，小数点保留2位小数，不够10个字符前面补0</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%010.2f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">11111</span><span class="p">)</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%010.2f</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">11111</span><span class="p">)</span>
 <span class="c1">## 4.输出长度为10，小数点保留2位小数，不够10个字符前面补0，并且数字带正负号(此时正负号也占一位)</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%+010.2f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">11111</span><span class="p">)</span></code></pre></div>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%+010.2f</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">11111</span><span class="p">)</span></code></pre></figure>
 
 <h3 id="section-28">字符串格式化输出</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">## 1.输出长度为10，不够10个字符前面补空格(右对齐)</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%10s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">## 1.输出长度为10，不够10个字符前面补空格(右对齐)</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%10s</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s1">'hello'</span><span class="p">)</span>
 <span class="c1">## 2.输出长度为10，不够10个字符后面补空格(左对齐)</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;%-10s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span></code></pre></div>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"%-10s</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s1">'hello'</span><span class="p">)</span></code></pre></figure>
 
 <h1 id="section-29">目录和文件</h1>
 
@@ -516,61 +516,61 @@
 
 <h3 id="section-31">遍历目录</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">get_file_list</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  
-  <span class="no">Dir</span><span class="o">.</span><span class="n">entries</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">sub</span><span class="o">|</span>  <span class="c1"># 也可以用Dir.foreach(path) do |sub| 或者Dir[/tmp/*]</span>
-    <span class="k">if</span> <span class="nb">sub</span> <span class="o">!=</span> <span class="s1">&#39;.&#39;</span> <span class="o">&amp;&amp;</span> <span class="nb">sub</span> <span class="o">!=</span> <span class="s1">&#39;..&#39;</span>  
-      <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="nb">sub</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
-        <span class="nb">puts</span> <span class="s2">&quot;[</span><span class="si">#{</span><span class="nb">sub</span><span class="si">}</span><span class="s2">]&quot;</span>  
-        <span class="n">get_file_list</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="nb">sub</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">get_file_list</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  
+  <span class="no">Dir</span><span class="p">.</span><span class="nf">entries</span><span class="p">(</span><span class="n">path</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">sub</span><span class="o">|</span>  <span class="c1"># 也可以用Dir.foreach(path) do |sub| 或者Dir[/tmp/*]</span>
+    <span class="k">if</span> <span class="nb">sub</span> <span class="o">!=</span> <span class="s1">'.'</span> <span class="o">&amp;&amp;</span> <span class="nb">sub</span> <span class="o">!=</span> <span class="s1">'..'</span>  
+      <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">directory?</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="nb">sub</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  
+        <span class="nb">puts</span> <span class="s2">"[</span><span class="si">#{</span><span class="nb">sub</span><span class="si">}</span><span class="s2">]"</span>  
+        <span class="n">get_file_list</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="nb">sub</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  
       <span class="k">else</span>  
-        <span class="nb">puts</span> <span class="s2">&quot;  |--</span><span class="si">#{</span><span class="nb">sub</span><span class="si">}</span><span class="s2">&quot;</span>  
+        <span class="nb">puts</span> <span class="s2">"  |--</span><span class="si">#{</span><span class="nb">sub</span><span class="si">}</span><span class="s2">"</span>  
       <span class="k">end</span>  
     <span class="k">end</span>  
   <span class="k">end</span>  
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span> </code></pre></figure>
 
 <h3 id="section-32">目录连接</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;usr&#39;</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt;/usr/bin</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'usr'</span><span class="p">,</span> <span class="s1">'bin'</span><span class="p">)</span>
+<span class="c1">#=&gt;/usr/bin</span></code></pre></figure>
 
 <h3 id="section-33">文件名连接</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;../config/database.yml&#39;</span><span class="p">,</span> <span class="s2">&quot;/tmp&quot;</span><span class="p">)</span>
-<span class="c1"># =&gt; /config/database.yml</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s1">'../config/database.yml'</span><span class="p">,</span> <span class="s2">"/tmp"</span><span class="p">)</span>
+<span class="c1"># =&gt; /config/database.yml</span></code></pre></figure>
 
 <h3 id="section-34">文件夹中文件列表</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># 列出根目录下所有目录及文件</span>
-<span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/*&#39;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># 列出根目录下所有目录及文件</span>
+<span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="s1">'/*'</span><span class="p">)</span>
 <span class="c1"># 列出目录中所有yml文件</span>
-<span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">RAILS_ROOT</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;locales&#39;</span><span class="p">,</span> <span class="s1">&#39;*.yml&#39;</span><span class="p">))</span>
+<span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">RAILS_ROOT</span><span class="p">,</span> <span class="s1">'config'</span><span class="p">,</span> <span class="s1">'locales'</span><span class="p">,</span> <span class="s1">'*.yml'</span><span class="p">))</span>
 <span class="c1"># 列出目录/usr /lib /sys</span>
-<span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;{usr,lib,sys}&#39;</span><span class="p">))</span> <span class="c1"># 注意usr lib的逗号后面不要有空格</span></code></pre></div>
+<span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'{usr,lib,sys}'</span><span class="p">))</span> <span class="c1"># 注意usr lib的逗号后面不要有空格</span></code></pre></figure>
 
 <h3 id="section-35">获取路径中文件名</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;/tmp/abc.log&#39;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="p">.</span><span class="nf">basename</span><span class="p">(</span><span class="s1">'/tmp/abc.log'</span><span class="p">)</span>
 <span class="c1"># 从路径名中移除目录，只保留文件名</span>
 <span class="c1"># =&gt;abc.log</span>
 
-<span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;/tmp/abc.log&#39;</span><span class="p">,</span> <span class="s1">&#39;.log&#39;</span><span class="p">)</span>
+<span class="no">File</span><span class="p">.</span><span class="nf">basename</span><span class="p">(</span><span class="s1">'/tmp/abc.log'</span><span class="p">,</span> <span class="s1">'.log'</span><span class="p">)</span>
 <span class="c1"># 从文件名中移除扩展名</span>
 <span class="c1"># =&gt;abc</span>
 <span class="c1"># 或者</span>
-<span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;/tmp/abc.log&#39;</span><span class="p">,</span> <span class="s1">&#39;.*&#39;</span><span class="p">)</span>
-<span class="c1"># =&gt;abc</span></code></pre></div>
+<span class="no">File</span><span class="p">.</span><span class="nf">basename</span><span class="p">(</span><span class="s1">'/tmp/abc.log'</span><span class="p">,</span> <span class="s1">'.*'</span><span class="p">)</span>
+<span class="c1"># =&gt;abc</span></code></pre></figure>
 
 <h3 id="section-36">获取路径中目录</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="s1">&#39;/tmp/abc.log&#39;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="s1">'/tmp/abc.log'</span><span class="p">)</span>
 <span class="c1"># 从路径名中移除文件名，只保留目录</span>
-<span class="c1"># =&gt;/tmp</span></code></pre></div>
+<span class="c1"># =&gt;/tmp</span></code></pre></figure>
 
 <h3 id="section-37">当前路径名</h3>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="bp">__FILE__</span>
-<span class="c1"># 当前文件路径名</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="kp">__FILE__</span>
+<span class="c1"># 当前文件路径名</span></code></pre></figure>
 
 
   </article>

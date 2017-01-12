@@ -102,3 +102,19 @@ git merge BRANCHNAME
 git commit
 {% endhighlight %}
 
+# github
+
+## ssh配置
+1.使用ssh密钥生成密钥
+{% highlight shell %}
+ssh-keygen -t rsa -C "username@example.com"
+{% endhighlight %}
+在.ssh目录下生成id_rsa和id_rsa.pub两个文件
+
+2.添加密钥
+{% highlight shell %}
+ssh-agent bash --login -i #不运行此命令会报Could not open a connection to your authentication agent错误
+ssh-add id_rsa
+{% endhighlight %}
+
+3.将公钥添加到github

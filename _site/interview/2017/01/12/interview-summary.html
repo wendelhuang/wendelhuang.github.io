@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>My Shell experience</title>
+    <title>My Interview Summary</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://yourdomain.com/shell/2016/06/13/shell-experience.html">
+    <link rel="canonical" href="http://yourdomain.com/interview/2017/01/12/interview-summary.html">
 </head>
 
 
@@ -57,65 +57,55 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">My Shell experience</h1>
-    <p class="post-meta">Jun 13, 2016</p>
+    <h1 class="post-title">My Interview Summary</h1>
+    <p class="post-meta">Jan 12, 2017</p>
   </header>
 
   <article class="post-content">
     <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">文本处理</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">替换文件夹下所有文本</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">分割字符串</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">从字符串中删除指定字符</a></li>
+  <li><a href="#jquery" id="markdown-toc-jquery">jQuery</a>    <ul>
+      <li><a href="#each" id="markdown-toc-each">跳出each循环方法</a></li>
+      <li><a href="#idapclassa" id="markdown-toc-idapclassa">获取id=a的p标签下的所有class=a的超链接</a></li>
+    </ul>
+  </li>
+  <li><a href="#java" id="markdown-toc-java">java</a>    <ul>
+      <li><a href="#hashmaphashtable" id="markdown-toc-hashmaphashtable">HashMap和Hashtable的区别</a></li>
     </ul>
   </li>
 </ul>
 
 <hr />
 
-<h1 id="section">文本处理</h1>
+<h1 id="jquery">jQuery</h1>
 
-<h2 id="section-1">替换文件夹下所有文本</h2>
+<h2 id="each">跳出each循环方法</h2>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l * <span class="p">|</span> awk <span class="s1">&#39;{print &quot;sed &#39;</span>s/被替换的内容/要替换的内容/g<span class="s1">&#39; &quot;$1&quot; &gt;temp/&quot;$1}&#39;</span> &gt; sed.sh</code></pre></div>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">return</span> <span class="kc">true</span><span class="p">;</span><span class="c1">//相当于continue</span>
+<span class="k">return</span> <span class="kc">false</span><span class="p">;</span><span class="c1">//相当于break</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"div[class='xxx']"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">index</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">index</span> <span class="o">+</span> <span class="s2">" executed"</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">index</span> <span class="o">+</span> <span class="s2">" continue"</span><span class="p">);</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="c1">//console.log(index + " break");</span>
+      <span class="c1">//return false;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">);</span></code></pre></figure>
 
-<p>生成的脚本内容如下所示</p>
+<h2 id="idapclassa">获取id=a的p标签下的所有class=a的超链接</h2>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sed s/aaaaaa/bbb/g a.txt &gt; temp/a.txt
-sed s/aaaaaa/bbb/g b.txt &gt; temp/b.txt
-sed s/aaaaaa/bbb/g c.txt &gt; temp/c.txt
-sed s/aaaaaa/bbb/g d.txt &gt; temp/d.txt</code></pre></div>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s2">"p[id='a']&gt;a[class='a']"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">);</span></code></pre></figure>
 
-<p>执行脚本即可</p>
+<h1 id="java">java</h1>
 
-<h2 id="section-2">分割字符串</h2>
-<p>使用cut分割，简洁方便，但是只支持单个字符分割，比如文本a.txt内容为</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">10.221.1.1 1
-10.221.1.1 2
-10.221.1.3 15</code></pre></div>
-
-<p>执行</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat a.txt <span class="p">|</span> cut -d <span class="s1">&#39; &#39;</span> -f1</code></pre></div>
-
-<p>结果为</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">10.221.1.1
-10.221.1.1
-10.221.1.3</code></pre></div>
-
-<p>使用awk处理如下</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat a.txt <span class="p">|</span> awk -F <span class="s1">&#39; &#39;</span> <span class="s1">&#39;{print $1}&#39;</span></code></pre></div>
-
-<p>效果一样，而且awk可以支持多个字符作分割符</p>
-
-<h2 id="section-3">从字符串中删除指定字符</h2>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;aaabbccb&#39;</span> <span class="p">|</span> tr -d <span class="s1">&#39;bb&#39;</span>
-<span class="c"># aaaccb</span></code></pre></div>
-
+<h2 id="hashmaphashtable">HashMap和Hashtable的区别</h2>
 
   </article>
 

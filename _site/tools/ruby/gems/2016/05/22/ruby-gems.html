@@ -73,7 +73,7 @@
   <li><a href="#ruby-gemcreatebuild" id="markdown-toc-ruby-gemcreatebuild">ruby gem的create和build</a>    <ul>
       <li><a href="#gem" id="markdown-toc-gem">新建一个gem</a></li>
       <li><a href="#gembuild" id="markdown-toc-gembuild">gem的build打包</a></li>
-      <li><a href="#create-asset-gemhttpblogxditenetposts20120104how-to-pack-a-asset-gem" id="markdown-toc-create-asset-gemhttpblogxditenetposts20120104how-to-pack-a-asset-gem"><a href="http://blog.xdite.net/posts/2012/01/04/how-to-pack-a-asset-gem/">create asset gem</a></a></li>
+      <li><a href="#create-asset-gem" id="markdown-toc-create-asset-gem">create asset gem</a></li>
     </ul>
   </li>
 </ul>
@@ -85,50 +85,50 @@
 <h2 id="ruby-gems-1">安装ruby gems到本地目录</h2>
 <p>当用非root用户安装gem的时候，会报没有目录权限的错误，大致如下</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">ERROR</span><span class="p">:</span>  <span class="no">While</span> <span class="n">executing</span> <span class="n">gem</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">(</span><span class="no">Gem</span><span class="o">::</span><span class="no">FilePermissionError</span><span class="p">)</span>
-      <span class="no">You</span> <span class="n">don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">have</span> <span class="n">write</span> <span class="n">permissions</span> <span class="n">into</span> <span class="n">the</span> <span class="sr">/usr/</span><span class="n">local</span><span class="o">/</span><span class="n">ruby</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">p327</span> <span class="n">directory</span><span class="o">.</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">ERROR</span><span class="p">:</span>  <span class="no">While</span> <span class="n">executing</span> <span class="n">gem</span> <span class="p">.</span><span class="nf">.</span><span class="o">.</span> <span class="p">(</span><span class="no">Gem</span><span class="o">::</span><span class="no">FilePermissionError</span><span class="p">)</span>
+      <span class="no">You</span> <span class="n">don</span><span class="err">'</span><span class="n">t</span> <span class="n">have</span> <span class="n">write</span> <span class="n">permissions</span> <span class="n">into</span> <span class="n">the</span> <span class="sr">/usr/</span><span class="n">local</span><span class="o">/</span><span class="n">ruby</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">p327</span> <span class="n">directory</span><span class="o">.</span></code></pre></figure>
 
 <p>这个时候我们在想可否将gem安装在本用户的指定目录，能解决这个问题，答案是可以的，方法如下<br />
 创建文件$HOME/.gemrc文件，该文件也可能已经存在，追加以下内容</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">gemhome</span><span class="p">:</span> <span class="sr">/home/m</span><span class="n">artin</span><span class="o">/.</span><span class="n">gems</span>
-<span class="ss">gempath</span><span class="p">:</span>
-  <span class="o">-</span> <span class="sr">/home/m</span><span class="n">artin</span><span class="o">/.</span><span class="n">gems</span>
-  <span class="o">-</span> <span class="sr">/usr/</span><span class="n">local</span><span class="o">/</span><span class="n">ruby</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">p327</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">gemhome: </span><span class="sr">/home/m</span><span class="n">artin</span><span class="o">/</span><span class="p">.</span><span class="nf">gems</span>
+<span class="ss">gempath:
+  </span><span class="o">-</span> <span class="sr">/home/m</span><span class="n">artin</span><span class="o">/</span><span class="p">.</span><span class="nf">gems</span>
+  <span class="o">-</span> <span class="sr">/usr/</span><span class="n">local</span><span class="o">/</span><span class="n">ruby</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">p327</span></code></pre></figure>
 
 <p>接下来，将这个本地目录加入环境变量PATH中，以防止运行bundle这样的可执行程序时找不到目录</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/lib/ruby/2.1.0/rubygems/dependency.rb:298:in <span class="sb">`</span>to_specs<span class="s1">&#39;: Could not find &#39;</span>bundler<span class="s1">&#39; (&gt;= 0) among 8 total gem(s) (Gem::LoadError)</span>
-<span class="s1">  from /usr/local/lib/ruby/2.1.0/rubygems/dependency.rb:309:in `to_spec&#39;</span>
-  from /usr/local/lib/ruby/2.1.0/rubygems/core_ext/kernel_gem.rb:53:in <span class="sb">`</span>gem<span class="s1">&#39;</span>
-<span class="s1">  from /home/develop/.gems/bin/bundle:22:in `&lt;main&gt;&#39;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/lib/ruby/2.1.0/rubygems/dependency.rb:298:in <span class="sb">`</span>to_specs<span class="s1">': Could not find '</span>bundler<span class="s1">' (&gt;= 0) among 8 total gem(s) (Gem::LoadError)
+  from /usr/local/lib/ruby/2.1.0/rubygems/dependency.rb:309:in `to_spec'</span>
+  from /usr/local/lib/ruby/2.1.0/rubygems/core_ext/kernel_gem.rb:53:in <span class="sb">`</span>gem<span class="s1">'
+  from /home/develop/.gems/bin/bundle:22:in `&lt;main&gt;'</span></code></pre></figure>
 
 <p>执行下面的命令</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">export</span> <span class="no">GEM_HOME</span><span class="o">=</span><span class="vg">$HOME</span><span class="o">/.</span><span class="n">gems</span>
-<span class="n">export</span> <span class="no">PATH</span><span class="o">=</span><span class="vg">$HOME</span><span class="o">/.</span><span class="n">gems</span><span class="o">/</span><span class="ss">bin</span><span class="p">:</span><span class="vg">$PATH</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">export</span> <span class="no">GEM_HOME</span><span class="o">=</span><span class="vg">$HOME</span><span class="o">/</span><span class="p">.</span><span class="nf">gems</span>
+<span class="n">export</span> <span class="no">PATH</span><span class="o">=</span><span class="vg">$HOME</span><span class="o">/</span><span class="p">.</span><span class="nf">gems</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="vg">$PATH</span></code></pre></figure>
 
 <p>这个时候再运行bundle install，就将gem安装到指定的本地目录了。</p>
 
 <h2 id="ruby-gems-2">从本地离线安装ruby gems</h2>
 <p>下载gems后，在gem目录中运行</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">install</span> <span class="o">.</span><span class="n">/</span><span class="p">(</span><span class="n">gem</span><span class="o">-</span><span class="nb">name</span><span class="p">)</span><span class="o">.</span><span class="n">gem</span> <span class="o">--</span><span class="n">local</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">install</span> <span class="p">.</span><span class="nf">/</span><span class="p">(</span><span class="n">gem</span><span class="o">-</span><span class="nb">name</span><span class="p">).</span><span class="nf">gem</span> <span class="o">--</span><span class="n">local</span></code></pre></figure>
 
 <h2 id="ruby-gems-3">卸载ruby gems</h2>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">uninstall</span> <span class="n">gem</span><span class="o">-</span><span class="nb">name</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">uninstall</span> <span class="n">gem</span><span class="o">-</span><span class="nb">name</span></code></pre></figure>
 
 <h2 id="section">查看安装路径</h2>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">which</span> <span class="n">gem</span><span class="o">-</span><span class="nb">name</span> <span class="c1">#gem which rails</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">which</span> <span class="n">gem</span><span class="o">-</span><span class="nb">name</span> <span class="c1">#gem which rails</span></code></pre></figure>
 
 <h1 id="ruby-gemcreatebuild">ruby gem的create和build</h1>
 
 <h2 id="gem">新建一个gem</h2>
 <p>bundle内建支持gem的创建,使用bundle命令可以新建一个gem</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">bundle gem my_mongoid
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">bundle gem my_mongoid
       create  my_mongoid/Gemfile
       create  my_mongoid/Rakefile
       create  my_mongoid/LICENSE.txt
@@ -136,49 +136,50 @@
       create  my_mongoid/.gitignore
       create  my_mongoid/my_mongoid.gemspec
       create  my_mongoid/lib/my_mongoid.rb
-      create  my_mongoid/lib/my_mongoid/version.rb</code></pre></div>
+      create  my_mongoid/lib/my_mongoid/version.rb</code></pre></figure>
 
 <p>新建gem所依赖的gem文件放在my_mongoid.gemspec文件里.<br />
 这个gem版本号以字符串常量的形式放在lib/my_mongoid/version.rb里.</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">MyMonoid</span>
-  <span class="no">VERSION</span> <span class="o">=</span> <span class="s2">&quot;0.2.1&quot;</span>
-<span class="k">end</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">MyMonoid</span>
+  <span class="no">VERSION</span> <span class="o">=</span> <span class="s2">"0.2.1"</span>
+<span class="k">end</span></code></pre></figure>
 
 <h2 id="gembuild">gem的build打包</h2>
 <p>使用rake管理Gem:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake -T
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">rake -T
 rake build    <span class="c"># Build my_monoid-0.2.1.gem into the pkg directory</span>
 rake install  <span class="c"># Build and install my_monoid-0.2.1.gem into system gems</span>
-rake release  <span class="c"># Create tag v0.2.1 and build and push my_monoid-0.2.1.gem to...</span></code></pre></div>
+rake release  <span class="c"># Create tag v0.2.1 and build and push my_monoid-0.2.1.gem to...</span></code></pre></figure>
 
 <p>使用rake build构建gem,注意需要把my_monoid\my_monoid.gemspec里的</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">spec</span><span class="o">.</span><span class="n">description</span>   <span class="o">=</span> <span class="sx">%q{TODO: Write a gem description}</span>
-<span class="n">spec</span><span class="o">.</span><span class="n">summary</span>       <span class="o">=</span> <span class="sx">%q{TODO: Write a gem summary}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">spec</span><span class="p">.</span><span class="nf">description</span>   <span class="o">=</span> <span class="sx">%q{TODO: Write a gem description}</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">summary</span>       <span class="o">=</span> <span class="sx">%q{TODO: Write a gem summary}</span></code></pre></figure>
 
 <p>改为</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">spec</span><span class="o">.</span><span class="n">description</span>   <span class="o">=</span> <span class="sx">%q{Write a gem description}</span>
-<span class="n">spec</span><span class="o">.</span><span class="n">summary</span>       <span class="o">=</span> <span class="sx">%q{Write a gem summary}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">spec</span><span class="p">.</span><span class="nf">description</span>   <span class="o">=</span> <span class="sx">%q{Write a gem description}</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">summary</span>       <span class="o">=</span> <span class="sx">%q{Write a gem summary}</span></code></pre></figure>
 
 <p>否则会出现下面的错误</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake build
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">rake build
 rake aborted!
 ERROR:  While executing gem ... <span class="o">(</span>Gem::InvalidSpecificationException<span class="o">)</span>
-    <span class="s2">&quot;FIXME&quot;</span> or <span class="s2">&quot;TODO&quot;</span> is not a description
+    <span class="s2">"FIXME"</span> or <span class="s2">"TODO"</span> is not a description
 
-Tasks: <span class="nv">TOP</span> <span class="o">=</span>&gt; build
-<span class="o">(</span>See full trace by running task with --trace<span class="o">)</span></code></pre></div>
+Tasks: TOP <span class="o">=</span>&gt; build
+<span class="o">(</span>See full trace by running task with --trace<span class="o">)</span></code></pre></figure>
 
 <p>修改后可以build成功:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake build
-my_monoid 0.2.1 built to pkg/my_monoid-0.2.1.gem.</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">rake build
+my_monoid 0.2.1 built to pkg/my_monoid-0.2.1.gem.</code></pre></figure>
 
-<h2 id="create-asset-gemhttpblogxditenetposts20120104how-to-pack-a-asset-gem"><a href="http://blog.xdite.net/posts/2012/01/04/how-to-pack-a-asset-gem/">create asset gem</a></h2>
+<h2 id="create-asset-gem">create asset gem</h2>
+<p><a href="http://blog.xdite.net/posts/2012/01/04/how-to-pack-a-asset-gem/">xdite的博客</a></p>
 
 
   </article>

@@ -97,38 +97,38 @@
 
 <h3 id="id-1">通过id选择</h3>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#id&quot;</span><span class="p">)</span>
-<span class="err">#通过</span><span class="nx">id</span><span class="err">选择页面元素</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">"#id"</span><span class="p">)</span>
+<span class="err">#通过</span><span class="nx">id</span><span class="err">选择页面元素</span></code></pre></figure>
 
 <h3 id="class">通过class选择</h3>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.id&quot;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">".id"</span><span class="p">)</span>
 <span class="err">#通过</span><span class="kr">class</span><span class="err">选择页面元素</span>
 
-<span class="err">#选择具有多个</span><span class="kr">class</span><span class="err">的元素</span><span class="p">,</span><span class="err">比如</span><span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;modal fade in&quot;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.modal.fade&quot;</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s2">&quot;in&quot;</span><span class="p">)</span>
+<span class="err">#选择具有多个</span><span class="kr">class</span><span class="err">的元素</span><span class="p">,</span><span class="err">比如</span><span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"modal fade in"</span><span class="o">&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="nx">$</span><span class="p">(</span><span class="s2">".modal.fade"</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s2">"in"</span><span class="p">)</span>
 
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;[class=&#39;modal fade in&#39;]&quot;</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"[class='modal fade in']"</span><span class="p">)</span>
 <span class="err">#此处顺序必须一致才行</span>
 
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.modal.fade.in&quot;</span><span class="p">)</span></code></pre></div>
+<span class="nx">$</span><span class="p">(</span><span class="s2">".modal.fade.in"</span><span class="p">)</span> </code></pre></figure>
 
 <h3 id="name">通过name选择</h3>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input[name=&#39;xxx&#39;]&quot;</span><span class="p">)</span>
-<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性等于</span><span class="s1">&#39;xxx&#39;</span><span class="err">的</span><span class="nx">input</span><span class="err">元素</span> 
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">"input[name='xxx']"</span><span class="p">)</span>
+<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性等于</span><span class="s1">'xxx'</span><span class="err">的</span><span class="nx">input</span><span class="err">元素</span> 
 
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input[name!=&#39;xxx&#39;]&quot;</span><span class="p">)</span> 
-<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性不等于</span><span class="s1">&#39;xxx&#39;</span><span class="err">的</span><span class="nx">input</span><span class="err">元素</span> 
+<span class="nx">$</span><span class="p">(</span><span class="s2">"input[name!='xxx']"</span><span class="p">)</span> 
+<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性不等于</span><span class="s1">'xxx'</span><span class="err">的</span><span class="nx">input</span><span class="err">元素</span> 
 
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input[name^=&#39;xxx&#39;]&quot;</span><span class="p">)</span>
-<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性以</span><span class="s1">&#39;xxx&#39;</span><span class="err">开头的</span><span class="nx">input</span><span class="err">元素</span> 
+<span class="nx">$</span><span class="p">(</span><span class="s2">"input[name^='xxx']"</span><span class="p">)</span>
+<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性以</span><span class="s1">'xxx'</span><span class="err">开头的</span><span class="nx">input</span><span class="err">元素</span> 
 
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input[name$=&#39;xxx&#39;]&quot;</span><span class="p">)</span>
-<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性以</span><span class="s1">&#39;xxx&#39;</span><span class="err">结尾的</span><span class="nx">input</span><span class="err">元素</span> 
+<span class="nx">$</span><span class="p">(</span><span class="s2">"input[name$='xxx']"</span><span class="p">)</span>
+<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性以</span><span class="s1">'xxx'</span><span class="err">结尾的</span><span class="nx">input</span><span class="err">元素</span> 
 
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input[name*=&#39;xxx&#39;]&quot;</span><span class="p">)</span>
-<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性包含</span><span class="s1">&#39;xxx&#39;</span><span class="err">的</span><span class="nx">input</span><span class="err">元素</span></code></pre></div>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"input[name*='xxx']"</span><span class="p">)</span>
+<span class="err">#选择所有的</span><span class="nx">name</span><span class="err">属性包含</span><span class="s1">'xxx'</span><span class="err">的</span><span class="nx">input</span><span class="err">元素</span> </code></pre></figure>
 
 <h1 id="section-1">页面元素操作</h1>
 
@@ -136,25 +136,25 @@
 
 <h3 id="val">通过val()设置元素的值</h3>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.sex&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="err">#设置</span><span class="kr">class</span><span class="err">为</span><span class="nx">sex</span><span class="err">的元素的</span><span class="nx">value</span><span class="o">=</span><span class="mi">1</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">".sex"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="err">#设置</span><span class="kr">class</span><span class="err">为</span><span class="nx">sex</span><span class="err">的元素的</span><span class="nx">value</span><span class="o">=</span><span class="mi">1</span></code></pre></figure>
 
 <h2 id="class-1">设置元素的class</h2>
 
 <h3 id="removeclassaddclassclass">通过removeClass()和addClass()设置元素的class</h3>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.btn.active&quot;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">".btn.active"</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">'active'</span><span class="p">);</span>
 <span class="err">#删除</span><span class="kr">class</span><span class="err">为</span><span class="nx">btn</span> <span class="nx">active</span><span class="err">的元素其中的</span><span class="nx">active</span>
 <span class="err">#如果删除多个</span><span class="kr">class</span><span class="p">,</span><span class="err">中间以空格分开</span>
 <span class="err">#如果不加参数</span><span class="p">,</span><span class="err">移除所有</span><span class="kr">class</span>
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.btn&quot;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
-<span class="err">#为</span><span class="kr">class</span><span class="err">为</span><span class="nx">btn</span><span class="err">的元素添加</span><span class="kr">class</span> <span class="nx">active</span></code></pre></div>
+<span class="nx">$</span><span class="p">(</span><span class="s2">".btn"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">'active'</span><span class="p">);</span>
+<span class="err">#为</span><span class="kr">class</span><span class="err">为</span><span class="nx">btn</span><span class="err">的元素添加</span><span class="kr">class</span> <span class="nx">active</span></code></pre></figure>
 
 <h2 id="form">form相关</h2>
 
 <h3 id="form-1">提交form</h3>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#id_of_form&quot;</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">"#id_of_form"</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span></code></pre></figure>
 
 
   </article>
