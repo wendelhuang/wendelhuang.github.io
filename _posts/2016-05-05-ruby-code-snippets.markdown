@@ -482,3 +482,19 @@ File.dirname('/tmp/abc.log')
 __FILE__
 # 当前文件路径名
 {% endhighlight %}
+
+# 其他
+
+## 测试程序时将数据和代码一起写在代码文件中
+{% highlight ruby %}
+# 两种写法都可以
+#DATA.each_line do |line|
+DATA.each do |line|
+  puts line
+end
+
+# __END__后为数据内容
+__END__
+line1
+line2
+{% endhighlight %}

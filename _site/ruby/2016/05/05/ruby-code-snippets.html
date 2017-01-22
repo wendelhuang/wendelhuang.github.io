@@ -133,6 +133,10 @@
       </li>
     </ul>
   </li>
+  <li><a href="#section-38" id="markdown-toc-section-38">其他</a>    <ul>
+      <li><a href="#section-39" id="markdown-toc-section-39">测试程序时将数据和代码一起写在代码文件中</a></li>
+    </ul>
+  </li>
 </ul>
 
 <hr />
@@ -571,6 +575,21 @@
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="kp">__FILE__</span>
 <span class="c1"># 当前文件路径名</span></code></pre></figure>
+
+<h1 id="section-38">其他</h1>
+
+<h2 id="section-39">测试程序时将数据和代码一起写在代码文件中</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># 两种写法都可以</span>
+<span class="c1">#DATA.each_line do |line|</span>
+<span class="no">DATA</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="n">line</span>
+<span class="k">end</span>
+
+<span class="c1"># __END__后为数据内容</span>
+<span class="cp">__END__
+line1
+line2</span></code></pre></figure>
 
 
   </article>

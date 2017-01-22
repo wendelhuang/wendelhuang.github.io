@@ -6,8 +6,8 @@
 </description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 12 Jan 2017 11:18:20 +0800</pubDate>
-    <lastBuildDate>Thu, 12 Jan 2017 11:18:20 +0800</lastBuildDate>
+    <pubDate>Sun, 22 Jan 2017 11:52:52 +0800</pubDate>
+    <lastBuildDate>Sun, 22 Jan 2017 11:52:52 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -19,9 +19,52 @@
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#java&quot; id=&quot;markdown-toc-java&quot;&gt;java&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#hashmaphashtable&quot; id=&quot;markdown-toc-hashmaphashtable&quot;&gt;HashMap和Hashtable的区别&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#java-1&quot; id=&quot;markdown-toc-java-1&quot;&gt;java基础&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#hashmaphashtable&quot; id=&quot;markdown-toc-hashmaphashtable&quot;&gt;HashMap和Hashtable的区别&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;运行时异常和非运行时异常的区别并举例&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;框架&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#spring&quot; id=&quot;markdown-toc-spring&quot;&gt;spring&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#annotation&quot; id=&quot;markdown-toc-annotation&quot;&gt;使用自定义annotation实现日志功能&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;算法&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;数论&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#strings1s2s1s2&quot; id=&quot;markdown-toc-strings1s2s1s2&quot;&gt;String类型的变量s1和s2都是数字组成的字符串，实现s1*s2&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;编号为1-100的100个人，房间里有编号为1-100的100个灯泡，初始都为不亮的状态，从编号为1的人开始进入房间每个人都将自己编号倍数编号的灯泡改变状态，问最后哪些灯泡是亮着的&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#n&quot; id=&quot;markdown-toc-n&quot;&gt;将数字n进行质数分解&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;数据结构&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;单链表反转&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;递归和分治&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;一个数组是先增后减的数组，求数组最大值的下标&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;数据库&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;网络&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#httphttps&quot; id=&quot;markdown-toc-httphttps&quot;&gt;HTTP和HTTPS的关系&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#http&quot; id=&quot;markdown-toc-http&quot;&gt;HTTP协议状态编码&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#tcp&quot; id=&quot;markdown-toc-tcp&quot;&gt;TCP协议建立连接的过程，在建立连接过程中客户端和服务器的端口状态&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;系统设计&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;设计模式&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#java3java&quot; id=&quot;markdown-toc-java3java&quot;&gt;java类库用到的3种不同的设计模式，列出java类和使用的设计模式&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#linux&quot; id=&quot;markdown-toc-linux&quot;&gt;linux&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
@@ -55,7 +98,53 @@
 
 &lt;h1 id=&quot;java&quot;&gt;java&lt;/h1&gt;
 
-&lt;h2 id=&quot;hashmaphashtable&quot;&gt;HashMap和Hashtable的区别&lt;/h2&gt;
+&lt;h2 id=&quot;java-1&quot;&gt;java基础&lt;/h2&gt;
+
+&lt;h3 id=&quot;hashmaphashtable&quot;&gt;HashMap和Hashtable的区别&lt;/h3&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;运行时异常和非运行时异常的区别并举例&lt;/h3&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;框架&lt;/h1&gt;
+
+&lt;h2 id=&quot;spring&quot;&gt;spring&lt;/h2&gt;
+
+&lt;h3 id=&quot;annotation&quot;&gt;使用自定义annotation实现日志功能&lt;/h3&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;算法&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;数论&lt;/h2&gt;
+
+&lt;h3 id=&quot;strings1s2s1s2&quot;&gt;String类型的变量s1和s2都是数字组成的字符串，实现s1*s2&lt;/h3&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;编号为1-100的100个人，房间里有编号为1-100的100个灯泡，初始都为不亮的状态，从编号为1的人开始进入房间每个人都将自己编号倍数编号的灯泡改变状态，问最后哪些灯泡是亮着的&lt;/h3&gt;
+
+&lt;h3 id=&quot;n&quot;&gt;将数字n进行质数分解&lt;/h3&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;数据结构&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;单链表反转&lt;/h3&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;递归和分治&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;一个数组是先增后减的数组，求数组最大值的下标&lt;/h3&gt;
+
+&lt;h1 id=&quot;section-9&quot;&gt;数据库&lt;/h1&gt;
+
+&lt;h1 id=&quot;section-10&quot;&gt;网络&lt;/h1&gt;
+
+&lt;h2 id=&quot;httphttps&quot;&gt;HTTP和HTTPS的关系&lt;/h2&gt;
+
+&lt;h2 id=&quot;http&quot;&gt;HTTP协议状态编码&lt;/h2&gt;
+
+&lt;h2 id=&quot;tcp&quot;&gt;TCP协议建立连接的过程，在建立连接过程中客户端和服务器的端口状态&lt;/h2&gt;
+
+&lt;h1 id=&quot;section-11&quot;&gt;系统设计&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-12&quot;&gt;设计模式&lt;/h2&gt;
+
+&lt;h3 id=&quot;java3java&quot;&gt;java类库用到的3种不同的设计模式，列出java类和使用的设计模式&lt;/h3&gt;
+
+&lt;h1 id=&quot;linux&quot;&gt;linux&lt;/h1&gt;
 </description>
         <pubDate>Thu, 12 Jan 2017 00:00:00 +0800</pubDate>
         <link>http://0.0.0.0:4000/interview/2017/01/12/interview-summary.html</link>
@@ -491,6 +580,10 @@ Open an image in fullscreen mode&lt;/p&gt;
           &lt;li&gt;&lt;a href=&quot;#section-37&quot; id=&quot;markdown-toc-section-37&quot;&gt;当前路径名&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-38&quot; id=&quot;markdown-toc-section-38&quot;&gt;其他&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-39&quot; id=&quot;markdown-toc-section-39&quot;&gt;测试程序时将数据和代码一起写在代码文件中&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -931,6 +1024,21 @@ Open an image in fullscreen mode&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;kp&quot;&gt;__FILE__&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# 当前文件路径名&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;section-38&quot;&gt;其他&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-39&quot;&gt;测试程序时将数据和代码一起写在代码文件中&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# 两种写法都可以&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#DATA.each_line do |line|&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;DATA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# __END__后为数据内容&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;__END__
+line1
+line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Thu, 05 May 2016 00:00:00 +0800</pubDate>
