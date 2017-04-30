@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>My Vim experience</title>
+    <title>classpath vs classpath*</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/tools/vim/2016/05/22/vim-experience.html">
+    <link rel="canonical" href="http://localhost:4000/java/spring/2017/04/30/classpath_and_classpath_star.html">
 </head>
 
 
@@ -57,54 +57,24 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">My Vim experience</h1>
-    <p class="post-meta">May 22, 2016</p>
+    <h1 class="post-title">classpath vs classpath*</h1>
+    <p class="post-meta">Apr 30, 2017</p>
   </header>
 
   <article class="post-content">
-    <ul id="markdown-toc">
-  <li><a href="#vim配置" id="markdown-toc-vim配置">vim配置</a>    <ul>
-      <li><a href="#vimrc" id="markdown-toc-vimrc">.vimrc</a></li>
-    </ul>
-  </li>
-  <li><a href="#vim使用大法" id="markdown-toc-vim使用大法">vim使用大法</a></li>
-</ul>
+    
+<p>jUnit Test遇到org.apache.ibatis.binding.BindingException
+在运行jUnit Test的时候遇到了一个异常情况
+<img src="/images/2017-04-30-classpath/1.png" alt="" />
+直觉观察可以得出，运行jUnit Test时没有找到对应的MyBatis XML文件来解析。</p>
 
-<hr />
+<p>可是为什么系统运行正常，但是使用jUnit Test就正常呢？  带着疑问查看了一下console输出的日志信息，发现有一点不太正常的地方。
+<img src="/images/2017-04-30-classpath/2.png" alt="" />
+注意红框中的信息，在上一个红框中，扫描XML文件是在classes目录中进行，下一个扫描XML文件却是在test-classes目录中扫描(因为在maven创建的test用例和main代码文件夹同级)，结果扫描到的XML为空（红框所示）。很明显是因为test-classes文件夹覆盖了classes文件夹，而且扫描完test-classes目录后扫描终止，并没有继续去扫描classes文件夹了。</p>
 
-<h1 id="vim配置">vim配置</h1>
-
-<h2 id="vimrc">.vimrc</h2>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set </span>cindent
-<span class="nb">set </span>smartindent
-
-<span class="nb">set </span><span class="nv">tabstop</span><span class="o">=</span>2
-<span class="nb">set </span><span class="nv">softtabstop</span><span class="o">=</span>2
-<span class="nb">set </span><span class="nv">shiftwidth</span><span class="o">=</span>2
-<span class="nb">set </span>expandtab
-
-syntax on
-<span class="nb">set </span>number
-<span class="nb">set </span>hlsearch
-<span class="nb">set </span>showmatch
-
-filetype on
-filetype indent on
-
-autocmd FileType python <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>pythoncomplete#Complete
-autocmd FileType javascript <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>javascriptcomplete#CompleteJS
-autocmd FileType html <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>htmlcomplete#CompleteTags
-autocmd FileType css <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>csscomplete#CompleteCSS
-autocmd FileType xml <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>xmlcomplete#CompleteTags
-autocmd FileType php <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>phpcomplete#CompletePHP
-autocmd FileType c <span class="nb">set </span><span class="nv">omnifunc</span><span class="o">=</span>ccomplete#Complete
-
-<span class="k">if </span>has<span class="o">(</span><span class="s1">'mouse'</span><span class="o">)</span>
-  <span class="nb">set </span><span class="nv">mouse</span><span class="o">=</span>a
-endif</code></pre></figure>
-
-<h1 id="vim使用大法">vim使用大法</h1>
+<p>因此联系到配置文件中classpath和classpath<em>的区别，很快找到了问题所在。
+<img src="/images/2017-04-30-classpath/3.png" alt="" />
+因为这里是classpath导致，扫描终止，将classpath改为classpath</em>即可解决这一问题。</p>
 
   </article>
 

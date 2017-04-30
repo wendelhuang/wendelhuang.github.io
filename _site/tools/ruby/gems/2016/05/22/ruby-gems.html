@@ -11,7 +11,7 @@
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://0.0.0.0:4000/tools/ruby/gems/2016/05/22/ruby-gems.html">
+    <link rel="canonical" href="http://localhost:4000/tools/ruby/gems/2016/05/22/ruby-gems.html">
 </head>
 
 
@@ -63,16 +63,16 @@
 
   <article class="post-content">
     <ul id="markdown-toc">
-  <li><a href="#ruby-gems" id="markdown-toc-ruby-gems">ruby gems的安装卸载</a>    <ul>
-      <li><a href="#ruby-gems-1" id="markdown-toc-ruby-gems-1">安装ruby gems到本地目录</a></li>
-      <li><a href="#ruby-gems-2" id="markdown-toc-ruby-gems-2">从本地离线安装ruby gems</a></li>
-      <li><a href="#ruby-gems-3" id="markdown-toc-ruby-gems-3">卸载ruby gems</a></li>
-      <li><a href="#section" id="markdown-toc-section">查看安装路径</a></li>
+  <li><a href="#ruby-gems的安装卸载" id="markdown-toc-ruby-gems的安装卸载">ruby gems的安装卸载</a>    <ul>
+      <li><a href="#安装ruby-gems到本地目录" id="markdown-toc-安装ruby-gems到本地目录">安装ruby gems到本地目录</a></li>
+      <li><a href="#从本地离线安装ruby-gems" id="markdown-toc-从本地离线安装ruby-gems">从本地离线安装ruby gems</a></li>
+      <li><a href="#卸载ruby-gems" id="markdown-toc-卸载ruby-gems">卸载ruby gems</a></li>
+      <li><a href="#查看安装路径" id="markdown-toc-查看安装路径">查看安装路径</a></li>
     </ul>
   </li>
-  <li><a href="#ruby-gemcreatebuild" id="markdown-toc-ruby-gemcreatebuild">ruby gem的create和build</a>    <ul>
-      <li><a href="#gem" id="markdown-toc-gem">新建一个gem</a></li>
-      <li><a href="#gembuild" id="markdown-toc-gembuild">gem的build打包</a></li>
+  <li><a href="#ruby-gem的create和build" id="markdown-toc-ruby-gem的create和build">ruby gem的create和build</a>    <ul>
+      <li><a href="#新建一个gem" id="markdown-toc-新建一个gem">新建一个gem</a></li>
+      <li><a href="#gem的build打包" id="markdown-toc-gem的build打包">gem的build打包</a></li>
       <li><a href="#create-asset-gem" id="markdown-toc-create-asset-gem">create asset gem</a></li>
     </ul>
   </li>
@@ -80,9 +80,9 @@
 
 <hr />
 
-<h1 id="ruby-gems">ruby gems的安装卸载</h1>
+<h1 id="ruby-gems的安装卸载">ruby gems的安装卸载</h1>
 
-<h2 id="ruby-gems-1">安装ruby gems到本地目录</h2>
+<h2 id="安装ruby-gems到本地目录">安装ruby gems到本地目录</h2>
 <p>当用非root用户安装gem的时候，会报没有目录权限的错误，大致如下</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">ERROR</span><span class="p">:</span>  <span class="no">While</span> <span class="n">executing</span> <span class="n">gem</span> <span class="p">.</span><span class="nf">.</span><span class="o">.</span> <span class="p">(</span><span class="no">Gem</span><span class="o">::</span><span class="no">FilePermissionError</span><span class="p">)</span>
@@ -110,22 +110,22 @@
 
 <p>这个时候再运行bundle install，就将gem安装到指定的本地目录了。</p>
 
-<h2 id="ruby-gems-2">从本地离线安装ruby gems</h2>
+<h2 id="从本地离线安装ruby-gems">从本地离线安装ruby gems</h2>
 <p>下载gems后，在gem目录中运行</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">install</span> <span class="p">.</span><span class="nf">/</span><span class="p">(</span><span class="n">gem</span><span class="o">-</span><span class="nb">name</span><span class="p">).</span><span class="nf">gem</span> <span class="o">--</span><span class="n">local</span></code></pre></figure>
 
-<h2 id="ruby-gems-3">卸载ruby gems</h2>
+<h2 id="卸载ruby-gems">卸载ruby gems</h2>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">uninstall</span> <span class="n">gem</span><span class="o">-</span><span class="nb">name</span></code></pre></figure>
 
-<h2 id="section">查看安装路径</h2>
+<h2 id="查看安装路径">查看安装路径</h2>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">which</span> <span class="n">gem</span><span class="o">-</span><span class="nb">name</span> <span class="c1">#gem which rails</span></code></pre></figure>
 
-<h1 id="ruby-gemcreatebuild">ruby gem的create和build</h1>
+<h1 id="ruby-gem的create和build">ruby gem的create和build</h1>
 
-<h2 id="gem">新建一个gem</h2>
+<h2 id="新建一个gem">新建一个gem</h2>
 <p>bundle内建支持gem的创建,使用bundle命令可以新建一个gem</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bundle gem my_mongoid
@@ -145,7 +145,7 @@
   <span class="no">VERSION</span> <span class="o">=</span> <span class="s2">"0.2.1"</span>
 <span class="k">end</span></code></pre></figure>
 
-<h2 id="gembuild">gem的build打包</h2>
+<h2 id="gem的build打包">gem的build打包</h2>
 <p>使用rake管理Gem:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">rake -T

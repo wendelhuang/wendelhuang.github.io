@@ -11,7 +11,7 @@
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://0.0.0.0:4000/rails/2016/04/09/Rails-experience.html">
+    <link rel="canonical" href="http://localhost:4000/rails/2016/04/09/Rails-experience.html">
 </head>
 
 
@@ -64,10 +64,10 @@
   <article class="post-content">
     <ul id="markdown-toc">
   <li><a href="#assets" id="markdown-toc-assets">Assets</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">配置</a>        <ul>
-          <li><a href="#assets-1" id="markdown-toc-assets-1">assets查找路径</a></li>
-          <li><a href="#assets-2" id="markdown-toc-assets-2">修改assets查找路径</a></li>
-          <li><a href="#vendor" id="markdown-toc-vendor">vendor目录</a></li>
+      <li><a href="#配置" id="markdown-toc-配置">配置</a>        <ul>
+          <li><a href="#assets查找路径" id="markdown-toc-assets查找路径">assets查找路径</a></li>
+          <li><a href="#修改assets查找路径" id="markdown-toc-修改assets查找路径">修改assets查找路径</a></li>
+          <li><a href="#vendor目录" id="markdown-toc-vendor目录">vendor目录</a></li>
         </ul>
       </li>
     </ul>
@@ -78,14 +78,14 @@
 
 <h1 id="assets">Assets</h1>
 
-<h2 id="section">配置</h2>
+<h2 id="配置">配置</h2>
 
-<h3 id="assets-1">assets查找路径</h3>
+<h3 id="assets查找路径">assets查找路径</h3>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#assets的路径在</span>
 <span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">assets</span><span class="p">.</span><span class="nf">paths</span></code></pre></figure>
 
-<h3 id="assets-2">修改assets查找路径</h3>
+<h3 id="修改assets查找路径">修改assets查找路径</h3>
 <p>在config/application.rb中添加</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="p">.</span><span class="nf">assets</span><span class="p">.</span><span class="nf">paths</span> <span class="o">+=</span> <span class="sx">%w{js css img}</span><span class="p">.</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">dir</span><span class="o">|</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"parent_dir"</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span> <span class="p">}</span></code></pre></figure>
@@ -94,7 +94,7 @@
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">assets</span><span class="p">.</span><span class="nf">paths</span> <span class="o">&lt;&lt;</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"parent_dir"</span><span class="p">,</span> <span class="s2">"dir"</span><span class="p">)</span></code></pre></figure>
 
-<h3 id="vendor">vendor目录</h3>
+<h3 id="vendor目录">vendor目录</h3>
 <ol>
   <li>vendor目录下的子目录，默认自动被加入assets查找路径</li>
 </ol>

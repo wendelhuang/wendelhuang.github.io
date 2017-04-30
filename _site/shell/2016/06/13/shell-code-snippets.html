@@ -11,7 +11,7 @@
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://0.0.0.0:4000/shell/2016/06/13/shell-code-snippets.html">
+    <link rel="canonical" href="http://localhost:4000/shell/2016/06/13/shell-code-snippets.html">
 </head>
 
 
@@ -63,23 +63,23 @@
 
   <article class="post-content">
     <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">文本处理</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">替换文件夹下所有文本</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">分割字符串</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">从字符串中删除指定字符</a></li>
+  <li><a href="#文本处理" id="markdown-toc-文本处理">文本处理</a>    <ul>
+      <li><a href="#替换文件夹下所有文本" id="markdown-toc-替换文件夹下所有文本">替换文件夹下所有文本</a></li>
+      <li><a href="#分割字符串" id="markdown-toc-分割字符串">分割字符串</a></li>
+      <li><a href="#从字符串中删除指定字符" id="markdown-toc-从字符串中删除指定字符">从字符串中删除指定字符</a></li>
     </ul>
   </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">目录</a>    <ul>
-      <li><a href="#section-5" id="markdown-toc-section-5">递归遍历目录</a></li>
+  <li><a href="#目录" id="markdown-toc-目录">目录</a>    <ul>
+      <li><a href="#递归遍历目录" id="markdown-toc-递归遍历目录">递归遍历目录</a></li>
     </ul>
   </li>
 </ul>
 
 <hr />
 
-<h1 id="section">文本处理</h1>
+<h1 id="文本处理">文本处理</h1>
 
-<h2 id="section-1">替换文件夹下所有文本</h2>
+<h2 id="替换文件夹下所有文本">替换文件夹下所有文本</h2>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l <span class="k">*</span> | awk <span class="s1">'{print "sed '</span>s/被替换的内容/要替换的内容/g<span class="s1">' "$1" &gt;temp/"$1}'</span> &gt; sed.sh</code></pre></figure>
 
@@ -92,7 +92,7 @@ sed s/aaaaaa/bbb/g d.txt &gt; temp/d.txt</code></pre></figure>
 
 <p>执行脚本即可</p>
 
-<h2 id="section-2">分割字符串</h2>
+<h2 id="分割字符串">分割字符串</h2>
 <p>使用cut分割，简洁方便，但是只支持单个字符分割，比如文本a.txt内容为</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">10.221.1.1 1
@@ -115,14 +115,14 @@ sed s/aaaaaa/bbb/g d.txt &gt; temp/d.txt</code></pre></figure>
 
 <p>效果一样，而且awk可以支持多个字符作分割符</p>
 
-<h2 id="section-3">从字符串中删除指定字符</h2>
+<h2 id="从字符串中删除指定字符">从字符串中删除指定字符</h2>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">'aaabbccb'</span> | tr -d <span class="s1">'bb'</span>
 <span class="c"># aaaccb</span></code></pre></figure>
 
-<h1 id="section-4">目录</h1>
+<h1 id="目录">目录</h1>
 
-<h2 id="section-5">递归遍历目录</h2>
+<h2 id="递归遍历目录">递归遍历目录</h2>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">function </span>loop_dir<span class="o">()</span> <span class="o">{</span>
   <span class="k">for </span>entry <span class="k">in</span> <span class="sb">`</span>ls <span class="nv">$1</span><span class="sb">`</span>

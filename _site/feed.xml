@@ -4,62 +4,89 @@
     <title>Wendelhuang blog</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>http://0.0.0.0:4000/</link>
-    <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 22 Jan 2017 11:52:52 +0800</pubDate>
-    <lastBuildDate>Sun, 22 Jan 2017 11:52:52 +0800</lastBuildDate>
-    <generator>Jekyll v3.3.1</generator>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 30 Apr 2017 21:22:55 +0800</pubDate>
+    <lastBuildDate>Sun, 30 Apr 2017 21:22:55 +0800</lastBuildDate>
+    <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>classpath vs classpath*</title>
+        <description>
+&lt;p&gt;jUnit Test遇到org.apache.ibatis.binding.BindingException
+在运行jUnit Test的时候遇到了一个异常情况
+&lt;img src=&quot;/images/2017-04-30-classpath/1.png&quot; alt=&quot;&quot; /&gt;
+直觉观察可以得出，运行jUnit Test时没有找到对应的MyBatis XML文件来解析。&lt;/p&gt;
+
+&lt;p&gt;可是为什么系统运行正常，但是使用jUnit Test就正常呢？  带着疑问查看了一下console输出的日志信息，发现有一点不太正常的地方。
+&lt;img src=&quot;/images/2017-04-30-classpath/2.png&quot; alt=&quot;&quot; /&gt;
+注意红框中的信息，在上一个红框中，扫描XML文件是在classes目录中进行，下一个扫描XML文件却是在test-classes目录中扫描(因为在maven创建的test用例和main代码文件夹同级)，结果扫描到的XML为空（红框所示）。很明显是因为test-classes文件夹覆盖了classes文件夹，而且扫描完test-classes目录后扫描终止，并没有继续去扫描classes文件夹了。&lt;/p&gt;
+
+&lt;p&gt;因此联系到配置文件中classpath和classpath&lt;em&gt;的区别，很快找到了问题所在。
+&lt;img src=&quot;/images/2017-04-30-classpath/3.png&quot; alt=&quot;&quot; /&gt;
+因为这里是classpath导致，扫描终止，将classpath改为classpath&lt;/em&gt;即可解决这一问题。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 30 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/java/spring/2017/04/30/classpath_and_classpath_star.html</link>
+        <guid isPermaLink="true">http://localhost:4000/java/spring/2017/04/30/classpath_and_classpath_star.html</guid>
+        
+        
+        <category>java</category>
+        
+        <category>spring</category>
+        
+      </item>
     
       <item>
         <title>My Interview Summary</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#jquery&quot; id=&quot;markdown-toc-jquery&quot;&gt;jQuery&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#each&quot; id=&quot;markdown-toc-each&quot;&gt;跳出each循环方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#idapclassa&quot; id=&quot;markdown-toc-idapclassa&quot;&gt;获取id=a的p标签下的所有class=a的超链接&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#跳出each循环方法&quot; id=&quot;markdown-toc-跳出each循环方法&quot;&gt;跳出each循环方法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#获取ida的p标签下的所有classa的超链接&quot; id=&quot;markdown-toc-获取ida的p标签下的所有classa的超链接&quot;&gt;获取id=a的p标签下的所有class=a的超链接&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#java&quot; id=&quot;markdown-toc-java&quot;&gt;java&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#java-1&quot; id=&quot;markdown-toc-java-1&quot;&gt;java基础&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#hashmaphashtable&quot; id=&quot;markdown-toc-hashmaphashtable&quot;&gt;HashMap和Hashtable的区别&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;运行时异常和非运行时异常的区别并举例&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#java基础&quot; id=&quot;markdown-toc-java基础&quot;&gt;java基础&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#hashmap和hashtable的区别&quot; id=&quot;markdown-toc-hashmap和hashtable的区别&quot;&gt;HashMap和Hashtable的区别&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#运行时异常和非运行时异常的区别并举例&quot; id=&quot;markdown-toc-运行时异常和非运行时异常的区别并举例&quot;&gt;运行时异常和非运行时异常的区别并举例&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;框架&lt;/a&gt;    &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#框架&quot; id=&quot;markdown-toc-框架&quot;&gt;框架&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#spring&quot; id=&quot;markdown-toc-spring&quot;&gt;spring&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#annotation&quot; id=&quot;markdown-toc-annotation&quot;&gt;使用自定义annotation实现日志功能&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#使用自定义annotation实现日志功能&quot; id=&quot;markdown-toc-使用自定义annotation实现日志功能&quot;&gt;使用自定义annotation实现日志功能&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;算法&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;数论&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#strings1s2s1s2&quot; id=&quot;markdown-toc-strings1s2s1s2&quot;&gt;String类型的变量s1和s2都是数字组成的字符串，实现s1*s2&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;编号为1-100的100个人，房间里有编号为1-100的100个灯泡，初始都为不亮的状态，从编号为1的人开始进入房间每个人都将自己编号倍数编号的灯泡改变状态，问最后哪些灯泡是亮着的&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#n&quot; id=&quot;markdown-toc-n&quot;&gt;将数字n进行质数分解&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#算法&quot; id=&quot;markdown-toc-算法&quot;&gt;算法&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#数论&quot; id=&quot;markdown-toc-数论&quot;&gt;数论&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#string类型的变量s1和s2都是数字组成的字符串实现s1s2&quot; id=&quot;markdown-toc-string类型的变量s1和s2都是数字组成的字符串实现s1s2&quot;&gt;String类型的变量s1和s2都是数字组成的字符串，实现s1*s2&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#编号为1-100的100个人房间里有编号为1-100的100个灯泡初始都为不亮的状态从编号为1的人开始进入房间每个人都将自己编号倍数编号的灯泡改变状态问最后哪些灯泡是亮着的&quot; id=&quot;markdown-toc-编号为1-100的100个人房间里有编号为1-100的100个灯泡初始都为不亮的状态从编号为1的人开始进入房间每个人都将自己编号倍数编号的灯泡改变状态问最后哪些灯泡是亮着的&quot;&gt;编号为1-100的100个人，房间里有编号为1-100的100个灯泡，初始都为不亮的状态，从编号为1的人开始进入房间每个人都将自己编号倍数编号的灯泡改变状态，问最后哪些灯泡是亮着的&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#将数字n进行质数分解&quot; id=&quot;markdown-toc-将数字n进行质数分解&quot;&gt;将数字n进行质数分解&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;数据结构&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;单链表反转&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#数据结构&quot; id=&quot;markdown-toc-数据结构&quot;&gt;数据结构&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#单链表反转&quot; id=&quot;markdown-toc-单链表反转&quot;&gt;单链表反转&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;递归和分治&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;一个数组是先增后减的数组，求数组最大值的下标&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#递归和分治&quot; id=&quot;markdown-toc-递归和分治&quot;&gt;递归和分治&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#一个数组是先增后减的数组求数组最大值的下标&quot; id=&quot;markdown-toc-一个数组是先增后减的数组求数组最大值的下标&quot;&gt;一个数组是先增后减的数组，求数组最大值的下标&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;数据库&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;网络&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#httphttps&quot; id=&quot;markdown-toc-httphttps&quot;&gt;HTTP和HTTPS的关系&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#http&quot; id=&quot;markdown-toc-http&quot;&gt;HTTP协议状态编码&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#tcp&quot; id=&quot;markdown-toc-tcp&quot;&gt;TCP协议建立连接的过程，在建立连接过程中客户端和服务器的端口状态&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#数据库&quot; id=&quot;markdown-toc-数据库&quot;&gt;数据库&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#网络&quot; id=&quot;markdown-toc-网络&quot;&gt;网络&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#http和https的关系&quot; id=&quot;markdown-toc-http和https的关系&quot;&gt;HTTP和HTTPS的关系&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#http协议状态编码&quot; id=&quot;markdown-toc-http协议状态编码&quot;&gt;HTTP协议状态编码&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#tcp协议建立连接的过程在建立连接过程中客户端和服务器的端口状态&quot; id=&quot;markdown-toc-tcp协议建立连接的过程在建立连接过程中客户端和服务器的端口状态&quot;&gt;TCP协议建立连接的过程，在建立连接过程中客户端和服务器的端口状态&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;系统设计&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;设计模式&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#java3java&quot; id=&quot;markdown-toc-java3java&quot;&gt;java类库用到的3种不同的设计模式，列出java类和使用的设计模式&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#系统设计&quot; id=&quot;markdown-toc-系统设计&quot;&gt;系统设计&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#设计模式&quot; id=&quot;markdown-toc-设计模式&quot;&gt;设计模式&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#java类库用到的3种不同的设计模式列出java类和使用的设计模式&quot; id=&quot;markdown-toc-java类库用到的3种不同的设计模式列出java类和使用的设计模式&quot;&gt;java类库用到的3种不同的设计模式，列出java类和使用的设计模式&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -71,7 +98,7 @@
 
 &lt;h1 id=&quot;jquery&quot;&gt;jQuery&lt;/h1&gt;
 
-&lt;h2 id=&quot;each&quot;&gt;跳出each循环方法&lt;/h2&gt;
+&lt;h2 id=&quot;跳出each循环方法&quot;&gt;跳出each循环方法&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//相当于continue&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//相当于break&lt;/span&gt;
@@ -88,7 +115,7 @@
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;idapclassa&quot;&gt;获取id=a的p标签下的所有class=a的超链接&lt;/h2&gt;
+&lt;h2 id=&quot;获取ida的p标签下的所有classa的超链接&quot;&gt;获取id=a的p标签下的所有class=a的超链接&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;p[id='a']&amp;gt;a[class='a']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -98,57 +125,57 @@
 
 &lt;h1 id=&quot;java&quot;&gt;java&lt;/h1&gt;
 
-&lt;h2 id=&quot;java-1&quot;&gt;java基础&lt;/h2&gt;
+&lt;h2 id=&quot;java基础&quot;&gt;java基础&lt;/h2&gt;
 
-&lt;h3 id=&quot;hashmaphashtable&quot;&gt;HashMap和Hashtable的区别&lt;/h3&gt;
+&lt;h3 id=&quot;hashmap和hashtable的区别&quot;&gt;HashMap和Hashtable的区别&lt;/h3&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;运行时异常和非运行时异常的区别并举例&lt;/h3&gt;
+&lt;h3 id=&quot;运行时异常和非运行时异常的区别并举例&quot;&gt;运行时异常和非运行时异常的区别并举例&lt;/h3&gt;
 
-&lt;h1 id=&quot;section-1&quot;&gt;框架&lt;/h1&gt;
+&lt;h1 id=&quot;框架&quot;&gt;框架&lt;/h1&gt;
 
 &lt;h2 id=&quot;spring&quot;&gt;spring&lt;/h2&gt;
 
-&lt;h3 id=&quot;annotation&quot;&gt;使用自定义annotation实现日志功能&lt;/h3&gt;
+&lt;h3 id=&quot;使用自定义annotation实现日志功能&quot;&gt;使用自定义annotation实现日志功能&lt;/h3&gt;
 
-&lt;h1 id=&quot;section-2&quot;&gt;算法&lt;/h1&gt;
+&lt;h1 id=&quot;算法&quot;&gt;算法&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;数论&lt;/h2&gt;
+&lt;h2 id=&quot;数论&quot;&gt;数论&lt;/h2&gt;
 
-&lt;h3 id=&quot;strings1s2s1s2&quot;&gt;String类型的变量s1和s2都是数字组成的字符串，实现s1*s2&lt;/h3&gt;
+&lt;h3 id=&quot;string类型的变量s1和s2都是数字组成的字符串实现s1s2&quot;&gt;String类型的变量s1和s2都是数字组成的字符串，实现s1*s2&lt;/h3&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;编号为1-100的100个人，房间里有编号为1-100的100个灯泡，初始都为不亮的状态，从编号为1的人开始进入房间每个人都将自己编号倍数编号的灯泡改变状态，问最后哪些灯泡是亮着的&lt;/h3&gt;
+&lt;h3 id=&quot;编号为1-100的100个人房间里有编号为1-100的100个灯泡初始都为不亮的状态从编号为1的人开始进入房间每个人都将自己编号倍数编号的灯泡改变状态问最后哪些灯泡是亮着的&quot;&gt;编号为1-100的100个人，房间里有编号为1-100的100个灯泡，初始都为不亮的状态，从编号为1的人开始进入房间每个人都将自己编号倍数编号的灯泡改变状态，问最后哪些灯泡是亮着的&lt;/h3&gt;
 
-&lt;h3 id=&quot;n&quot;&gt;将数字n进行质数分解&lt;/h3&gt;
+&lt;h3 id=&quot;将数字n进行质数分解&quot;&gt;将数字n进行质数分解&lt;/h3&gt;
 
-&lt;h2 id=&quot;section-5&quot;&gt;数据结构&lt;/h2&gt;
+&lt;h2 id=&quot;数据结构&quot;&gt;数据结构&lt;/h2&gt;
 
-&lt;h3 id=&quot;section-6&quot;&gt;单链表反转&lt;/h3&gt;
+&lt;h3 id=&quot;单链表反转&quot;&gt;单链表反转&lt;/h3&gt;
 
-&lt;h2 id=&quot;section-7&quot;&gt;递归和分治&lt;/h2&gt;
+&lt;h2 id=&quot;递归和分治&quot;&gt;递归和分治&lt;/h2&gt;
 
-&lt;h3 id=&quot;section-8&quot;&gt;一个数组是先增后减的数组，求数组最大值的下标&lt;/h3&gt;
+&lt;h3 id=&quot;一个数组是先增后减的数组求数组最大值的下标&quot;&gt;一个数组是先增后减的数组，求数组最大值的下标&lt;/h3&gt;
 
-&lt;h1 id=&quot;section-9&quot;&gt;数据库&lt;/h1&gt;
+&lt;h1 id=&quot;数据库&quot;&gt;数据库&lt;/h1&gt;
 
-&lt;h1 id=&quot;section-10&quot;&gt;网络&lt;/h1&gt;
+&lt;h1 id=&quot;网络&quot;&gt;网络&lt;/h1&gt;
 
-&lt;h2 id=&quot;httphttps&quot;&gt;HTTP和HTTPS的关系&lt;/h2&gt;
+&lt;h2 id=&quot;http和https的关系&quot;&gt;HTTP和HTTPS的关系&lt;/h2&gt;
 
-&lt;h2 id=&quot;http&quot;&gt;HTTP协议状态编码&lt;/h2&gt;
+&lt;h2 id=&quot;http协议状态编码&quot;&gt;HTTP协议状态编码&lt;/h2&gt;
 
-&lt;h2 id=&quot;tcp&quot;&gt;TCP协议建立连接的过程，在建立连接过程中客户端和服务器的端口状态&lt;/h2&gt;
+&lt;h2 id=&quot;tcp协议建立连接的过程在建立连接过程中客户端和服务器的端口状态&quot;&gt;TCP协议建立连接的过程，在建立连接过程中客户端和服务器的端口状态&lt;/h2&gt;
 
-&lt;h1 id=&quot;section-11&quot;&gt;系统设计&lt;/h1&gt;
+&lt;h1 id=&quot;系统设计&quot;&gt;系统设计&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-12&quot;&gt;设计模式&lt;/h2&gt;
+&lt;h2 id=&quot;设计模式&quot;&gt;设计模式&lt;/h2&gt;
 
-&lt;h3 id=&quot;java3java&quot;&gt;java类库用到的3种不同的设计模式，列出java类和使用的设计模式&lt;/h3&gt;
+&lt;h3 id=&quot;java类库用到的3种不同的设计模式列出java类和使用的设计模式&quot;&gt;java类库用到的3种不同的设计模式，列出java类和使用的设计模式&lt;/h3&gt;
 
 &lt;h1 id=&quot;linux&quot;&gt;linux&lt;/h1&gt;
 </description>
         <pubDate>Thu, 12 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/interview/2017/01/12/interview-summary.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/interview/2017/01/12/interview-summary.html</guid>
+        <link>http://localhost:4000/interview/2017/01/12/interview-summary.html</link>
+        <guid isPermaLink="true">http://localhost:4000/interview/2017/01/12/interview-summary.html</guid>
         
         
         <category>interview</category>
@@ -158,23 +185,23 @@
       <item>
         <title>My Shell Code Snippets!</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;文本处理&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;替换文件夹下所有文本&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;分割字符串&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;从字符串中删除指定字符&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#文本处理&quot; id=&quot;markdown-toc-文本处理&quot;&gt;文本处理&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#替换文件夹下所有文本&quot; id=&quot;markdown-toc-替换文件夹下所有文本&quot;&gt;替换文件夹下所有文本&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#分割字符串&quot; id=&quot;markdown-toc-分割字符串&quot;&gt;分割字符串&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#从字符串中删除指定字符&quot; id=&quot;markdown-toc-从字符串中删除指定字符&quot;&gt;从字符串中删除指定字符&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;目录&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;递归遍历目录&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#目录&quot; id=&quot;markdown-toc-目录&quot;&gt;目录&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#递归遍历目录&quot; id=&quot;markdown-toc-递归遍历目录&quot;&gt;递归遍历目录&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;section&quot;&gt;文本处理&lt;/h1&gt;
+&lt;h1 id=&quot;文本处理&quot;&gt;文本处理&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;替换文件夹下所有文本&lt;/h2&gt;
+&lt;h2 id=&quot;替换文件夹下所有文本&quot;&gt;替换文件夹下所有文本&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ls -l &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | awk &lt;span class=&quot;s1&quot;&gt;'{print &quot;sed '&lt;/span&gt;s/被替换的内容/要替换的内容/g&lt;span class=&quot;s1&quot;&gt;' &quot;$1&quot; &amp;gt;temp/&quot;$1}'&lt;/span&gt; &amp;gt; sed.sh&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -187,7 +214,7 @@ sed s/aaaaaa/bbb/g d.txt &amp;gt; temp/d.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure
 
 &lt;p&gt;执行脚本即可&lt;/p&gt;
 
-&lt;h2 id=&quot;section-2&quot;&gt;分割字符串&lt;/h2&gt;
+&lt;h2 id=&quot;分割字符串&quot;&gt;分割字符串&lt;/h2&gt;
 &lt;p&gt;使用cut分割，简洁方便，但是只支持单个字符分割，比如文本a.txt内容为&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;10.221.1.1 1
@@ -210,14 +237,14 @@ sed s/aaaaaa/bbb/g d.txt &amp;gt; temp/d.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure
 
 &lt;p&gt;效果一样，而且awk可以支持多个字符作分割符&lt;/p&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;从字符串中删除指定字符&lt;/h2&gt;
+&lt;h2 id=&quot;从字符串中删除指定字符&quot;&gt;从字符串中删除指定字符&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'aaabbccb'&lt;/span&gt; | tr -d &lt;span class=&quot;s1&quot;&gt;'bb'&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# aaaccb&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h1 id=&quot;section-4&quot;&gt;目录&lt;/h1&gt;
+&lt;h1 id=&quot;目录&quot;&gt;目录&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-5&quot;&gt;递归遍历目录&lt;/h2&gt;
+&lt;h2 id=&quot;递归遍历目录&quot;&gt;递归遍历目录&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;loop_dir&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;entry &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;ls &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
@@ -235,8 +262,8 @@ sed s/aaaaaa/bbb/g d.txt &amp;gt; temp/d.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure
 
 </description>
         <pubDate>Mon, 13 Jun 2016 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/shell/2016/06/13/shell-code-snippets.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/shell/2016/06/13/shell-code-snippets.html</guid>
+        <link>http://localhost:4000/shell/2016/06/13/shell-code-snippets.html</link>
+        <guid isPermaLink="true">http://localhost:4000/shell/2016/06/13/shell-code-snippets.html</guid>
         
         
         <category>shell</category>
@@ -246,16 +273,16 @@ sed s/aaaaaa/bbb/g d.txt &amp;gt; temp/d.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure
       <item>
         <title>My Vim experience</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#vim&quot; id=&quot;markdown-toc-vim&quot;&gt;vim配置&lt;/a&gt;    &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#vim配置&quot; id=&quot;markdown-toc-vim配置&quot;&gt;vim配置&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#vimrc&quot; id=&quot;markdown-toc-vimrc&quot;&gt;.vimrc&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#vim-1&quot; id=&quot;markdown-toc-vim-1&quot;&gt;vim使用大法&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#vim使用大法&quot; id=&quot;markdown-toc-vim使用大法&quot;&gt;vim使用大法&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;vim&quot;&gt;vim配置&lt;/h1&gt;
+&lt;h1 id=&quot;vim配置&quot;&gt;vim配置&lt;/h1&gt;
 
 &lt;h2 id=&quot;vimrc&quot;&gt;.vimrc&lt;/h2&gt;
 
@@ -287,11 +314,11 @@ autocmd FileType c &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span cl
   &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mouse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;a
 endif&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h1 id=&quot;vim-1&quot;&gt;vim使用大法&lt;/h1&gt;
+&lt;h1 id=&quot;vim使用大法&quot;&gt;vim使用大法&lt;/h1&gt;
 </description>
         <pubDate>Sun, 22 May 2016 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/tools/vim/2016/05/22/vim-experience.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/tools/vim/2016/05/22/vim-experience.html</guid>
+        <link>http://localhost:4000/tools/vim/2016/05/22/vim-experience.html</link>
+        <guid isPermaLink="true">http://localhost:4000/tools/vim/2016/05/22/vim-experience.html</guid>
         
         
         <category>tools</category>
@@ -317,8 +344,8 @@ endif&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;切换到bash一切就正常了&lt;/p&gt;
 </description>
         <pubDate>Sun, 22 May 2016 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/tools/linux/shell/2016/05/22/shell-environment.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/tools/linux/shell/2016/05/22/shell-environment.html</guid>
+        <link>http://localhost:4000/tools/linux/shell/2016/05/22/shell-environment.html</link>
+        <guid isPermaLink="true">http://localhost:4000/tools/linux/shell/2016/05/22/shell-environment.html</guid>
         
         
         <category>tools</category>
@@ -332,16 +359,16 @@ endif&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
       <item>
         <title>ruby gems</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#ruby-gems&quot; id=&quot;markdown-toc-ruby-gems&quot;&gt;ruby gems的安装卸载&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#ruby-gems-1&quot; id=&quot;markdown-toc-ruby-gems-1&quot;&gt;安装ruby gems到本地目录&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#ruby-gems-2&quot; id=&quot;markdown-toc-ruby-gems-2&quot;&gt;从本地离线安装ruby gems&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#ruby-gems-3&quot; id=&quot;markdown-toc-ruby-gems-3&quot;&gt;卸载ruby gems&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;查看安装路径&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ruby-gems的安装卸载&quot; id=&quot;markdown-toc-ruby-gems的安装卸载&quot;&gt;ruby gems的安装卸载&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#安装ruby-gems到本地目录&quot; id=&quot;markdown-toc-安装ruby-gems到本地目录&quot;&gt;安装ruby gems到本地目录&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#从本地离线安装ruby-gems&quot; id=&quot;markdown-toc-从本地离线安装ruby-gems&quot;&gt;从本地离线安装ruby gems&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#卸载ruby-gems&quot; id=&quot;markdown-toc-卸载ruby-gems&quot;&gt;卸载ruby gems&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#查看安装路径&quot; id=&quot;markdown-toc-查看安装路径&quot;&gt;查看安装路径&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ruby-gemcreatebuild&quot; id=&quot;markdown-toc-ruby-gemcreatebuild&quot;&gt;ruby gem的create和build&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#gem&quot; id=&quot;markdown-toc-gem&quot;&gt;新建一个gem&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#gembuild&quot; id=&quot;markdown-toc-gembuild&quot;&gt;gem的build打包&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ruby-gem的create和build&quot; id=&quot;markdown-toc-ruby-gem的create和build&quot;&gt;ruby gem的create和build&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#新建一个gem&quot; id=&quot;markdown-toc-新建一个gem&quot;&gt;新建一个gem&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#gem的build打包&quot; id=&quot;markdown-toc-gem的build打包&quot;&gt;gem的build打包&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#create-asset-gem&quot; id=&quot;markdown-toc-create-asset-gem&quot;&gt;create asset gem&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -349,9 +376,9 @@ endif&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;ruby-gems&quot;&gt;ruby gems的安装卸载&lt;/h1&gt;
+&lt;h1 id=&quot;ruby-gems的安装卸载&quot;&gt;ruby gems的安装卸载&lt;/h1&gt;
 
-&lt;h2 id=&quot;ruby-gems-1&quot;&gt;安装ruby gems到本地目录&lt;/h2&gt;
+&lt;h2 id=&quot;安装ruby-gems到本地目录&quot;&gt;安装ruby gems到本地目录&lt;/h2&gt;
 &lt;p&gt;当用非root用户安装gem的时候，会报没有目录权限的错误，大致如下&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;ERROR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;no&quot;&gt;While&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;executing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Gem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;FilePermissionError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -379,22 +406,22 @@ endif&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;这个时候再运行bundle install，就将gem安装到指定的本地目录了。&lt;/p&gt;
 
-&lt;h2 id=&quot;ruby-gems-2&quot;&gt;从本地离线安装ruby gems&lt;/h2&gt;
+&lt;h2 id=&quot;从本地离线安装ruby-gems&quot;&gt;从本地离线安装ruby gems&lt;/h2&gt;
 &lt;p&gt;下载gems后，在gem目录中运行&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;ruby-gems-3&quot;&gt;卸载ruby gems&lt;/h2&gt;
+&lt;h2 id=&quot;卸载ruby-gems&quot;&gt;卸载ruby gems&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uninstall&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;查看安装路径&lt;/h2&gt;
+&lt;h2 id=&quot;查看安装路径&quot;&gt;查看安装路径&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;which&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#gem which rails&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h1 id=&quot;ruby-gemcreatebuild&quot;&gt;ruby gem的create和build&lt;/h1&gt;
+&lt;h1 id=&quot;ruby-gem的create和build&quot;&gt;ruby gem的create和build&lt;/h1&gt;
 
-&lt;h2 id=&quot;gem&quot;&gt;新建一个gem&lt;/h2&gt;
+&lt;h2 id=&quot;新建一个gem&quot;&gt;新建一个gem&lt;/h2&gt;
 &lt;p&gt;bundle内建支持gem的创建,使用bundle命令可以新建一个gem&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;bundle gem my_mongoid
@@ -414,7 +441,7 @@ endif&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
   &lt;span class=&quot;no&quot;&gt;VERSION&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;0.2.1&quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;gembuild&quot;&gt;gem的build打包&lt;/h2&gt;
+&lt;h2 id=&quot;gem的build打包&quot;&gt;gem的build打包&lt;/h2&gt;
 &lt;p&gt;使用rake管理Gem:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rake -T
@@ -452,8 +479,8 @@ my_monoid 0.2.1 built to pkg/my_monoid-0.2.1.gem.&lt;/code&gt;&lt;/pre&gt;&lt;/f
 
 </description>
         <pubDate>Sun, 22 May 2016 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/tools/ruby/gems/2016/05/22/ruby-gems.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/tools/ruby/gems/2016/05/22/ruby-gems.html</guid>
+        <link>http://localhost:4000/tools/ruby/gems/2016/05/22/ruby-gems.html</link>
+        <guid isPermaLink="true">http://localhost:4000/tools/ruby/gems/2016/05/22/ruby-gems.html</guid>
         
         
         <category>tools</category>
@@ -497,8 +524,8 @@ Open an image in fullscreen mode&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 14 May 2016 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</guid>
+        <link>http://localhost:4000/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</link>
+        <guid isPermaLink="true">http://localhost:4000/tools/linux/image/2016/05/14/open-gnome-image-viewer-in-command-line.html</guid>
         
         
         <category>tools</category>
@@ -512,99 +539,99 @@ Open an image in fullscreen mode&lt;/p&gt;
       <item>
         <title>My Ruby Code Snippets!</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#ruby&quot; id=&quot;markdown-toc-ruby&quot;&gt;Ruby环境&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#ruby-1&quot; id=&quot;markdown-toc-ruby-1&quot;&gt;Ruby环境变量&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#ruby-2&quot; id=&quot;markdown-toc-ruby-2&quot;&gt;修改Ruby的加载路径&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ruby环境&quot; id=&quot;markdown-toc-ruby环境&quot;&gt;Ruby环境&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#ruby环境变量&quot; id=&quot;markdown-toc-ruby环境变量&quot;&gt;Ruby环境变量&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#修改ruby的加载路径&quot; id=&quot;markdown-toc-修改ruby的加载路径&quot;&gt;修改Ruby的加载路径&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;表达式&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;表达式&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#and-equal-and-&quot; id=&quot;markdown-toc-and-equal-and-&quot;&gt;== and equal? and ===&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;多个变量同时赋值&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#表达式&quot; id=&quot;markdown-toc-表达式&quot;&gt;表达式&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#表达式-1&quot; id=&quot;markdown-toc-表达式-1&quot;&gt;表达式&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#-and-equal-and-&quot; id=&quot;markdown-toc--and-equal-and-&quot;&gt;== and equal? and ===&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#多个变量同时赋值&quot; id=&quot;markdown-toc-多个变量同时赋值&quot;&gt;多个变量同时赋值&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#split&quot; id=&quot;markdown-toc-split&quot;&gt;split&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;数组元素基本操作&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;追加元素到数组末尾&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;追加元素到数组开头&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;从数组末尾弹出元素&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;从数组开头弹出元素&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;截取子数组&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;数组填充&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;清空数组&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;数组连接&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;数组的交集与并集&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;修改数组中多个元素&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;将多维数组转换为一维数组&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;反转数组&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-16&quot; id=&quot;markdown-toc-section-16&quot;&gt;过滤重复元素&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-17&quot; id=&quot;markdown-toc-section-17&quot;&gt;删除指定位置的数组元素&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-18&quot; id=&quot;markdown-toc-section-18&quot;&gt;删除匹配元素&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-19&quot; id=&quot;markdown-toc-section-19&quot;&gt;查找数组元素&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-20&quot; id=&quot;markdown-toc-section-20&quot;&gt;搜索多维数组&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#数组元素基本操作&quot; id=&quot;markdown-toc-数组元素基本操作&quot;&gt;数组元素基本操作&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#追加元素到数组末尾&quot; id=&quot;markdown-toc-追加元素到数组末尾&quot;&gt;追加元素到数组末尾&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#追加元素到数组开头&quot; id=&quot;markdown-toc-追加元素到数组开头&quot;&gt;追加元素到数组开头&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#从数组末尾弹出元素&quot; id=&quot;markdown-toc-从数组末尾弹出元素&quot;&gt;从数组末尾弹出元素&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#从数组开头弹出元素&quot; id=&quot;markdown-toc-从数组开头弹出元素&quot;&gt;从数组开头弹出元素&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#截取子数组&quot; id=&quot;markdown-toc-截取子数组&quot;&gt;截取子数组&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#数组填充&quot; id=&quot;markdown-toc-数组填充&quot;&gt;数组填充&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#清空数组&quot; id=&quot;markdown-toc-清空数组&quot;&gt;清空数组&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#数组连接&quot; id=&quot;markdown-toc-数组连接&quot;&gt;数组连接&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#数组的交集与并集&quot; id=&quot;markdown-toc-数组的交集与并集&quot;&gt;数组的交集与并集&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#修改数组中多个元素&quot; id=&quot;markdown-toc-修改数组中多个元素&quot;&gt;修改数组中多个元素&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#将多维数组转换为一维数组&quot; id=&quot;markdown-toc-将多维数组转换为一维数组&quot;&gt;将多维数组转换为一维数组&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#反转数组&quot; id=&quot;markdown-toc-反转数组&quot;&gt;反转数组&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#过滤重复元素&quot; id=&quot;markdown-toc-过滤重复元素&quot;&gt;过滤重复元素&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#删除指定位置的数组元素&quot; id=&quot;markdown-toc-删除指定位置的数组元素&quot;&gt;删除指定位置的数组元素&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#删除匹配元素&quot; id=&quot;markdown-toc-删除匹配元素&quot;&gt;删除匹配元素&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#查找数组元素&quot; id=&quot;markdown-toc-查找数组元素&quot;&gt;查找数组元素&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#搜索多维数组&quot; id=&quot;markdown-toc-搜索多维数组&quot;&gt;搜索多维数组&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-21&quot; id=&quot;markdown-toc-section-21&quot;&gt;数组&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#reverseeach&quot; id=&quot;markdown-toc-reverseeach&quot;&gt;reverse_each&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#数组&quot; id=&quot;markdown-toc-数组&quot;&gt;数组&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#reverse_each&quot; id=&quot;markdown-toc-reverse_each&quot;&gt;reverse_each&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#map-collect&quot; id=&quot;markdown-toc-map-collect&quot;&gt;map collect&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#inject-reduce&quot; id=&quot;markdown-toc-inject-reduce&quot;&gt;inject reduce&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#select-reject&quot; id=&quot;markdown-toc-select-reject&quot;&gt;select reject&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#groupby&quot; id=&quot;markdown-toc-groupby&quot;&gt;group_by&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-22&quot; id=&quot;markdown-toc-section-22&quot;&gt;排序&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#eachwithindex&quot; id=&quot;markdown-toc-eachwithindex&quot;&gt;each_with_index&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#for&quot; id=&quot;markdown-toc-for&quot;&gt;for循环&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#group_by&quot; id=&quot;markdown-toc-group_by&quot;&gt;group_by&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#排序&quot; id=&quot;markdown-toc-排序&quot;&gt;排序&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#each_with_index&quot; id=&quot;markdown-toc-each_with_index&quot;&gt;each_with_index&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#for循环&quot; id=&quot;markdown-toc-for循环&quot;&gt;for循环&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-23&quot; id=&quot;markdown-toc-section-23&quot;&gt;输入输出&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-24&quot; id=&quot;markdown-toc-section-24&quot;&gt;格式化输出&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-25&quot; id=&quot;markdown-toc-section-25&quot;&gt;格式化输出&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-26&quot; id=&quot;markdown-toc-section-26&quot;&gt;整形格式化输出&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-27&quot; id=&quot;markdown-toc-section-27&quot;&gt;浮点型格式化输出&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-28&quot; id=&quot;markdown-toc-section-28&quot;&gt;字符串格式化输出&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#输入输出&quot; id=&quot;markdown-toc-输入输出&quot;&gt;输入输出&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#格式化输出&quot; id=&quot;markdown-toc-格式化输出&quot;&gt;格式化输出&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#格式化输出-1&quot; id=&quot;markdown-toc-格式化输出-1&quot;&gt;格式化输出&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#整形格式化输出&quot; id=&quot;markdown-toc-整形格式化输出&quot;&gt;整形格式化输出&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#浮点型格式化输出&quot; id=&quot;markdown-toc-浮点型格式化输出&quot;&gt;浮点型格式化输出&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字符串格式化输出&quot; id=&quot;markdown-toc-字符串格式化输出&quot;&gt;字符串格式化输出&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-29&quot; id=&quot;markdown-toc-section-29&quot;&gt;目录和文件&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-30&quot; id=&quot;markdown-toc-section-30&quot;&gt;目录和文件&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-31&quot; id=&quot;markdown-toc-section-31&quot;&gt;遍历目录&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-32&quot; id=&quot;markdown-toc-section-32&quot;&gt;目录连接&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-33&quot; id=&quot;markdown-toc-section-33&quot;&gt;文件名连接&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-34&quot; id=&quot;markdown-toc-section-34&quot;&gt;文件夹中文件列表&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-35&quot; id=&quot;markdown-toc-section-35&quot;&gt;获取路径中文件名&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-36&quot; id=&quot;markdown-toc-section-36&quot;&gt;获取路径中目录&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-37&quot; id=&quot;markdown-toc-section-37&quot;&gt;当前路径名&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#目录和文件&quot; id=&quot;markdown-toc-目录和文件&quot;&gt;目录和文件&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#目录和文件-1&quot; id=&quot;markdown-toc-目录和文件-1&quot;&gt;目录和文件&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#遍历目录&quot; id=&quot;markdown-toc-遍历目录&quot;&gt;遍历目录&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#目录连接&quot; id=&quot;markdown-toc-目录连接&quot;&gt;目录连接&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#文件名连接&quot; id=&quot;markdown-toc-文件名连接&quot;&gt;文件名连接&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#文件夹中文件列表&quot; id=&quot;markdown-toc-文件夹中文件列表&quot;&gt;文件夹中文件列表&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#获取路径中文件名&quot; id=&quot;markdown-toc-获取路径中文件名&quot;&gt;获取路径中文件名&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#获取路径中目录&quot; id=&quot;markdown-toc-获取路径中目录&quot;&gt;获取路径中目录&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#当前路径名&quot; id=&quot;markdown-toc-当前路径名&quot;&gt;当前路径名&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-38&quot; id=&quot;markdown-toc-section-38&quot;&gt;其他&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-39&quot; id=&quot;markdown-toc-section-39&quot;&gt;测试程序时将数据和代码一起写在代码文件中&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#其他&quot; id=&quot;markdown-toc-其他&quot;&gt;其他&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#测试程序时将数据和代码一起写在代码文件中&quot; id=&quot;markdown-toc-测试程序时将数据和代码一起写在代码文件中&quot;&gt;测试程序时将数据和代码一起写在代码文件中&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;ruby&quot;&gt;Ruby环境&lt;/h1&gt;
+&lt;h1 id=&quot;ruby环境&quot;&gt;Ruby环境&lt;/h1&gt;
 
-&lt;h2 id=&quot;ruby-1&quot;&gt;Ruby环境变量&lt;/h2&gt;
+&lt;h2 id=&quot;ruby环境变量&quot;&gt;Ruby环境变量&lt;/h2&gt;
 
-&lt;h3 id=&quot;ruby-2&quot;&gt;修改Ruby的加载路径&lt;/h3&gt;
+&lt;h3 id=&quot;修改ruby的加载路径&quot;&gt;修改Ruby的加载路径&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;vg&quot;&gt;$:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;unshift&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;expand_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'..'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# 把当前路径加入到Ruby的LOAD_PATH中&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# unshift是数组的一个方法，把指定的值加到数组的最前面&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h1 id=&quot;section&quot;&gt;表达式&lt;/h1&gt;
+&lt;h1 id=&quot;表达式&quot;&gt;表达式&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;表达式&lt;/h2&gt;
+&lt;h2 id=&quot;表达式-1&quot;&gt;表达式&lt;/h2&gt;
 
-&lt;h3 id=&quot;and-equal-and-&quot;&gt;== and equal? and ===&lt;/h3&gt;
+&lt;h3 id=&quot;-and-equal-and-&quot;&gt;== and equal? and ===&lt;/h3&gt;
 &lt;p&gt;equal?用来比较两个对象是否是同一个引用,比如：&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Ruby&quot;&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# 一个字符串对象。&lt;/span&gt;
@@ -666,7 +693,7 @@ Open an image in fullscreen mode&lt;/p&gt;
  &lt;span class=&quot;c1&quot;&gt;# the lambda returned true&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;多个变量同时赋值&lt;/h3&gt;
+&lt;h3 id=&quot;多个变量同时赋值&quot;&gt;多个变量同时赋值&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# a=1&lt;/span&gt;
@@ -682,9 +709,9 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;c1&quot;&gt;# a: 'aa'&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# b: 'bb'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;数组元素基本操作&lt;/h2&gt;
+&lt;h2 id=&quot;数组元素基本操作&quot;&gt;数组元素基本操作&lt;/h2&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;追加元素到数组末尾&lt;/h3&gt;
+&lt;h3 id=&quot;追加元素到数组末尾&quot;&gt;追加元素到数组末尾&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# method 1&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;＃&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
@@ -694,22 +721,22 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;（&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;）＃&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;追加元素到数组开头&lt;/h3&gt;
+&lt;h3 id=&quot;追加元素到数组开头&quot;&gt;追加元素到数组开头&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;＃&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;unshift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;＃&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-6&quot;&gt;从数组末尾弹出元素&lt;/h3&gt;
+&lt;h3 id=&quot;从数组末尾弹出元素&quot;&gt;从数组末尾弹出元素&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;＃&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;＃&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-7&quot;&gt;从数组开头弹出元素&lt;/h3&gt;
+&lt;h3 id=&quot;从数组开头弹出元素&quot;&gt;从数组开头弹出元素&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;＃&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;shift&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;＃&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-8&quot;&gt;截取子数组&lt;/h3&gt;
+&lt;h3 id=&quot;截取子数组&quot;&gt;截取子数组&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
@@ -718,21 +745,21 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 2]&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [2, 3, 4]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-9&quot;&gt;数组填充&lt;/h3&gt;
+&lt;h3 id=&quot;数组填充&quot;&gt;数组填充&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 2, 255, 255, 5]&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 0, 0, 255, 5]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-10&quot;&gt;清空数组&lt;/h3&gt;
+&lt;h3 id=&quot;清空数组&quot;&gt;清空数组&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;clear&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; []&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; []&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-11&quot;&gt;数组连接&lt;/h3&gt;
+&lt;h3 id=&quot;数组连接&quot;&gt;数组连接&lt;/h3&gt;
 &lt;p&gt;可以使用array#+或者array#concat方法将多个数组连接&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
@@ -742,7 +769,7 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 2, 3, 4, 5, 10, 20]&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 2, 3, 4, 5, 10, 20]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-12&quot;&gt;数组的交集与并集&lt;/h3&gt;
+&lt;h3 id=&quot;数组的交集与并集&quot;&gt;数组的交集与并集&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 3, 5, 7, 2, 4, 6, 8]&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 2, 3, 4, 5, 6]&lt;/span&gt;
@@ -750,7 +777,7 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; []&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [3, 4]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-13&quot;&gt;修改数组中多个元素&lt;/h3&gt;
+&lt;h3 id=&quot;修改数组中多个元素&quot;&gt;修改数组中多个元素&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
@@ -760,20 +787,20 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;444&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;555&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [444, 555]&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [111, 222, 333, 444, 555, 5]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-14&quot;&gt;将多维数组转换为一维数组&lt;/h3&gt;
+&lt;h3 id=&quot;将多维数组转换为一维数组&quot;&gt;将多维数组转换为一维数组&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;flatten&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 2, 3, 4, 5, 6, 7]&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;flatten!&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 2, 3, 4, 5, 6, 7]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-15&quot;&gt;反转数组&lt;/h3&gt;
+&lt;h3 id=&quot;反转数组&quot;&gt;反转数组&lt;/h3&gt;
 &lt;p&gt;reverse&lt;/p&gt;
 
-&lt;h3 id=&quot;section-16&quot;&gt;过滤重复元素&lt;/h3&gt;
+&lt;h3 id=&quot;过滤重复元素&quot;&gt;过滤重复元素&lt;/h3&gt;
 &lt;p&gt;uniq&lt;/p&gt;
 
-&lt;h3 id=&quot;section-17&quot;&gt;删除指定位置的数组元素&lt;/h3&gt;
+&lt;h3 id=&quot;删除指定位置的数组元素&quot;&gt;删除指定位置的数组元素&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
@@ -783,7 +810,7 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 4&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 2, 3]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-18&quot;&gt;删除匹配元素&lt;/h3&gt;
+&lt;h3 id=&quot;删除匹配元素&quot;&gt;删除匹配元素&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;orange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lemon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
@@ -791,7 +818,7 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [&quot;orange&quot;, &quot;lemon&quot;, &quot;vine&quot;]&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; not found&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; &quot;apple not found&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-19&quot;&gt;查找数组元素&lt;/h3&gt;
+&lt;h3 id=&quot;查找数组元素&quot;&gt;查找数组元素&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;orange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;lemon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
 
@@ -800,7 +827,7 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;lemon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 3&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;fruit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; nil&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-20&quot;&gt;搜索多维数组&lt;/h3&gt;
+&lt;h3 id=&quot;搜索多维数组&quot;&gt;搜索多维数组&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;apple&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;orange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
 
@@ -808,9 +835,9 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;assoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;orange&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [&quot;orange&quot;, 300]&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;assoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pear&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; nil&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;section-21&quot;&gt;数组&lt;/h2&gt;
+&lt;h2 id=&quot;数组&quot;&gt;数组&lt;/h2&gt;
 
-&lt;h3 id=&quot;reverseeach&quot;&gt;reverse_each&lt;/h3&gt;
+&lt;h3 id=&quot;reverse_each&quot;&gt;reverse_each&lt;/h3&gt;
 &lt;p&gt;对数组进行反向迭代遍历&lt;/p&gt;
 
 &lt;h3 id=&quot;map-collect&quot;&gt;map collect&lt;/h3&gt;
@@ -857,12 +884,12 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# array = [6, 7, 8, 9, 10]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;groupby&quot;&gt;group_by&lt;/h3&gt;
+&lt;h3 id=&quot;group_by&quot;&gt;group_by&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;group_by&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# {1=&amp;gt;[1, 4, 7, 10], 2=&amp;gt;[2, 5, 8], 0=&amp;gt;[3, 6, 9]}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-22&quot;&gt;排序&lt;/h3&gt;
+&lt;h3 id=&quot;排序&quot;&gt;排序&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;
   &lt;span class=&quot;kp&quot;&gt;attr_accessor&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:lvl_one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:lvl_two&lt;/span&gt;
@@ -907,13 +934,13 @@ Open an image in fullscreen mode&lt;/p&gt;
 9, 3
 =end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;eachwithindex&quot;&gt;each_with_index&lt;/h3&gt;
+&lt;h3 id=&quot;each_with_index&quot;&gt;each_with_index&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each_with_index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;index: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, number: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;for&quot;&gt;for循环&lt;/h3&gt;
+&lt;h3 id=&quot;for循环&quot;&gt;for循环&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_a&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;length&lt;/span&gt;
@@ -923,11 +950,11 @@ Open an image in fullscreen mode&lt;/p&gt;
   &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h1 id=&quot;section-23&quot;&gt;输入输出&lt;/h1&gt;
+&lt;h1 id=&quot;输入输出&quot;&gt;输入输出&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-24&quot;&gt;格式化输出&lt;/h2&gt;
+&lt;h2 id=&quot;格式化输出&quot;&gt;格式化输出&lt;/h2&gt;
 
-&lt;h3 id=&quot;section-25&quot;&gt;格式化输出&lt;/h3&gt;
+&lt;h3 id=&quot;格式化输出-1&quot;&gt;格式化输出&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#格式化输出的方法&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;%d&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
@@ -936,7 +963,7 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;c1&quot;&gt;#或者&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-26&quot;&gt;整形格式化输出&lt;/h3&gt;
+&lt;h3 id=&quot;整形格式化输出&quot;&gt;整形格式化输出&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;## 1.输出长度为10，不够10个字符前面补空格&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%10d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -945,7 +972,7 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;c1&quot;&gt;## 2.输出长度为10，不够10个字符前面补0，并且数字带正负号(此时正负号也占一位)&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%+010d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-27&quot;&gt;浮点型格式化输出&lt;/h3&gt;
+&lt;h3 id=&quot;浮点型格式化输出&quot;&gt;浮点型格式化输出&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;## 1.小数点保留2位小数&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%.2f&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11111&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -956,18 +983,18 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;c1&quot;&gt;## 4.输出长度为10，小数点保留2位小数，不够10个字符前面补0，并且数字带正负号(此时正负号也占一位)&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%+010.2f&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11111&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-28&quot;&gt;字符串格式化输出&lt;/h3&gt;
+&lt;h3 id=&quot;字符串格式化输出&quot;&gt;字符串格式化输出&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;## 1.输出长度为10，不够10个字符前面补空格(右对齐)&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%10s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hello'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;## 2.输出长度为10，不够10个字符后面补空格(左对齐)&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%-10s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hello'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h1 id=&quot;section-29&quot;&gt;目录和文件&lt;/h1&gt;
+&lt;h1 id=&quot;目录和文件&quot;&gt;目录和文件&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-30&quot;&gt;目录和文件&lt;/h2&gt;
+&lt;h2 id=&quot;目录和文件-1&quot;&gt;目录和文件&lt;/h2&gt;
 
-&lt;h3 id=&quot;section-31&quot;&gt;遍历目录&lt;/h3&gt;
+&lt;h3 id=&quot;遍历目录&quot;&gt;遍历目录&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_file_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  
   &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;entries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 也可以用Dir.foreach(path) do |sub| 或者Dir[/tmp/*]&lt;/span&gt;
@@ -982,17 +1009,17 @@ Open an image in fullscreen mode&lt;/p&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;  
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-32&quot;&gt;目录连接&lt;/h3&gt;
+&lt;h3 id=&quot;目录连接&quot;&gt;目录连接&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'usr'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bin'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt;/usr/bin&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-33&quot;&gt;文件名连接&lt;/h3&gt;
+&lt;h3 id=&quot;文件名连接&quot;&gt;文件名连接&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;expand_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'../config/database.yml'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/tmp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; /config/database.yml&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-34&quot;&gt;文件夹中文件列表&lt;/h3&gt;
+&lt;h3 id=&quot;文件夹中文件列表&quot;&gt;文件夹中文件列表&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# 列出根目录下所有目录及文件&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;glob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/*'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -1001,7 +1028,7 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;c1&quot;&gt;# 列出目录/usr /lib /sys&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;glob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{usr,lib,sys}'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 注意usr lib的逗号后面不要有空格&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-35&quot;&gt;获取路径中文件名&lt;/h3&gt;
+&lt;h3 id=&quot;获取路径中文件名&quot;&gt;获取路径中文件名&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;basename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/tmp/abc.log'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# 从路径名中移除目录，只保留文件名&lt;/span&gt;
@@ -1014,20 +1041,20 @@ Open an image in fullscreen mode&lt;/p&gt;
 &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;basename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/tmp/abc.log'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'.*'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# =&amp;gt;abc&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-36&quot;&gt;获取路径中目录&lt;/h3&gt;
+&lt;h3 id=&quot;获取路径中目录&quot;&gt;获取路径中目录&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/tmp/abc.log'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# 从路径名中移除文件名，只保留目录&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# =&amp;gt;/tmp&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;section-37&quot;&gt;当前路径名&lt;/h3&gt;
+&lt;h3 id=&quot;当前路径名&quot;&gt;当前路径名&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;kp&quot;&gt;__FILE__&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# 当前文件路径名&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h1 id=&quot;section-38&quot;&gt;其他&lt;/h1&gt;
+&lt;h1 id=&quot;其他&quot;&gt;其他&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-39&quot;&gt;测试程序时将数据和代码一起写在代码文件中&lt;/h2&gt;
+&lt;h2 id=&quot;测试程序时将数据和代码一起写在代码文件中&quot;&gt;测试程序时将数据和代码一起写在代码文件中&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# 两种写法都可以&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#DATA.each_line do |line|&lt;/span&gt;
@@ -1042,8 +1069,8 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Thu, 05 May 2016 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/ruby/2016/05/05/ruby-code-snippets.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/ruby/2016/05/05/ruby-code-snippets.html</guid>
+        <link>http://localhost:4000/ruby/2016/05/05/ruby-code-snippets.html</link>
+        <guid isPermaLink="true">http://localhost:4000/ruby/2016/05/05/ruby-code-snippets.html</guid>
         
         
         <category>ruby</category>
@@ -1054,10 +1081,10 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
         <title>My Rails experience!</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#assets&quot; id=&quot;markdown-toc-assets&quot;&gt;Assets&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;配置&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#assets-1&quot; id=&quot;markdown-toc-assets-1&quot;&gt;assets查找路径&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#assets-2&quot; id=&quot;markdown-toc-assets-2&quot;&gt;修改assets查找路径&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#vendor&quot; id=&quot;markdown-toc-vendor&quot;&gt;vendor目录&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#配置&quot; id=&quot;markdown-toc-配置&quot;&gt;配置&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#assets查找路径&quot; id=&quot;markdown-toc-assets查找路径&quot;&gt;assets查找路径&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#修改assets查找路径&quot; id=&quot;markdown-toc-修改assets查找路径&quot;&gt;修改assets查找路径&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#vendor目录&quot; id=&quot;markdown-toc-vendor目录&quot;&gt;vendor目录&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -1068,14 +1095,14 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h1 id=&quot;assets&quot;&gt;Assets&lt;/h1&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;配置&lt;/h2&gt;
+&lt;h2 id=&quot;配置&quot;&gt;配置&lt;/h2&gt;
 
-&lt;h3 id=&quot;assets-1&quot;&gt;assets查找路径&lt;/h3&gt;
+&lt;h3 id=&quot;assets查找路径&quot;&gt;assets查找路径&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#assets的路径在&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;paths&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;assets-2&quot;&gt;修改assets查找路径&lt;/h3&gt;
+&lt;h3 id=&quot;修改assets查找路径&quot;&gt;修改assets查找路径&lt;/h3&gt;
 &lt;p&gt;在config/application.rb中添加&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;paths&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%w{js css img}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;parent_dir&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -1084,14 +1111,14 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;paths&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;parent_dir&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;dir&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;vendor&quot;&gt;vendor目录&lt;/h3&gt;
+&lt;h3 id=&quot;vendor目录&quot;&gt;vendor目录&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;vendor目录下的子目录，默认自动被加入assets查找路径&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sat, 09 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/rails/2016/04/09/Rails-experience.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/rails/2016/04/09/Rails-experience.html</guid>
+        <link>http://localhost:4000/rails/2016/04/09/Rails-experience.html</link>
+        <guid isPermaLink="true">http://localhost:4000/rails/2016/04/09/Rails-experience.html</guid>
         
         
         <category>rails</category>
@@ -1101,26 +1128,26 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
       <item>
         <title>My jQuery experience!</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;选择器&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#id&quot; id=&quot;markdown-toc-id&quot;&gt;通过id选择&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#id-1&quot; id=&quot;markdown-toc-id-1&quot;&gt;通过id选择&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#class&quot; id=&quot;markdown-toc-class&quot;&gt;通过class选择&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#name&quot; id=&quot;markdown-toc-name&quot;&gt;通过name选择&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#选择器&quot; id=&quot;markdown-toc-选择器&quot;&gt;选择器&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#通过id选择&quot; id=&quot;markdown-toc-通过id选择&quot;&gt;通过id选择&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#通过id选择-1&quot; id=&quot;markdown-toc-通过id选择-1&quot;&gt;通过id选择&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#通过class选择&quot; id=&quot;markdown-toc-通过class选择&quot;&gt;通过class选择&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#通过name选择&quot; id=&quot;markdown-toc-通过name选择&quot;&gt;通过name选择&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;页面元素操作&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;设置元素的值&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#val&quot; id=&quot;markdown-toc-val&quot;&gt;通过val()设置元素的值&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#页面元素操作&quot; id=&quot;markdown-toc-页面元素操作&quot;&gt;页面元素操作&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#设置元素的值&quot; id=&quot;markdown-toc-设置元素的值&quot;&gt;设置元素的值&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#通过val设置元素的值&quot; id=&quot;markdown-toc-通过val设置元素的值&quot;&gt;通过val()设置元素的值&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#class-1&quot; id=&quot;markdown-toc-class-1&quot;&gt;设置元素的class&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#removeclassaddclassclass&quot; id=&quot;markdown-toc-removeclassaddclassclass&quot;&gt;通过removeClass()和addClass()设置元素的class&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#设置元素的class&quot; id=&quot;markdown-toc-设置元素的class&quot;&gt;设置元素的class&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#通过removeclass和addclass设置元素的class&quot; id=&quot;markdown-toc-通过removeclass和addclass设置元素的class&quot;&gt;通过removeClass()和addClass()设置元素的class&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#form&quot; id=&quot;markdown-toc-form&quot;&gt;form相关&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#form-1&quot; id=&quot;markdown-toc-form-1&quot;&gt;提交form&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#form相关&quot; id=&quot;markdown-toc-form相关&quot;&gt;form相关&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#提交form&quot; id=&quot;markdown-toc-提交form&quot;&gt;提交form&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -1129,16 +1156,16 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;section&quot;&gt;选择器&lt;/h1&gt;
+&lt;h1 id=&quot;选择器&quot;&gt;选择器&lt;/h1&gt;
 
-&lt;h2 id=&quot;id&quot;&gt;通过id选择&lt;/h2&gt;
+&lt;h2 id=&quot;通过id选择&quot;&gt;通过id选择&lt;/h2&gt;
 
-&lt;h3 id=&quot;id-1&quot;&gt;通过id选择&lt;/h3&gt;
+&lt;h3 id=&quot;通过id选择-1&quot;&gt;通过id选择&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;#通过&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;选择页面元素&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;class&quot;&gt;通过class选择&lt;/h3&gt;
+&lt;h3 id=&quot;通过class选择&quot;&gt;通过class选择&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;#通过&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;选择页面元素&lt;/span&gt;
@@ -1151,7 +1178,7 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.modal.fade.in&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;name&quot;&gt;通过name选择&lt;/h3&gt;
+&lt;h3 id=&quot;通过name选择&quot;&gt;通过name选择&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;input[name='xxx']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;#选择所有的&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;属性等于&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'xxx'&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;的&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;元素&lt;/span&gt; 
@@ -1168,18 +1195,18 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;input[name*='xxx']&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;#选择所有的&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;属性包含&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'xxx'&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;的&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;元素&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h1 id=&quot;section-1&quot;&gt;页面元素操作&lt;/h1&gt;
+&lt;h1 id=&quot;页面元素操作&quot;&gt;页面元素操作&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-2&quot;&gt;设置元素的值&lt;/h2&gt;
+&lt;h2 id=&quot;设置元素的值&quot;&gt;设置元素的值&lt;/h2&gt;
 
-&lt;h3 id=&quot;val&quot;&gt;通过val()设置元素的值&lt;/h3&gt;
+&lt;h3 id=&quot;通过val设置元素的值&quot;&gt;通过val()设置元素的值&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.sex&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;#设置&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;为&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sex&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;的元素的&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;class-1&quot;&gt;设置元素的class&lt;/h2&gt;
+&lt;h2 id=&quot;设置元素的class&quot;&gt;设置元素的class&lt;/h2&gt;
 
-&lt;h3 id=&quot;removeclassaddclassclass&quot;&gt;通过removeClass()和addClass()设置元素的class&lt;/h3&gt;
+&lt;h3 id=&quot;通过removeclass和addclass设置元素的class&quot;&gt;通过removeClass()和addClass()设置元素的class&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.btn.active&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;removeClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'active'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;#删除&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;为&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;btn&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;的元素其中的&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;active&lt;/span&gt;
@@ -1188,16 +1215,16 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.btn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'active'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;#为&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;为&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;btn&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;的元素添加&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;active&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;form&quot;&gt;form相关&lt;/h2&gt;
+&lt;h2 id=&quot;form相关&quot;&gt;form相关&lt;/h2&gt;
 
-&lt;h3 id=&quot;form-1&quot;&gt;提交form&lt;/h3&gt;
+&lt;h3 id=&quot;提交form&quot;&gt;提交form&lt;/h3&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#id_of_form&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;submit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Mon, 04 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/frontend/javascript/jquery/2016/04/04/jQuery-experience.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/frontend/javascript/jquery/2016/04/04/jQuery-experience.html</guid>
+        <link>http://localhost:4000/frontend/javascript/jquery/2016/04/04/jQuery-experience.html</link>
+        <guid isPermaLink="true">http://localhost:4000/frontend/javascript/jquery/2016/04/04/jQuery-experience.html</guid>
         
         
         <category>frontend</category>
@@ -1205,156 +1232,6 @@ line2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
         <category>javascript</category>
         
         <category>jQuery</category>
-        
-      </item>
-    
-      <item>
-        <title>My git experience!</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;配置&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;配置查看&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;配置项示例&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;配置用户名邮箱&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;分支&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;查看分支&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;列出本地分支&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;列出本地及远程分支&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;创建分支&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;创建分支&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;切换分支&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;删除分支&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;删除本地分支&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;删除远程分支&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;合并分支&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;合并分支&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#github&quot; id=&quot;markdown-toc-github&quot;&gt;github&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#ssh&quot; id=&quot;markdown-toc-ssh&quot;&gt;ssh配置&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;section&quot;&gt;配置&lt;/h1&gt;
-
-&lt;p&gt;git的配置项有3个层级，分别是仓库级(git config –local)，全局级(git config –global)以及系统级(git config –system)。&lt;br /&gt;
-优先级仓库级&amp;gt;全局级&amp;gt;系统级&lt;br /&gt;
-仓库级的配置文件是repository下的.git/config文件，只对当前repository有效&lt;br /&gt;
-全局级的配置文件是用户home目录下的.gitconfig文件，对系统中本用户有效&lt;br /&gt;
-系统级的配置文件是/etc/gitconfig文件，对当前系统所有用户有效&lt;/p&gt;
-
-&lt;p&gt;文件内容示例如下&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;core]
-  repositoryformatversion &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0
-  filemode &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
-  &lt;/span&gt;bare &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false
-  &lt;/span&gt;logallrefupdates &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote &lt;span class=&quot;s2&quot;&gt;&quot;origin&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-  url &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; git@github.com:xxxxxx/xxxxxx.github.io.git
-  fetch &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; +refs/heads/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:refs/remotes/origin/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch &lt;span class=&quot;s2&quot;&gt;&quot;master&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-  remote &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; origin
-  merge &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; refs/heads/master
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;user]
-  name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; xxxxxxxx
-  email &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; xxxxxxxx@example.com&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;配置查看&lt;/h2&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git config --global -l&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;配置项示例&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-3&quot;&gt;配置用户名邮箱&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git config --global user.name &lt;span class=&quot;s2&quot;&gt;&quot;username&quot;&lt;/span&gt;
-git config --global user.email &lt;span class=&quot;s2&quot;&gt;&quot;username@example.com&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;section-4&quot;&gt;分支&lt;/h1&gt;
-
-&lt;h2 id=&quot;section-5&quot;&gt;查看分支&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-6&quot;&gt;列出本地分支&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;section-7&quot;&gt;列出本地及远程分支&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-8&quot;&gt;创建分支&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-9&quot;&gt;创建分支&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BRANCHNAME&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;section-10&quot;&gt;切换分支&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;checkout&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BRANCHNAME&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# 切换到已经创建好的分支&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;checkout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BRANCHNAME&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# 创建分支并切换到该新建分支&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-11&quot;&gt;删除分支&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-12&quot;&gt;删除本地分支&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;D&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BRANCHNAME&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;section-13&quot;&gt;删除远程分支&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:BRANCHNAME&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# 注意冒号:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-14&quot;&gt;合并分支&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-15&quot;&gt;合并分支&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# 切换到master分支&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BRANCHNAME&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# 合并分支到master分支&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;github&quot;&gt;github&lt;/h1&gt;
-
-&lt;h2 id=&quot;ssh&quot;&gt;ssh配置&lt;/h2&gt;
-&lt;p&gt;1.使用ssh密钥生成密钥&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;ssh-keygen -t rsa -C &lt;span class=&quot;s2&quot;&gt;&quot;username@example.com&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;在.ssh目录下生成id_rsa和id_rsa.pub两个文件&lt;/p&gt;
-
-&lt;p&gt;2.添加密钥&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;ssh-agent bash --login -i &lt;span class=&quot;c&quot;&gt;#不运行此命令会报Could not open a connection to your authentication agent错误&lt;/span&gt;
-ssh-add id_rsa&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;3.将公钥添加到github&lt;/p&gt;
-</description>
-        <pubDate>Sat, 12 Mar 2016 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/tools/git/2016/03/12/git-experience.html</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/tools/git/2016/03/12/git-experience.html</guid>
-        
-        
-        <category>tools</category>
-        
-        <category>git</category>
         
       </item>
     
