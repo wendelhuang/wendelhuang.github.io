@@ -15,13 +15,11 @@ categories: database MySQL
 ## 主从复制
 
 ### 主从复制配置
-0.环境
-| 软件 | 信息 |
-|:-----|:-----|
-| OS | ubuntu server 16.04 |
-| MySQL | 5.7.18-0ubuntu0.16.04.1-log |
-| master | ip:192.168.73.129 |
-| slave | ip:192.168.73.132 |
+0.环境  
+|OS|ubuntu server 16.04|
+|MySQL|5.7.18-0ubuntu0.16.04.1-log|
+|master|ip:192.168.73.129|
+|slave|ip:192.168.73.132|
 
 1.修改master配置
 {% highlight shell %}

@@ -6,8 +6,8 @@
 </description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 20 May 2017 23:22:07 +0800</pubDate>
-    <lastBuildDate>Sat, 20 May 2017 23:22:07 +0800</lastBuildDate>
+    <pubDate>Sat, 20 May 2017 23:42:28 +0800</pubDate>
+    <lastBuildDate>Sat, 20 May 2017 23:42:28 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -29,13 +29,15 @@
 &lt;h2 id=&quot;主从复制&quot;&gt;主从复制&lt;/h2&gt;
 
 &lt;h3 id=&quot;主从复制配置&quot;&gt;主从复制配置&lt;/h3&gt;
-&lt;p&gt;0.环境
-| 软件 | 信息 |
-|:—–|:—–|
-| OS | ubuntu server 16.04 |
-| MySQL | 5.7.18-0ubuntu0.16.04.1-log |
-| master | ip:192.168.73.129 |
-| slave | ip:192.168.73.132 |&lt;/p&gt;
+&lt;p&gt;|a|a| 
+|b|b| 
+0.环境&lt;br /&gt;
+|软件|信息|
+|:——|:——|
+|OS|ubuntu server 16.04|
+|MySQL|5.7.18-0ubuntu0.16.04.1-log|
+|master|ip:192.168.73.129|
+|slave|ip:192.168.73.132|&lt;/p&gt;
 
 &lt;p&gt;1.修改master配置&lt;/p&gt;
 
